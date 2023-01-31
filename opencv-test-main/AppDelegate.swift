@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //GeneratedPluginRegistrant.register(with: self.flutterEngine);
         
         
+        // initialize Amplify
+        let _ = Backend.initialize()
+        
+        
         return true
     }
 
