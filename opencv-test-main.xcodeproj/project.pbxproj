@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5743BC82794ED17F6120B57B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */; };
+		596FD858A8D660104A9C0ED3 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A60A55614E1143F37DDA721 /* awsconfiguration.json */; };
 		9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF27297427E9001ED74C /* AppDelegate.swift */; };
 		9454DF2C297427E9001ED74C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF2B297427E9001ED74C /* ViewController.swift */; };
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		2A60A55614E1143F37DDA721 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = awsconfiguration.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		8C0EC5005C936EC007FB87BC /* Pods-opencv-test-main.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.release.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.release.xcconfig"; sourceTree = "<group>"; };
 		9454DF24297427E9001ED74C /* opencv-test-main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "opencv-test-main.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9454DF27297427E9001ED74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6BF527C53D0332E6D88E2A6D /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				2A60A55614E1143F37DDA721 /* awsconfiguration.json */,
+				295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
 		9454DF1B297427E9001ED74C = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +77,7 @@
 				9454DF25297427E9001ED74C /* Products */,
 				2D33E6AFFA292A0783A48BC4 /* Pods */,
 				B4AE537909234A1D08F60E96 /* Frameworks */,
+				6BF527C53D0332E6D88E2A6D /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +186,8 @@
 				9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */,
 				9454DF31297427ED001ED74C /* Assets.xcassets in Resources */,
 				9454DF2F297427E9001ED74C /* Main.storyboard in Resources */,
+				596FD858A8D660104A9C0ED3 /* awsconfiguration.json in Resources */,
+				5743BC82794ED17F6120B57B /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
 			name = "[CP-User] Run Flutter Build opencv_flutter Script";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
@@ -218,9 +238,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

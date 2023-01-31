@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-opencvtestmain-dev-185547-authRole",
+      "UnauthRoleArn": "arn:aws:iam::485417887540:role/amplify-opencvtestmain-dev-185547-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::485417887540:role/amplify-opencvtestmain-dev-185547-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-opencvtestmain-dev-185547-deployment",
+      "UnauthRoleName": "amplify-opencvtestmain-dev-185547-unauthRole",
+      "StackName": "amplify-opencvtestmain-dev-185547",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:485417887540:stack/amplify-opencvtestmain-dev-185547/d37118d0-a155-11ed-9778-0e9f181ce831",
+      "AmplifyAppId": "d19fqg41fkyr14"
+    }
+  }
+}
