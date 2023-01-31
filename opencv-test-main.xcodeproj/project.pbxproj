@@ -19,6 +19,7 @@
 		949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */; };
 		949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */; };
 		94E9B8E929892E140058CCBD /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* Backend.swift */; };
+		94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EA29893AD70058CCBD /* UserDataModel.swift */; };
 		EFFC8651D080B16F8C9080A0 /* Pods_opencv_test_main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATRoundRectTextField.swift; sourceTree = "<group>"; };
 		94E9B8E829892E140058CCBD /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		94E9B8EA29893AD70058CCBD /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		C5D6E89686549EC957D10E96 /* Pods-opencv-test-main.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.debug.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.debug.xcconfig"; sourceTree = "<group>"; };
 		FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_opencv_test_main.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				94E9B8E829892E140058CCBD /* Backend.swift */,
+				94E9B8EA29893AD70058CCBD /* UserDataModel.swift */,
 			);
 			path = Amplify;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */,
 				949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */,
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
