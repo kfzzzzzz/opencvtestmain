@@ -5,3 +5,8 @@ Podfile.lock
 /.DS_Store
 Podfile.lock
 /Podfile.lock
+*.xcuserstate  
+xcuserdata  
+UserInterfaceState.xcuserstate  
+xcuserdata/  
+UserInterface.xcuserstate
