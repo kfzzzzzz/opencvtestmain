@@ -11,7 +11,8 @@ import UIKit
 class UserData {
     private init() {}
     static let shared = UserData()
-
+    
+    public var userId : String = ""
     public var notes : [Note] = []
     public var isSignedIn : Bool = false
 }
@@ -30,6 +31,30 @@ class Note : Identifiable {
         self.description = description
         self.imageName = image
     }
+    
+    convenience init(from data: NoteData) {
+        self.init(id: data.id, name: data.name, description: data.description, image: data.image)
+     
+        // store API object for easy retrieval later
+        self._data = data
+    }
+     
+    fileprivate var _data : NoteData?
+     
+    // access the privately stored NoteData or build one if we don't have one.
+    var data : NoteData {
+     
+        if (_data == nil) {
+            _data = NoteData(id: self.id,
+                                name: self.name,
+                                description: self.description,
+                                image: self.imageName)
+        }
+     
+        return _data!
+    }
+    
+    
 }
 
 // this is a test data set to preview the UI in Xcode
@@ -50,3 +75,5 @@ func prepareTestData() -> UserData {
 
     return userData
 }
+
+

@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "opencvtestmain",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authopencvtestmaine1ed9bef",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2023-02-01T08:47:50.844Z"
+}

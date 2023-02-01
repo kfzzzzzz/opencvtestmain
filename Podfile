@@ -14,6 +14,7 @@ target 'opencv-test-main' do
   pod 'Amplify', '~> 1.0'             # required amplify dependency
   pod 'Amplify/Tools', '~> 1.0'       # allows to call amplify CLI from within Xcode
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin', '~> 1.0' # support for Cognito user authentication
+  pod 'AmplifyPlugins/AWSAPIPlugin', '~> 1.0'         # support for GraphQL API
 
   flutter_application_path = '../opencv_flutter'
   load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')

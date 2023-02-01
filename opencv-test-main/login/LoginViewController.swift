@@ -178,9 +178,14 @@ class LoginViewController: UIViewController {
     
     @objc private func imageViewTapped(){
         print("imageViewTapped")
-        print("KFZTEST:\(UserData.shared.isSignedIn)")
+        print("KFZTEST:\(UserData.shared.userId)")
 //        let vc = RegisterViewController()
 //        //vc.title = "Cteate Account"
+        if UserData.shared.isSignedIn {
+            let vc = NoteTestController()
+            self.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
 //        self.modalPresentationStyle = .fullScreen
 //        self.present(vc, animated: true)
         //navigationController?.pushViewController(vc, animated: true)
