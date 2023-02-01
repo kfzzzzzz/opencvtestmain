@@ -178,23 +178,30 @@ class LoginViewController: UIViewController {
     
     @objc private func imageViewTapped(){
         print("imageViewTapped")
-        let vc = RegisterViewController()
-        //vc.title = "Cteate Account"
-        self.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        print("KFZTEST:\(UserData.shared.isSignedIn)")
+//        let vc = RegisterViewController()
+//        //vc.title = "Cteate Account"
+//        self.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true)
         //navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func loginButtonTapped(){
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-        
-        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty else{
-            alerUserLoginError()
-            return
-        }
+//        emailField.resignFirstResponder()
+//        passwordField.resignFirstResponder()
+//
+//        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty else{
+//            alerUserLoginError()
+//            return
+//        }
         
         //spinner.show(in: view)
+        
+        if UserData.shared.isSignedIn == false{
+            Backend.shared.signIn()
+        }else{
+            Backend.shared.signOut()
+        }
         
         //Firebase Log In
 //        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion:{ [weak self] authResult, error in
