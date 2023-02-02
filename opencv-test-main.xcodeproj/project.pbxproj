@@ -33,9 +33,9 @@
 		295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		2A60A55614E1143F37DDA721 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = NewTestModel.swift; path = amplify/generated/models/NewTestModel.swift; sourceTree = "<group>"; };
+		3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NewTestModel.swift; path = amplify/generated/models/NewTestModel.swift; sourceTree = "<group>"; };
 		8C0EC5005C936EC007FB87BC /* Pods-opencv-test-main.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.release.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.release.xcconfig"; sourceTree = "<group>"; };
-		9454DF24297427E9001ED74C /* opencv-test-main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "opencv-test-main.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9454DF24297427E9001ED74C /* 心态兄弟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "心态兄弟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9454DF27297427E9001ED74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9454DF2B297427E9001ED74C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9454DF2E297427E9001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		94E9B8EC298A4D170058CCBD /* NoteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTestController.swift; sourceTree = "<group>"; };
 		B1FFFEAD6189EBA960E367F1 /* NoteData+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NoteData+Schema.swift"; path = "amplify/generated/models/NoteData+Schema.swift"; sourceTree = "<group>"; };
 		C5D6E89686549EC957D10E96 /* Pods-opencv-test-main.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.debug.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.debug.xcconfig"; sourceTree = "<group>"; };
-		C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "NewTestModel+Schema.swift"; path = "amplify/generated/models/NewTestModel+Schema.swift"; sourceTree = "<group>"; };
+		C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NewTestModel+Schema.swift"; path = "amplify/generated/models/NewTestModel+Schema.swift"; sourceTree = "<group>"; };
 		F40E5F3731851C0F2264CE02 /* NoteData.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NoteData.swift; path = amplify/generated/models/NoteData.swift; sourceTree = "<group>"; };
 		FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_opencv_test_main.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,7 +113,7 @@
 		9454DF25297427E9001ED74C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9454DF24297427E9001ED74C /* opencv-test-main.app */,
+				9454DF24297427E9001ED74C /* 心态兄弟.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 			);
 			name = "opencv-test-main";
 			productName = "opencv-test-main";
-			productReference = 9454DF24297427E9001ED74C /* opencv-test-main.app */;
+			productReference = 9454DF24297427E9001ED74C /* 心态兄弟.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -475,7 +475,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kfzzzzzz.opencv-test-kfz";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "心态兄弟";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -506,7 +506,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kfzzzzzz.opencv-test-kfz";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "心态兄弟";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
