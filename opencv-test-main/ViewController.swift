@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     
     @objc func aaaaa(){
-        print("KFZTESTT:aaaaaaa")
+        print("KFZTESTT:aaaaaaa11")
         let flutterViewController = FlutterViewController(project: nil, initialRoute: "kfz_camera", nibName: nil, bundle: nil)
         self.present(flutterViewController, animated: true, completion: nil)
     }
