@@ -1,2 +1,3 @@
 # opencvtestmain
 test
+test
