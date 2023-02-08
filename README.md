@@ -1,2 +1,2 @@
 # opencvtestmain
-opencv
+test
