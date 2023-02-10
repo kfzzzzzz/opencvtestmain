@@ -27,25 +27,26 @@ class MainTabBarController : UITabBarController {
             let found = LoginViewController()
             found.tabBarItem.title = "发现"
 
-            let cart = LoginViewController()
-            cart.tabBarItem.title = "购物车"
-            cart.tabBarItem.image = UIImage(named: "cart.png")
+//            let cart = LoginViewController()
+//            cart.tabBarItem.title = "购物车"
+//            cart.tabBarItem.image = UIImage(named: "cart.png")
 
             let mine = LoginViewController()
             mine.tabBarItem.title = "我的"
-            mine.tabBarItem.image = UIImage(named: "mine.png")
+            //var test = SVGKImage(named: "mine.svg")
+            mine.tabBarItem.image = UIImage(named: "Mine.svg")
 
-            viewControllers = [home, category, found, cart, mine]
+            viewControllers = [home, category, found, mine]
 
             // 设置 tabBar & tabBarItem
-            setTabBarItemAttributes(bgColor: UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1))
+            setTabBarItemAttributes(bgColor: UIColor(hex: 0xFF6480))
             
         }
 
         /// 这种方式比较灵活
         func setTabBarItemAttributes(fontName: String = "SmileySans-Oblique",
-                                     fontSize: CGFloat = 14,
-                                     normalColor: UIColor = .gray,
+                                     fontSize: CGFloat = 16,
+                                     normalColor: UIColor = .white,
                                      selectedColor: UIColor = .red,
                                      bgColor: UIColor = .white) {
             // tabBarItem 文字大小

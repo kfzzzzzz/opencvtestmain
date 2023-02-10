@@ -27,6 +27,7 @@
 		949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6B2988D3EB004B7C3C /* LoginViewController.swift */; };
 		949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */; };
 		949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */; };
+		94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */; };
 		94E9B8E929892E140058CCBD /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* Backend.swift */; };
 		94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EA29893AD70058CCBD /* UserDataModel.swift */; };
 		94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EC298A4D170058CCBD /* NoteTestController.swift */; };
@@ -58,6 +59,7 @@
 		949F1F6B2988D3EB004B7C3C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATRoundRectTextField.swift; sourceTree = "<group>"; };
+		94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		94E9B8E829892E140058CCBD /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		94E9B8EA29893AD70058CCBD /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		94E9B8EC298A4D170058CCBD /* NoteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTestController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				94989D4229966E1F00A084D3 /* Utils.swift */,
 				94989D452996734200A084D3 /* UIFont+Utils.swift */,
+				94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -212,12 +215,10 @@
 			buildConfigurationList = 9454DF38297427ED001ED74C /* Build configuration list for PBXNativeTarget "opencv-test-main" */;
 			buildPhases = (
 				881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */,
-				9C82524A3CC60A77F0453879 /* [CP-User] Run Flutter Build opencv_flutter Script */,
 				9454DF20297427E9001ED74C /* Sources */,
 				9454DF21297427E9001ED74C /* Frameworks */,
 				9454DF22297427E9001ED74C /* Resources */,
 				F3B581C7F95F0BB5775B0F68 /* [CP] Embed Pods Frameworks */,
-				82B15EE175C8CB2F777B3D18 /* [CP-User] Embed Flutter Build opencv_flutter Script */,
 			);
 			buildRules = (
 			);
@@ -278,16 +279,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		82B15EE175C8CB2F777B3D18 /* [CP-User] Embed Flutter Build opencv_flutter Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] Embed Flutter Build opencv_flutter Script";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
-		};
 		881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,16 +300,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		9C82524A3CC60A77F0453879 /* [CP-User] Run Flutter Build opencv_flutter Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "[CP-User] Run Flutter Build opencv_flutter Script";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
 		};
 		F3B581C7F95F0BB5775B0F68 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -359,6 +340,7 @@
 				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
 				497B1B3263862A25F0206237 /* NoteData+Schema.swift in Sources */,
 				E43FA8CB2A93F06070C0F68B /* NoteData.swift in Sources */,
+				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,
 				94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */,
 				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
