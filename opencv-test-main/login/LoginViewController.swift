@@ -126,7 +126,7 @@ class LoginViewController: UIViewController {
        // })
         
         //GIDSignIn.sharedInstance()?.presentingViewController = self
-        title = "Log in"
+        //title = "Log in"
         view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(didTapRegister))
@@ -178,13 +178,16 @@ class LoginViewController: UIViewController {
     
     @objc private func imageViewTapped(){
         print("imageViewTapped")
-        print("KFZTEST:\(UserData.shared.userId)")
 //        let vc = RegisterViewController()
 //        //vc.title = "Cteate Account"
         if UserData.shared.isSignedIn {
+            //let vc = NoteTestController()
+            //let nav = navigationController
             let vc = NoteTestController()
-            self.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            //let nav = UINavigationController(rootViewController: vc)
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false)
+            //self.present(vc, animated: true)
         }
 //        self.modalPresentationStyle = .fullScreen
 //        self.present(vc, animated: true)

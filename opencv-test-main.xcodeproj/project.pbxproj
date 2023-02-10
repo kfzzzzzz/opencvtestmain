@@ -17,6 +17,12 @@
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
+		94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */; };
+		94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3B29965FB400A084D3 /* Color_extension.swift */; };
+		94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3D299668BD00A084D3 /* MainTabBarController.swift */; };
+		94989D4329966E1F00A084D3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D4229966E1F00A084D3 /* Utils.swift */; };
+		94989D442996718100A084D3 /* SmileySans-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */; };
+		94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D452996734200A084D3 /* UIFont+Utils.swift */; };
 		949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F692988D3AF004B7C3C /* RegisterViewController.swift */; };
 		949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6B2988D3EB004B7C3C /* LoginViewController.swift */; };
 		949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */; };
@@ -42,6 +48,12 @@
 		9454DF30297427ED001ED74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		94989D3B29965FB400A084D3 /* Color_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
+		94989D3D299668BD00A084D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmileySans-Oblique.ttf"; sourceTree = "<group>"; };
+		94989D4229966E1F00A084D3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		94989D452996734200A084D3 /* UIFont+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
 		949F1F692988D3AF004B7C3C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		949F1F6B2988D3EB004B7C3C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhoneNumberTextField.swift; sourceTree = "<group>"; };
@@ -128,10 +140,40 @@
 				9454DF30297427ED001ED74C /* Assets.xcassets */,
 				9454DF32297427ED001ED74C /* LaunchScreen.storyboard */,
 				9454DF35297427ED001ED74C /* Info.plist */,
+				94989D3F29966D1E00A084D3 /* Font */,
+				94989D3829965F2D00A084D3 /* Tabbar */,
 				94E9B8E729892DF80058CCBD /* Amplify */,
 				949F1F71298904FE004B7C3C /* login */,
+				94989D4129966E0900A084D3 /* utils */,
 			);
 			path = "opencv-test-main";
+			sourceTree = "<group>";
+		};
+		94989D3829965F2D00A084D3 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				94989D3B29965FB400A084D3 /* Color_extension.swift */,
+				94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */,
+				94989D3D299668BD00A084D3 /* MainTabBarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		94989D3F29966D1E00A084D3 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		94989D4129966E0900A084D3 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				94989D4229966E1F00A084D3 /* Utils.swift */,
+				94989D452996734200A084D3 /* UIFont+Utils.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		949F1F71298904FE004B7C3C /* login */ = {
@@ -175,6 +217,7 @@
 				9454DF21297427E9001ED74C /* Frameworks */,
 				9454DF22297427E9001ED74C /* Resources */,
 				F3B581C7F95F0BB5775B0F68 /* [CP] Embed Pods Frameworks */,
+				82B15EE175C8CB2F777B3D18 /* [CP-User] Embed Flutter Build opencv_flutter Script */,
 			);
 			buildRules = (
 			);
@@ -223,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94989D442996718100A084D3 /* SmileySans-Oblique.ttf in Resources */,
 				9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */,
 				9454DF31297427ED001ED74C /* Assets.xcassets in Resources */,
 				9454DF2F297427E9001ED74C /* Main.storyboard in Resources */,
@@ -234,6 +278,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		82B15EE175C8CB2F777B3D18 /* [CP-User] Embed Flutter Build opencv_flutter Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Embed Flutter Build opencv_flutter Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
+		};
 		881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,11 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
 			name = "[CP-User] Run Flutter Build opencv_flutter Script";
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
@@ -278,13 +328,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -305,13 +351,18 @@
 				949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */,
 				94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */,
 				9454DF2C297427E9001ED74C /* ViewController.swift in Sources */,
+				94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */,
 				94E9B8E929892E140058CCBD /* Backend.swift in Sources */,
 				9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
+				94989D4329966E1F00A084D3 /* Utils.swift in Sources */,
+				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
 				497B1B3263862A25F0206237 /* NoteData+Schema.swift in Sources */,
 				E43FA8CB2A93F06070C0F68B /* NoteData.swift in Sources */,
+				94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */,
 				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
+				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
