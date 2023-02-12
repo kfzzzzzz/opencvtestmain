@@ -17,10 +17,11 @@
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
+		9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459DA8C29990F040014E402 /* TestTabVIew.swift */; };
 		94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */; };
 		94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3B29965FB400A084D3 /* Color_extension.swift */; };
 		94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3D299668BD00A084D3 /* MainTabBarController.swift */; };
-		94989D4329966E1F00A084D3 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D4229966E1F00A084D3 /* Utils.swift */; };
+		94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D4229966E1F00A084D3 /* Utils+My.swift */; };
 		94989D442996718100A084D3 /* SmileySans-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */; };
 		94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D452996734200A084D3 /* UIFont+Utils.swift */; };
 		949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F692988D3AF004B7C3C /* RegisterViewController.swift */; };
@@ -49,11 +50,12 @@
 		9454DF30297427ED001ED74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9459DA8C29990F040014E402 /* TestTabVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabVIew.swift; sourceTree = "<group>"; };
 		94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		94989D3B29965FB400A084D3 /* Color_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
 		94989D3D299668BD00A084D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmileySans-Oblique.ttf"; sourceTree = "<group>"; };
-		94989D4229966E1F00A084D3 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		94989D4229966E1F00A084D3 /* Utils+My.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+My.swift"; sourceTree = "<group>"; };
 		94989D452996734200A084D3 /* UIFont+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utils.swift"; sourceTree = "<group>"; };
 		949F1F692988D3AF004B7C3C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		949F1F6B2988D3EB004B7C3C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				94989D3B29965FB400A084D3 /* Color_extension.swift */,
 				94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */,
 				94989D3D299668BD00A084D3 /* MainTabBarController.swift */,
+				9459DA8C29990F040014E402 /* TestTabVIew.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -172,7 +175,7 @@
 		94989D4129966E0900A084D3 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				94989D4229966E1F00A084D3 /* Utils.swift */,
+				94989D4229966E1F00A084D3 /* Utils+My.swift */,
 				94989D452996734200A084D3 /* UIFont+Utils.swift */,
 				94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */,
 			);
@@ -335,8 +338,9 @@
 				94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */,
 				94E9B8E929892E140058CCBD /* Backend.swift in Sources */,
 				9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */,
+				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
-				94989D4329966E1F00A084D3 /* Utils.swift in Sources */,
+				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,
 				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
 				497B1B3263862A25F0206237 /* NoteData+Schema.swift in Sources */,
 				E43FA8CB2A93F06070C0F68B /* NoteData.swift in Sources */,
