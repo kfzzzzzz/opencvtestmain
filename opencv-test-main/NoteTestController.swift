@@ -42,10 +42,19 @@ class NoteTestController: UIViewController {
         return button
     }()
     
+    private lazy var backbutton : UIButton = {
+        let button = UIButton()
+        button.setTitle("goBack", for: .normal)
+        button.backgroundColor = .yellow
+        button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        self.view.addSubview(button)
+        return button
+        
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
         noteLable.snp.makeConstraints{ make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(100)
@@ -70,6 +79,12 @@ class NoteTestController: UIViewController {
             make.width.equalTo(400)
             make.height.equalTo(100)
         }
+        backbutton.snp.makeConstraints{ make in
+            make.top.equalTo(querybutton.snp.bottom).offset(50)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(400)
+            make.height.equalTo(100)
+        }
     }
     
     @objc func tapCreateButton(){
@@ -87,6 +102,11 @@ class NoteTestController: UIViewController {
 
         configLabel()
 //        Backend.shared.storeImage(name: "TestFirstPic", image: (UIImage(named: "MainTabIcon")?.pngData())!)
+    }
+    
+    @objc func goBack(){
+        
+        self.dismiss(animated: false)
     }
     
     func configLabel(){
