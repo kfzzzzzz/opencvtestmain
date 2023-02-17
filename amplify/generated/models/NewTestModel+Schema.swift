@@ -21,11 +21,15 @@ extension NewTestModel {
       rule(allow: .private, operations: [.create, .update, .delete, .read])
     ]
     
+      model.listPluralName = "NewTestModels"
+      
     model.pluralName = "NewTestModels"
+      
     
     model.attributes(
       .primaryKey(fields: [newTestModel.id])
     )
+      
     
     model.fields(
       .field(newTestModel.id, is: .required, ofType: .string),

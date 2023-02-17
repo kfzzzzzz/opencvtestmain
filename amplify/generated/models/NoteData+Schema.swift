@@ -23,6 +23,7 @@ extension NoteData {
       rule(allow: .owner, ownerField: "owner", identityClaim: "cognito:username", provider: .userPools, operations: [.create, .update, .delete, .read])
     ]
     
+      model.listPluralName = "NoteData"
     model.pluralName = "NoteData"
     
     model.attributes(
