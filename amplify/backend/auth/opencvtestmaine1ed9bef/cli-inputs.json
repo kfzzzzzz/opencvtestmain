@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "opencvtestmaine1ed9bef_identitypool_e1ed9bef",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "opencve1ed9bef",
     "userPoolName": "opencvtestmaine1ed9bef_userpool_e1ed9bef",
     "autoVerifiedAttributes": [

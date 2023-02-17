@@ -84,8 +84,9 @@ class NoteTestController: UIViewController {
     @objc func tapQueryButton(){
         
         Backend.shared.queryNotes()
-        
+
         configLabel()
+//        Backend.shared.storeImage(name: "TestFirstPic", image: (UIImage(named: "MainTabIcon")?.pngData())!)
     }
     
     func configLabel(){

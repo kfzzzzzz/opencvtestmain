@@ -57,5 +57,12 @@
       "service": "Cognito"
     }
   },
-  "function": {}
+  "function": {},
+  "storage": {
+    "kfzpicture": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
 }

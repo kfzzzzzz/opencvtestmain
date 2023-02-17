@@ -17,6 +17,9 @@
       },
       "api": {
         "opencvtestmain": {}
+      },
+      "storage": {
+        "kfzpicture": {}
       }
     }
   }
