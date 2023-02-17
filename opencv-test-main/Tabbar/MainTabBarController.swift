@@ -19,69 +19,53 @@ class MainTabBarController : UITabBarController {
         func initTabBar() {
             
             self.tabBar.insertSubview(drawTabBarImageView(), at: 0)
+            self.tabBar.isOpaque = true
             
-            //UITabBar.appearance().backgroundColor = UIColor(hex: 0xF22E63)
-            //UITabBar.appearance().shadowImage = UIImage.init()
-            //self.tabBar.isOpaque = false
-            //self.tabBar.barTintColor = UIColor(hex: 0xF22E63)
-            
-            let home = LoginViewController()
+            let home = FrontPageViewController()
             home.tabBarItem.title = "首页"
 
             let category = LoginViewController()
-            category.tabBarItem.title = "分类"
-            category.tabBarItem.image = UIImage(named: "category.png")
+            category.tabBarItem.title = "聊天"
 
-            let found = LoginViewController()
-            found.tabBarItem.title = ""
-            found.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
-            found.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
+            let mid = NoteTestController()
+            mid.tabBarItem.title = ""
+            mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
+            mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
 
             let cart = LoginViewController()
-            cart.tabBarItem.title = "购物车"
-            cart.tabBarItem.image = UIImage(named: "cart.png")
+            cart.tabBarItem.title = "挑战"
 
             let mine = LoginViewController()
             mine.tabBarItem.title = "我的"
-            //var test = SVGKImage(named: "mine.svg")
-            mine.tabBarItem.image = UIImage(named: "Mine.svg")
 
-            viewControllers = [home, category, found, cart, mine]
+            viewControllers = [home, category, mid, cart, mine]
             
             self.tabBar.isTranslucent = false
             
-            
-            
-            
-            
-
+        
             // 设置 tabBar & tabBarItem
-            setTabBarItemAttributes(bgColor: UIColor(hex: 0xF22E63))
+            setTabBarItemAttributes(fontName: "SmileySans-Oblique", normalfontSize: 14, selectedfontSize: 18, normalColor: .white, selectedColor: .white, bgColor: UIColor.pink1())
         }
 
-        /// 这种方式比较灵活
-        func setTabBarItemAttributes(fontName: String = "SmileySans-Oblique",
-                                     fontSize: CGFloat = 16,
-                                     normalColor: UIColor = .white,
-                                     selectedColor: UIColor = .black,
-                                     bgColor: UIColor = .white) {
-            // tabBarItem 文字大小
-            var attributes: [NSAttributedString.Key: Any] = [.font: UIFont(name: fontName, size: fontSize)!]
-            
-            // tabBarItem 文字默认颜色
-            attributes[.foregroundColor] = normalColor
-            UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
-
-            // tabBarItem 文字选中颜色
-            attributes[.foregroundColor] = selectedColor
-            UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
-
-            // tabBar 文字、图片 统一选中高亮色
-            tabBar.tintColor = selectedColor
-            
-            // tabBar 背景色
-            tabBar.barTintColor = bgColor
+    /// 设置属性
+    func setTabBarItemAttributes(fontName: String, normalfontSize: CGFloat,selectedfontSize: CGFloat,normalColor: UIColor,selectedColor: UIColor,bgColor: UIColor) {
+        var attributesNormal: [NSAttributedString.Key: Any] = [.font: UIFont(name: fontName, size: normalfontSize)!]
+        attributesNormal[.foregroundColor] = normalColor
+        var attributesSelected: [NSAttributedString.Key: Any] = [.font: UIFont(name: fontName, size: selectedfontSize)!]
+        attributesSelected[.foregroundColor] = selectedColor
+        tabBar.tintColor = selectedColor
+        tabBar.barTintColor = bgColor
+        if #available(iOS 15.0, *) {
+            var appearance = UITabBarAppearance()
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = attributesNormal
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = attributesSelected
+            appearance.backgroundColor = UIColor.pink1()
+            self.tabBar.scrollEdgeAppearance = appearance;
+        }else{
+            UITabBarItem.appearance().setTitleTextAttributes(attributesNormal, for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes(attributesSelected, for: .selected)
         }
+    }
     
     
     

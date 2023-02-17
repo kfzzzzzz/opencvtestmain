@@ -148,3 +148,50 @@ func padSize(_ padSize: CGFloat, withPhoneSize phoneSize: CGFloat) -> CGFloat {
     return phoneSize
 }
 
+/**
+     ** 绘图方式将图片裁剪成圆角并添加边框
+     - imageName --传头头像名称
+     - borderWidth --边框大小
+     - borderColor --边框颜色
+     */
+    public func tailoringImageLayer(_ image: UIImage,borderWidth width:CGFloat,borderColor color: UIColor ) -> UIImage? {
+        //1.先开启一个图片上下文 ,尺寸大小在原始图片基础上宽高都加上两倍边框宽度.
+        let imageSize = CGSize(width: image.size.width + width * 2 , height: image.size.height + width * 2)
+        UIGraphicsBeginImageContext(imageSize)
+        //2.填充一个圆形路径.这个圆形路径大小,和上下文尺寸大小一样.
+        //把大圆画到上下文当中.
+        let path = UIBezierPath(ovalIn: CGRect(x: 0,
+                                               y: 0,
+                                               width: imageSize.width,
+                                               height: imageSize.height))
+        //颜色设置
+        color.set()
+        //填充
+        path.fill()
+        //3.添加一个小圆,小圆,x,y从边框宽度位置开始添加,宽高和原始图片一样大小.把小圆设为裁剪区域.
+        let clipPath = UIBezierPath(ovalIn: CGRect(x: width, y: width, width: image.size.width, height: image.size.height))
+        //把小圆设为裁剪区域.
+        clipPath.addClip()
+        //4.把图片给绘制上去.
+        image.draw(at: CGPoint(x: width, y: width))
+        //5.从上下文当中生成一张图片
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        //6.关闭上下文
+        UIGraphicsEndImageContext()
+        return  newImage
+    }
+    /**
+     ** 异步绘图方式将图片裁剪成圆角并添加边框
+     - imageName --传头头像名称
+     - borderWidth --边框大小
+     - borderColor --边框颜色
+     - parameter completed:    异步完成回调(主线程回调)
+     */
+    public func async_tailoringImageLayer(_ image: UIImage,borderWidth width:CGFloat,borderColor color: UIColor ,completed:@escaping (UIImage?) -> ()) -> Void {
+        DispatchQueue.global().async{
+            let newImage = tailoringImageLayer(image, borderWidth: width, borderColor: color)
+            DispatchQueue.main.async(execute: {
+                completed(newImage)
+            })
+        }
+    }

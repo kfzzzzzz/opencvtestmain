@@ -19,15 +19,8 @@ class LoginViewController: UIViewController {
     
     private let imageView : UIImageView = {
         let imageView = UIImageView()
-        //imageView.image = UIImage(named: "logo")
+        imageView.image = UIImage(named: "logo")
         
-        Backend.shared.retrieveImage(name: "TestLovePic@3x.png") { (data) in
-            // update the UI on the main thread
-            DispatchQueue.main.async() {
-                let uim = UIImage(data: data)
-                imageView.image = uim
-            }
-        }
         
         //imageView.image =
         imageView.contentMode = .scaleAspectFit

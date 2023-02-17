@@ -17,5 +17,9 @@ extension UIColor {
         )
         self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
     }
+    
+    @objc public static func pink1() -> UIColor {
+        return UIColor(hex: 0xF22E63)
+    }
 
 }

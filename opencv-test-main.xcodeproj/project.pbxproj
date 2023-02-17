@@ -32,6 +32,7 @@
 		94E9B8E929892E140058CCBD /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* Backend.swift */; };
 		94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EA29893AD70058CCBD /* UserDataModel.swift */; };
 		94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EC298A4D170058CCBD /* NoteTestController.swift */; };
+		94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */; };
 		E43FA8CB2A93F06070C0F68B /* NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E5F3731851C0F2264CE02 /* NoteData.swift */; };
 		EFFC8651D080B16F8C9080A0 /* Pods_opencv_test_main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */; };
 		F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */; };
@@ -65,6 +66,7 @@
 		94E9B8E829892E140058CCBD /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		94E9B8EA29893AD70058CCBD /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		94E9B8EC298A4D170058CCBD /* NoteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTestController.swift; sourceTree = "<group>"; };
+		94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewController.swift; sourceTree = "<group>"; };
 		B1FFFEAD6189EBA960E367F1 /* NoteData+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NoteData+Schema.swift"; path = "amplify/generated/models/NoteData+Schema.swift"; sourceTree = "<group>"; };
 		C5D6E89686549EC957D10E96 /* Pods-opencv-test-main.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.debug.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.debug.xcconfig"; sourceTree = "<group>"; };
 		C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NewTestModel+Schema.swift"; path = "amplify/generated/models/NewTestModel+Schema.swift"; sourceTree = "<group>"; };
@@ -144,11 +146,12 @@
 				9454DF30297427ED001ED74C /* Assets.xcassets */,
 				9454DF32297427ED001ED74C /* LaunchScreen.storyboard */,
 				9454DF35297427ED001ED74C /* Info.plist */,
-				94989D3F29966D1E00A084D3 /* Font */,
+				94EB89DB299F7A230003DAC4 /* FrontPage */,
 				94989D3829965F2D00A084D3 /* Tabbar */,
 				94E9B8E729892DF80058CCBD /* Amplify */,
 				949F1F71298904FE004B7C3C /* login */,
 				94989D4129966E0900A084D3 /* utils */,
+				94989D3F29966D1E00A084D3 /* Font */,
 			);
 			path = "opencv-test-main";
 			sourceTree = "<group>";
@@ -202,6 +205,14 @@
 			path = Amplify;
 			sourceTree = "<group>";
 		};
+		94EB89DB299F7A230003DAC4 /* FrontPage */ = {
+			isa = PBXGroup;
+			children = (
+				94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */,
+			);
+			path = FrontPage;
+			sourceTree = "<group>";
+		};
 		B4AE537909234A1D08F60E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,10 +229,12 @@
 			buildConfigurationList = 9454DF38297427ED001ED74C /* Build configuration list for PBXNativeTarget "opencv-test-main" */;
 			buildPhases = (
 				881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */,
+				2EEBDC47855B47F7E02EA9F6 /* [CP-User] Run Flutter Build opencv_flutter Script */,
 				9454DF20297427E9001ED74C /* Sources */,
 				9454DF21297427E9001ED74C /* Frameworks */,
 				9454DF22297427E9001ED74C /* Resources */,
 				F3B581C7F95F0BB5775B0F68 /* [CP] Embed Pods Frameworks */,
+				3A1B53E7F33DB33AF71A84BD /* [CP-User] Embed Flutter Build opencv_flutter Script */,
 			);
 			buildRules = (
 			);
@@ -282,6 +295,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2EEBDC47855B47F7E02EA9F6 /* [CP-User] Run Flutter Build opencv_flutter Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build opencv_flutter Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
+		3A1B53E7F33DB33AF71A84BD /* [CP-User] Embed Flutter Build opencv_flutter Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Embed Flutter Build opencv_flutter Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
+		};
 		881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +366,7 @@
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
 				949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */,
+				94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */,
 				94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */,
 				9454DF2C297427E9001ED74C /* ViewController.swift in Sources */,
 				94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */,
