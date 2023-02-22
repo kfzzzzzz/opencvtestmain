@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */; };
 		497B1B3263862A25F0206237 /* NoteData+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFFEAD6189EBA960E367F1 /* NoteData+Schema.swift */; };
 		5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */; };
 		5743BC82794ED17F6120B57B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */; };
 		596FD858A8D660104A9C0ED3 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A60A55614E1143F37DDA721 /* awsconfiguration.json */; };
+		70379954304F70B87DC61DCC /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675452D914CCD5DD26748EA7 /* UserTest.swift */; };
 		72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */; };
 		9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF27297427E9001ED74C /* AppDelegate.swift */; };
 		9454DF2C297427E9001ED74C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF2B297427E9001ED74C /* ViewController.swift */; };
@@ -43,6 +45,8 @@
 		2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		2A60A55614E1143F37DDA721 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NewTestModel.swift; path = amplify/generated/models/NewTestModel.swift; sourceTree = "<group>"; };
+		675452D914CCD5DD26748EA7 /* UserTest.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = UserTest.swift; path = amplify/generated/models/UserTest.swift; sourceTree = "<group>"; };
+		86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "UserTest+Schema.swift"; path = "amplify/generated/models/UserTest+Schema.swift"; sourceTree = "<group>"; };
 		8C0EC5005C936EC007FB87BC /* Pods-opencv-test-main.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.release.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.release.xcconfig"; sourceTree = "<group>"; };
 		9454DF24297427E9001ED74C /* 心态兄弟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "心态兄弟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9454DF27297427E9001ED74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				F40E5F3731851C0F2264CE02 /* NoteData.swift */,
 				C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */,
 				3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */,
+				86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */,
+				675452D914CCD5DD26748EA7 /* UserTest.swift */,
 			);
 			name = AmplifyModels;
 			sourceTree = "<group>";
@@ -300,7 +306,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
 			name = "[CP-User] Run Flutter Build opencv_flutter Script";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
@@ -310,7 +320,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
 			name = "[CP-User] Embed Flutter Build opencv_flutter Script";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
@@ -345,9 +359,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -383,6 +401,8 @@
 				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
 				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
+				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
+				70379954304F70B87DC61DCC /* UserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

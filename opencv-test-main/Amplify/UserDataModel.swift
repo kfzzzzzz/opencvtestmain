@@ -13,8 +13,11 @@ class UserData {
     static let shared = UserData()
     
     public var userId : String = ""
+    public var userName : String = ""
+    public var userImage : String = ""
     public var notes : [Note] = []
     public var isSignedIn : Bool = false
+    
 }
 
 // the data class to represents Notes
@@ -74,6 +77,30 @@ func prepareTestData() -> UserData {
     userData.notes = [ n1, n2 ]
 
     return userData
+}
+
+
+extension Notification.Name {
+    /// 自动登录成功的通知
+    static let autoLoginDidSucceed = Notification.Name("autoLoginDidSucceed")
+    
+    /// 自动登录失败的通知
+    static let autoLoginDidFail = Notification.Name("autoLoginDidFail")
+    
+    /// 登录成功的通知
+    static let loginDidSucceed = Notification.Name("loginDidSucceed")
+    
+    /// 登录成功的通知
+    static let loginDidFail = Notification.Name("loginDidFail")
+    
+    /// 将要退出登录
+    static let accountWillLogout = Notification.Name("accountWillLogout")
+    
+    /// 已经退出登录
+    static let accountDidLogout = Notification.Name("accountDidLogout")
+    
+    /// 绑定成功
+    static let accountDidBound = Notification.Name("accountDidBound")
 }
 
 

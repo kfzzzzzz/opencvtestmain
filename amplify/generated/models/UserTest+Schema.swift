@@ -2,11 +2,11 @@
 import Amplify
 import Foundation
 
-extension NewTestModel {
+extension UserTest {
   // MARK: - CodingKeys 
    public enum CodingKeys: String, ModelKey {
     case id
-    case kfz_name
+    case userName
     case createdAt
     case updatedAt
   }
@@ -15,29 +15,29 @@ extension NewTestModel {
   //  MARK: - ModelSchema 
   
   public static let schema = defineSchema { model in
-    let newTestModel = NewTestModel.keys
+    let userTest = UserTest.keys
     
     model.authRules = [
       rule(allow: .private, operations: [.create, .update, .delete, .read])
     ]
     
-      model.listPluralName = "NewTestModels"
-    model.pluralName = "NewTestModels"
+      model.listPluralName = "UserTests"
+    model.pluralName = "UserTests"
     
     model.attributes(
-      .primaryKey(fields: [newTestModel.id])
+      .primaryKey(fields: [userTest.id])
     )
     
     model.fields(
-      .field(newTestModel.id, is: .required, ofType: .string),
-      .field(newTestModel.kfz_name, is: .optional, ofType: .string),
-      .field(newTestModel.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
-      .field(newTestModel.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
+      .field(userTest.id, is: .required, ofType: .string),
+      .field(userTest.userName, is: .optional, ofType: .string),
+      .field(userTest.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
+      .field(userTest.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
 }
 
-extension NewTestModel: ModelIdentifiable {
+extension UserTest: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
 }

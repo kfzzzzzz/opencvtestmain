@@ -98,7 +98,11 @@ class Backend {
      
             // when user is signed in, query the database, otherwise empty our model
             if status {
-                self.queryNotes()
+                userData.userId = Amplify.Auth.getCurrentUser()?.userId ?? "-1"
+                print("KFZTEST:post")
+                NotificationCenter.default.post(name: .loginDidSucceed, object: nil)
+                print("KFZTEST:Thread:\(Thread.current)")
+                self.queryNotes() 
             } else {
                 userData.notes = []
             }

@@ -7,8 +7,11 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class FrontPageViewController: UIViewController {
+    
+    static var avatarWidth : CGFloat = 28.atScale()
     
     private lazy var leftTopIcon : UIImageView = {
         var image = UIImageView()
@@ -18,16 +21,15 @@ class FrontPageViewController: UIViewController {
     }()
     
     private lazy var rightHeadPortrait: UIImageView = {
-        var image = UIImageView()
+        var image = UIImageView(image: UIImage(named: "avatarPlaceholder"))
+        image.layer.cornerRadius = FrontPageViewController.avatarWidth/2
+        image.layer.masksToBounds = true
+        image.layer.borderWidth = 2
+        image.layer.borderColor = UIColor.pink1().cgColor
         
-        Backend.shared.retrieveImage(name: "TestLovePic@3x.png") { (data) in
-            // update the UI on the main thread
-            DispatchQueue.main.async() {
-                let uim = UIImage(data: data)
-                async_tailoringImageLayer((uim ?? UIImage(named: "MainTabIcon.png"))!, borderWidth: 2.atScale(), borderColor: UIColor.pink1(), completed:{newimage in
-                    image.image = newimage
-                })
-            }
+        print("KFZTEST: UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
+        if UserData.shared.isSignedIn {
+            self.setAvatarImage()
         }
         
         view.addSubview(image)
@@ -54,6 +56,23 @@ class FrontPageViewController: UIViewController {
         return button
     }()
     
+    init(){
+        super.init(nibName: nil, bundle: nil)
+        print("KFZTEST:addObserver")
+            NotificationCenter.default.addObserver(self, selector: #selector(self.setAvatarImage), name: .loginDidSucceed, object: nil)
+        print("KFZTEST:Thread:\(Thread.current)")
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit{
+        print("KFZTEST:deinit")
+        NotificationCenter().removeObserver(self)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,13 +96,24 @@ class FrontPageViewController: UIViewController {
         rightHeadPortrait.snp.makeConstraints{ make in
             make.top.equalTo(leftTopIcon.snp.top).offset(-6.atScale())
             make.right.equalTo(rightNameLabel.snp.left)
-            make.width.height.equalTo(28.atScale())
+            make.width.height.equalTo(FrontPageViewController.avatarWidth)
         }
         loginButton.snp.makeConstraints{ make in
             make.top.equalTo(rightHeadPortrait.snp.top).offset(-4.atScale())
             make.bottom.equalTo(rightHeadPortrait.snp.bottom).offset(4.atScale())
             make.left.equalTo(rightHeadPortrait.snp.left)
             make.right.equalTo(rightNameLabel.snp.right)
+        }
+    }
+    
+    @objc func setAvatarImage(){
+        print("KFZTEST:setAvatarImage")
+        Backend.shared.retrieveImage(name: "TestLovePic@3x.png") { (data) in
+            // update the UI on the main thread
+            DispatchQueue.main.async() {
+                let uim = UIImage(data: data)
+                self.rightHeadPortrait.image = uim
+            }
         }
     }
     

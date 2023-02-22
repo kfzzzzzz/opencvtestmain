@@ -6,6 +6,7 @@ target 'opencv-test-main' do
   use_frameworks!
 
   # Pods for opencv-test-main
+  pod 'Kingfisher', '~> 4.6'
   pod 'SnapKit', '~> 5.0.0'
   pod 'DeviceKit', '4.5.1'
   pod 'ObjectMapper', '3.5.3'
