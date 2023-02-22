@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // initialize Amplify
-        let _ = Backend.initialize()
+         _ = AccountManager.shared
         
         
         return true

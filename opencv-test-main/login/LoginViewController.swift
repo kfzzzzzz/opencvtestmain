@@ -183,7 +183,6 @@ class LoginViewController: UIViewController {
         print("imageViewTapped")
 //        let vc = RegisterViewController()
 //        //vc.title = "Cteate Account"
-        Backend.shared.getUserInfo()
         if UserData.shared.isSignedIn {
             //let vc = NoteTestController()
             //let nav = navigationController
@@ -210,9 +209,9 @@ class LoginViewController: UIViewController {
         //spinner.show(in: view)
         
         if UserData.shared.isSignedIn == false{
-            Backend.shared.signIn()
+            AccountManager.shared.signIn()
         }else{
-            Backend.shared.signOut()
+            AccountManager.shared.signOut()
         }
         
         //Firebase Log In

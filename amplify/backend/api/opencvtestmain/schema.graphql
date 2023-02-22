@@ -1,17 +1,11 @@
 type UserTest @model @auth(rules: [{allow: private}]) {
   id: ID!
   userName: String
+  userId: String
 }
 
 type NewTestModel @model @auth(rules: [{allow: private}]) {
   id: ID!
   kfz_name: String
-}
-
-type NoteData @model @auth(rules: [{allow: owner}]) {
-  id: ID!
-  name: String!
-  description: String
-  image: String
 }
  

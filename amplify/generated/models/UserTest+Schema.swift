@@ -7,6 +7,7 @@ extension UserTest {
    public enum CodingKeys: String, ModelKey {
     case id
     case userName
+    case userId
     case createdAt
     case updatedAt
   }
@@ -31,6 +32,7 @@ extension UserTest {
     model.fields(
       .field(userTest.id, is: .required, ofType: .string),
       .field(userTest.userName, is: .optional, ofType: .string),
+      .field(userTest.userId, is: .optional, ofType: .string),
       .field(userTest.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(userTest.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

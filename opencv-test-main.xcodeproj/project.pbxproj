@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */; };
-		497B1B3263862A25F0206237 /* NoteData+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FFFEAD6189EBA960E367F1 /* NoteData+Schema.swift */; };
 		5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */; };
 		5743BC82794ED17F6120B57B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */; };
 		596FD858A8D660104A9C0ED3 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A60A55614E1143F37DDA721 /* awsconfiguration.json */; };
@@ -31,11 +30,11 @@
 		949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */; };
 		949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */; };
 		94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */; };
-		94E9B8E929892E140058CCBD /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* Backend.swift */; };
+		94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */; };
+		94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* AccountManager.swift */; };
 		94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EA29893AD70058CCBD /* UserDataModel.swift */; };
 		94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EC298A4D170058CCBD /* NoteTestController.swift */; };
 		94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */; };
-		E43FA8CB2A93F06070C0F68B /* NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E5F3731851C0F2264CE02 /* NoteData.swift */; };
 		EFFC8651D080B16F8C9080A0 /* Pods_opencv_test_main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */; };
 		F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */; };
 /* End PBXBuildFile section */
@@ -67,14 +66,13 @@
 		949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATRoundRectTextField.swift; sourceTree = "<group>"; };
 		94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
-		94E9B8E829892E140058CCBD /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
+		94E9B8E829892E140058CCBD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		94E9B8EA29893AD70058CCBD /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		94E9B8EC298A4D170058CCBD /* NoteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTestController.swift; sourceTree = "<group>"; };
 		94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewController.swift; sourceTree = "<group>"; };
-		B1FFFEAD6189EBA960E367F1 /* NoteData+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NoteData+Schema.swift"; path = "amplify/generated/models/NoteData+Schema.swift"; sourceTree = "<group>"; };
 		C5D6E89686549EC957D10E96 /* Pods-opencv-test-main.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.debug.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.debug.xcconfig"; sourceTree = "<group>"; };
 		C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NewTestModel+Schema.swift"; path = "amplify/generated/models/NewTestModel+Schema.swift"; sourceTree = "<group>"; };
-		F40E5F3731851C0F2264CE02 /* NoteData.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NoteData.swift; path = amplify/generated/models/NoteData.swift; sourceTree = "<group>"; };
 		FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_opencv_test_main.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,8 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */,
-				B1FFFEAD6189EBA960E367F1 /* NoteData+Schema.swift */,
-				F40E5F3731851C0F2264CE02 /* NoteData.swift */,
 				C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */,
 				3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */,
 				86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */,
@@ -205,8 +201,9 @@
 		94E9B8E729892DF80058CCBD /* Amplify */ = {
 			isa = PBXGroup;
 			children = (
-				94E9B8E829892E140058CCBD /* Backend.swift */,
+				94E9B8E829892E140058CCBD /* AccountManager.swift */,
 				94E9B8EA29893AD70058CCBD /* UserDataModel.swift */,
+				94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */,
 			);
 			path = Amplify;
 			sourceTree = "<group>";
@@ -382,20 +379,19 @@
 				94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */,
 				949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */,
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
+				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
 				949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */,
 				94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */,
 				94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */,
 				9454DF2C297427E9001ED74C /* ViewController.swift in Sources */,
 				94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */,
-				94E9B8E929892E140058CCBD /* Backend.swift in Sources */,
+				94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */,
 				9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */,
 				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
 				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,
 				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
-				497B1B3263862A25F0206237 /* NoteData+Schema.swift in Sources */,
-				E43FA8CB2A93F06070C0F68B /* NoteData.swift in Sources */,
 				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,
 				94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */,
 				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,

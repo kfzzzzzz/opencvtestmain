@@ -88,17 +88,17 @@ class NoteTestController: UIViewController {
     }
     
     @objc func tapCreateButton(){
-        let noteData = NoteData(id : UUID().uuidString,
-                                name: "testName",
-                                description: "testDescription")
-        let note = Note(from: noteData)
-        
-        Backend.shared.createNote(note: note)
+//        let noteData = NoteData(id : UUID().uuidString,
+//                                name: "testName",
+//                                description: "testDescription")
+//        let note = Note(from: noteData)
+//        
+//        Backend.shared.createNote(note: note)
     }
     
     @objc func tapQueryButton(){
         
-        Backend.shared.queryNotes()
+        //Backend.shared.queryNotes()
 
         configLabel()
 //        Backend.shared.storeImage(name: "TestFirstPic", image: (UIImage(named: "MainTabIcon")?.pngData())!)
@@ -111,7 +111,7 @@ class NoteTestController: UIViewController {
     
     func configLabel(){
         
-        self.noteLable.text = "noteNum:\(UserData.shared.notes.count)"
+        //self.noteLable.text = "noteNum:\(UserData.shared.notes.count)"
     }
     
 }

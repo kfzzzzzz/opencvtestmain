@@ -26,19 +26,13 @@ class FrontPageViewController: UIViewController {
         image.layer.masksToBounds = true
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.pink1().cgColor
-        
-        print("KFZTEST: UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
-        if UserData.shared.isSignedIn {
-            self.setAvatarImage()
-        }
-        
         view.addSubview(image)
         return image
     }()
     
     private lazy var rightNameLabel : UILabel = {
         var label = UILabel()
-        label.text = "孔繁臻"
+        label.text = "未登录"
         label.textAlignment = .center
         label.font = UIFont.SmileySans(16.atScale())
         label.numberOfLines = 1
@@ -58,9 +52,7 @@ class FrontPageViewController: UIViewController {
     
     init(){
         super.init(nibName: nil, bundle: nil)
-        print("KFZTEST:addObserver")
-            NotificationCenter.default.addObserver(self, selector: #selector(self.setAvatarImage), name: .loginDidSucceed, object: nil)
-        print("KFZTEST:Thread:\(Thread.current)")
+        AccountManager.shared.delegate = self
         
     }
     
@@ -69,7 +61,6 @@ class FrontPageViewController: UIViewController {
     }
     
     deinit{
-        print("KFZTEST:deinit")
         NotificationCenter().removeObserver(self)
     }
     
@@ -106,25 +97,51 @@ class FrontPageViewController: UIViewController {
         }
     }
     
-    @objc func setAvatarImage(){
-        print("KFZTEST:setAvatarImage")
-        Backend.shared.retrieveImage(name: "TestLovePic@3x.png") { (data) in
-            // update the UI on the main thread
+    @objc func setUserInfo(){
+        print("UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
+        if UserData.shared.isSignedIn {
+            AccountManager.shared.retrieveImage(name: "TestLovePic@3x.png") { (data) in
+                DispatchQueue.main.async() {
+                    let uim = UIImage(data: data)
+                    if UserData.shared.isSignedIn {
+                        self.rightHeadPortrait.image = uim
+                    }
+                }
+            }
+        }else{
             DispatchQueue.main.async() {
-                let uim = UIImage(data: data)
-                self.rightHeadPortrait.image = uim
+                self.rightHeadPortrait.image = UIImage(named: "avatarPlaceholder")
+                self.rightNameLabel.text = "未登录"
             }
         }
+
     }
     
     @objc func loginButtonTapped(){
         
         if UserData.shared.isSignedIn == false{
-            Backend.shared.signIn()
+            AccountManager.shared.signIn()
         }else{
-            Backend.shared.signOut()
+            AccountManager.shared.signOut()
         }
         
     }
+    
+}
+
+
+extension FrontPageViewController: LoginDelegate {
+    func isLogin() {
+        self.setUserInfo()
+    }
+    
+    func isLogout() {
+        self.setUserInfo()
+    }
+    
+    func updateUserInfo() {
+        self.setUserInfo()
+    }
+    
     
 }
