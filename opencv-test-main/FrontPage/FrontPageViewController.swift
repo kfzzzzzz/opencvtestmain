@@ -13,11 +13,12 @@ class FrontPageViewController: UIViewController {
     
     static var avatarWidth : CGFloat = 28.atScale()
     
-    private lazy var leftTopIcon : UIImageView = {
-        var image = UIImageView()
-        image.image = UIImage(named: "ic_frontPage_leftTop")
-        view.addSubview(image)
-        return image
+    private lazy var leftTopIcon : UIButton = {
+        var button = UIButton()
+        button.addTarget(self, action: #selector(openLeftProfile), for: .touchUpInside)
+        button.setImage(UIImage(named: "ic_frontPage_leftTop"), for: .normal)
+        view.addSubview(button)
+        return button
     }()
     
     private lazy var rightHeadPortrait: UIImageView = {
@@ -69,11 +70,7 @@ class FrontPageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         leftTopIcon.snp.makeConstraints{ make in
-            if #available(iOS 11.0, *) {
-                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(18.atScale())
-            } else {
-                make.top.equalTo(self.topLayoutGuide.snp.bottom).offset(18.atScale())
-            }
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(18.atScale())
             make.left.equalToSuperview().offset(30.atScale())
             make.height.equalTo(12.atScale())
             make.width.equalTo(20.atScale())
@@ -95,23 +92,31 @@ class FrontPageViewController: UIViewController {
             make.left.equalTo(rightHeadPortrait.snp.left)
             make.right.equalTo(rightNameLabel.snp.right)
         }
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(openLeftProfile))
+//        leftTopIcon.addGestureRecognizer(gesture)
     }
     
     @objc func setUserInfo(){
         print("UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
         if UserData.shared.isSignedIn {
-            AccountManager.shared.retrieveImage(name: "TestLovePic@3x.png") { (data) in
-                DispatchQueue.main.async() {
-                    let uim = UIImage(data: data)
-                    if UserData.shared.isSignedIn {
-                        self.rightHeadPortrait.image = uim
+            if UserData.shared.userImage != ""{
+                AccountManager.shared.retrieveImage(name: UserData.shared.userImage) { (data) in
+                    DispatchQueue.main.async() {
+                        let uim = UIImage(data: data)
+                        if UserData.shared.isSignedIn {
+                            self.rightHeadPortrait.image = uim
+                            self.rightNameLabel.text = UserData.shared.userName
+                        }
                     }
                 }
+            }else{
+                self.rightHeadPortrait.kf.setImage(with: URL.init(string: "https://opencvtestmain931da04b00a94538b68685b4d5e11082185547-dev.s3.ap-northeast-1.amazonaws.com/public/TestLovePic%403x.png"))
+                self.rightNameLabel.text = UserData.shared.userName
             }
         }else{
             DispatchQueue.main.async() {
                 self.rightHeadPortrait.image = UIImage(named: "avatarPlaceholder")
-                self.rightNameLabel.text = "未登录"
+                self.rightNameLabel.text = UserData.shared.userName
             }
         }
 
@@ -125,6 +130,13 @@ class FrontPageViewController: UIViewController {
             AccountManager.shared.signOut()
         }
         
+    }
+    
+    @objc func openLeftProfile(){
+        let vc = LeftProfileViewController()
+        //vc.modalPresentationStyle = .fullScreen
+        //self.present(vc, animated: false)
+        vc.show()
     }
     
 }

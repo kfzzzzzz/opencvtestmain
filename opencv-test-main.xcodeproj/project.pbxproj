@@ -31,6 +31,9 @@
 		949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */; };
 		94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */; };
 		94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */; };
+		94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */; };
+		94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */; };
+		94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */; };
 		94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* AccountManager.swift */; };
 		94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EA29893AD70058CCBD /* UserDataModel.swift */; };
 		94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EC298A4D170058CCBD /* NoteTestController.swift */; };
@@ -67,6 +70,9 @@
 		949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATRoundRectTextField.swift; sourceTree = "<group>"; };
 		94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
+		94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileViewController.swift; sourceTree = "<group>"; };
+		94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileShowAnimation.swift; sourceTree = "<group>"; };
+		94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileDismissAnimation.swift; sourceTree = "<group>"; };
 		94E9B8E829892E140058CCBD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		94E9B8EA29893AD70058CCBD /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		94E9B8EC298A4D170058CCBD /* NoteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTestController.swift; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 			isa = PBXGroup;
 			children = (
 				94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */,
+				94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */,
+				94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */,
+				94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */,
 			);
 			path = FrontPage;
 			sourceTree = "<group>";
@@ -390,6 +399,7 @@
 				9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */,
 				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
+				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
 				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,
 				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
 				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,
@@ -397,7 +407,9 @@
 				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
 				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
+				94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */,
 				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
+				94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */,
 				70379954304F70B87DC61DCC /* UserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

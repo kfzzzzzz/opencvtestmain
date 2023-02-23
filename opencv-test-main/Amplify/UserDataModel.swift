@@ -11,14 +11,14 @@ import UIKit
 class UserData {
     private init() {}
     static let shared = UserData()
-    public var userId : String = ""
-    public var userName : String = ""
+    public var userId : String = "-1"
+    public var userName : String = "未登录"
     public var userImage : String = ""
     public var isSignedIn : Bool = false
     
     func clear(){
-        self.userId = ""
-        self.userName = ""
+        self.userId = "-1"
+        self.userName = "未登录"
         self.userImage = ""
         self.isSignedIn = false
     }

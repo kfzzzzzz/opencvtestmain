@@ -90,7 +90,7 @@ class AccountManager : NSObject {
             userData.isSignedIn = status
             if status {
                 userData.userId = Amplify.Auth.getCurrentUser()?.userId ?? "-1"
-                NotificationCenter.default.post(name: .loginDidSucceed, object: nil)
+                //NotificationCenter.default.post(name: .loginDidSucceed, object: nil)
                 self.checkCreateUser()
             } else {
                 userData.clear()
@@ -162,6 +162,8 @@ class AccountManager : NSObject {
                     }
                 }else{
                     print("账号存在")
+                    UserData.shared.userName = date[0].userName ?? "气人小子"
+                    UserData.shared.userImage = ""
                 }
             case .failure(let error):
                 print(error)
