@@ -72,9 +72,10 @@ class FrontPageViewController: UIViewController {
         leftTopIcon.snp.makeConstraints{ make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(18.atScale())
             make.left.equalToSuperview().offset(30.atScale())
-            make.height.equalTo(12.atScale())
-            make.width.equalTo(20.atScale())
+            make.height.equalTo(14.atScale())
+            make.width.equalTo(22.atScale())
         }
+        leftTopIcon.extendEdgeInsets = UIEdgeInsets(top: 20.atScale(), left: 20.atScale(), bottom: 20.atScale(), right: 20.atScale())
         rightNameLabel.snp.makeConstraints{ make in
             make.top.equalTo(leftTopIcon.snp.top).offset(-4.atScale())
             make.right.equalToSuperview().offset(-30.atScale())
@@ -134,8 +135,7 @@ class FrontPageViewController: UIViewController {
     
     @objc func openLeftProfile(){
         let vc = LeftProfileViewController()
-        //vc.modalPresentationStyle = .fullScreen
-        //self.present(vc, animated: false)
+        
         vc.show()
     }
     

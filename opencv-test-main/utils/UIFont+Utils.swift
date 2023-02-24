@@ -7,11 +7,26 @@
 
 import UIKit
 
-//华康楷体 W5
+//得意黑
 fileprivate let SmileySansName: String = "SmileySans-Oblique"
 
+//苹方
+fileprivate let PingFangSCSemibold : String = "PingFangSC-Semibold"
+fileprivate let PingFangSCRegular : String  = "PingFangSC-Regular"
+
 extension UIFont {
+    
     @objc public static func SmileySans(_ size: CGFloat) -> UIFont {
         return UIFont.init(name: SmileySansName, size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    
+    @objc public static func PFSemibold(_ size: CGFloat) -> UIFont {
+        return UIFont.init(name: PingFangSCSemibold, size: size) ??
+        UIFont.systemFont(ofSize: size)
+    }
+    
+    @objc public static func PFRegular(_ size: CGFloat) -> UIFont {
+        return UIFont.init(name: PingFangSCRegular, size: size) ??
+        UIFont.systemFont(ofSize: size)
     }
 }

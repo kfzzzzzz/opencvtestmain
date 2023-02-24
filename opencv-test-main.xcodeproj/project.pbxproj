@@ -19,6 +19,8 @@
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
 		9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459DA8C29990F040014E402 /* TestTabVIew.swift */; };
+		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
+		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
 		94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */; };
 		94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3B29965FB400A084D3 /* Color_extension.swift */; };
 		94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3D299668BD00A084D3 /* MainTabBarController.swift */; };
@@ -58,6 +60,8 @@
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9459DA8C29990F040014E402 /* TestTabVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabVIew.swift; sourceTree = "<group>"; };
+		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
+		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
 		94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		94989D3B29965FB400A084D3 /* Color_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
 		94989D3D299668BD00A084D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,39 @@
 			path = "opencv-test-main";
 			sourceTree = "<group>";
 		};
+		948209DE29A85836009E42A9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		948209E329A89396009E42A9 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		948209E429A893A2009E42A9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */,
+				94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		948209E529A893B2009E42A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */,
+				94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		94989D3829965F2D00A084D3 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				94989D4229966E1F00A084D3 /* Utils+My.swift */,
+				948209E129A89223009E42A9 /* UIButton+enlarge.swift */,
 				94989D452996734200A084D3 /* UIFont+Utils.swift */,
 				94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */,
 			);
@@ -217,10 +255,10 @@
 		94EB89DB299F7A230003DAC4 /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
-				94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */,
-				94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */,
-				94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */,
-				94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */,
+				948209E429A893A2009E42A9 /* Animation */,
+				948209E329A89396009E42A9 /* cell */,
+				948209DE29A85836009E42A9 /* view */,
+				948209E529A893B2009E42A9 /* Controller */,
 			);
 			path = FrontPage;
 			sourceTree = "<group>";
@@ -390,6 +428,7 @@
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
 				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
+				948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */,
 				949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */,
 				94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */,
 				94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */,
@@ -400,6 +439,7 @@
 				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
 				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
+				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,
 				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,
 				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
 				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,

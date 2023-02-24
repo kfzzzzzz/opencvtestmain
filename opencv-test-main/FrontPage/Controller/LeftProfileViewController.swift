@@ -24,6 +24,12 @@ class LeftProfileViewController : UIViewController {
         return table
     }()
     
+    private lazy var userInfoView : FrontPageAvatarView = {
+        let view = FrontPageAvatarView()
+        self.view.addSubview(view)
+        return view
+    }()
+    
     private lazy var closeImageView : UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "FrontPageClose"), for: .normal)
@@ -42,7 +48,14 @@ class LeftProfileViewController : UIViewController {
         closeImageView.snp.makeConstraints{ make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(23.atScale())
             make.right.equalToSuperview().offset(-43.atScale())
-            make.width.height.equalTo(28.atScale())
+            make.width.height.equalTo(30.atScale())
+        }
+        closeImageView.extendEdgeInsets = UIEdgeInsets(top: 20.atScale(), left: 20.atScale(), bottom: 20.atScale(), right: 20.atScale())
+        userInfoView.snp.makeConstraints{ make in
+            make.left.equalToSuperview().offset(60.atScale())
+            make.height.equalTo(FrontPageAvatarView.avatarImageWidth)
+            make.width.equalTo(172.atScale())
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(75.atScale())
         }
         
     }
