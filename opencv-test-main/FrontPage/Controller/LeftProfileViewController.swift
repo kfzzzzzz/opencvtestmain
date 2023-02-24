@@ -13,6 +13,8 @@ class LeftProfileViewController : UIViewController {
         
     private lazy var itemTableView : UITableView = {
         let table = UITableView()
+        table.backgroundColor = .red
+        table.register(LeftProfileTableCell.self, forCellReuseIdentifier: "leftProfileTableCell")
         if #available(iOS 15.0, *) {
             table.sectionHeaderTopPadding = 0
         }
@@ -21,6 +23,7 @@ class LeftProfileViewController : UIViewController {
         }else {
             // Fallback on earlier versions
         }
+        //self.view.addSubview(itemTableView)
         return table
     }()
     
@@ -40,8 +43,8 @@ class LeftProfileViewController : UIViewController {
     
     init(){
         super.init(nibName: nil, bundle: nil)
-       // itemTableView.delegate = self
-        //itemTableView.dataSource = self
+        itemTableView.delegate = self
+        itemTableView.dataSource = self
         self.view.backgroundColor = .yellow
         self.modalPresentationStyle = .custom
         self.transitioningDelegate = self
@@ -57,6 +60,10 @@ class LeftProfileViewController : UIViewController {
             make.width.equalTo(172.atScale())
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(75.atScale())
         }
+//        itemTableView.snp.makeConstraints{ make in
+//            make.left.right.equalToSuperview()
+//            make.top.equalTo(userInfoView.snp.bottom).offset(40.atScale())
+//        }
         
     }
     
@@ -79,15 +86,22 @@ class LeftProfileViewController : UIViewController {
     
 }
 
-//extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//}
+extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "leftProfileTableCell", for: indexPath) as! LeftProfileTableCell
+        if indexPath.row == 0 {
+            cell.setcell(image: "ProfileIcon", title: "我的")
+        }
+        if indexPath.row == 1 {
+            cell.setcell(image: "ChatIcon", title: "聊天")
+        }
+        return cell
+    }
+}
 
 extension LeftProfileViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

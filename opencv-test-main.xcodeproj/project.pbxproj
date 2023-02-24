@@ -21,6 +21,7 @@
 		9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459DA8C29990F040014E402 /* TestTabVIew.swift */; };
 		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
 		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
+		948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */; };
 		94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */; };
 		94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3B29965FB400A084D3 /* Color_extension.swift */; };
 		94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3D299668BD00A084D3 /* MainTabBarController.swift */; };
@@ -62,6 +63,7 @@
 		9459DA8C29990F040014E402 /* TestTabVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabVIew.swift; sourceTree = "<group>"; };
 		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
 		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
+		948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileTableCell.swift; sourceTree = "<group>"; };
 		94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		94989D3B29965FB400A084D3 /* Color_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
 		94989D3D299668BD00A084D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		948209E329A89396009E42A9 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */,
 				9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */,
 				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
+				948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
 				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
 				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,

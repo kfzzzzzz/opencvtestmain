@@ -36,6 +36,7 @@ class FrontPageAvatarView : UIView{
     private lazy var userNameLable : UILabel = {
         let label = UILabel()
         label.text = "sssssssssss"
+        label.textColor = UIColor.pink1()
         label.numberOfLines = 1
         label.font = UIFont.PFSemibold(16.atScale())
         label.lineBreakMode = .byTruncatingTail
