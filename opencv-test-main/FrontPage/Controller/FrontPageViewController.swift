@@ -13,6 +13,8 @@ class FrontPageViewController: UIViewController {
     
     static var avatarWidth : CGFloat = 28.atScale()
     
+    private let leftProfileVC = LeftProfileViewController()
+    
     private lazy var leftTopIcon : UIButton = {
         var button = UIButton()
         button.addTarget(self, action: #selector(openLeftProfile), for: .touchUpInside)
@@ -53,7 +55,6 @@ class FrontPageViewController: UIViewController {
     
     init(){
         super.init(nibName: nil, bundle: nil)
-        AccountManager.shared.delegate = self
         
     }
     
@@ -63,6 +64,10 @@ class FrontPageViewController: UIViewController {
     
     deinit{
         NotificationCenter().removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        AccountManager.shared.delegate = self
     }
     
     
@@ -107,12 +112,21 @@ class FrontPageViewController: UIViewController {
                         if UserData.shared.isSignedIn {
                             self.rightHeadPortrait.image = uim
                             self.rightNameLabel.text = UserData.shared.userName
+                            self.leftProfileVC.setAvater(image: ((uim ?? UIImage(named: "avatarPlaceholder"))!) )
                         }
                     }
                 }
             }else{
-                self.rightHeadPortrait.kf.setImage(with: URL.init(string: "https://opencvtestmain931da04b00a94538b68685b4d5e11082185547-dev.s3.ap-northeast-1.amazonaws.com/public/TestLovePic%403x.png"))
-                self.rightNameLabel.text = UserData.shared.userName
+                AccountManager.shared.retrieveImage(name: "TestLovePic%403x.png") { (data) in
+                    DispatchQueue.main.async() {
+                        let uim = UIImage(data: data)
+                        if UserData.shared.isSignedIn {
+                            self.rightHeadPortrait.image = uim
+                            self.rightNameLabel.text = UserData.shared.userName
+                            self.leftProfileVC.setAvater(image: ((uim ?? UIImage(named: "avatarPlaceholder"))!) )
+                        }
+                    }
+                }
             }
         }else{
             DispatchQueue.main.async() {
@@ -134,9 +148,7 @@ class FrontPageViewController: UIViewController {
     }
     
     @objc func openLeftProfile(){
-        let vc = LeftProfileViewController()
-        
-        vc.show()
+        leftProfileVC.show()
     }
     
 }
@@ -144,15 +156,21 @@ class FrontPageViewController: UIViewController {
 
 extension FrontPageViewController: LoginDelegate {
     func isLogin() {
+        print("KFZTEST:FrontPageViewController")
         self.setUserInfo()
+        leftProfileVC.isLogin = UserData.shared.isSignedIn
     }
     
     func isLogout() {
+        print("KFZTEST:FrontPageViewController")
         self.setUserInfo()
+        leftProfileVC.isLogin = UserData.shared.isSignedIn
     }
     
     func updateUserInfo() {
+        print("KFZTEST:FrontPageViewController")
         self.setUserInfo()
+        leftProfileVC.isLogin = UserData.shared.isSignedIn
     }
     
     

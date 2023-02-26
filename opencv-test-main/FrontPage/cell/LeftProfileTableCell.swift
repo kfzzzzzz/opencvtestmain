@@ -13,12 +13,14 @@ class LeftProfileTableCell: UITableViewCell {
     
     private lazy var leftIcon : UIImageView = {
         let image = UIImageView()
+        self.addSubview(image)
         return image
     }()
     
     private lazy var itemLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.PFRegular(16.atScale())
+        self.addSubview(label)
         return label
     }()
     
@@ -47,6 +49,5 @@ class LeftProfileTableCell: UITableViewCell {
         self.leftIcon.image = UIImage(named: image)
         self.itemLabel.text = title
     }
-    
     
 }

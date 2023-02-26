@@ -10,10 +10,18 @@ import UIKit
 import SnapKit
 
 class LeftProfileViewController : UIViewController {
-        
+    
+    var isLogin : Bool = UserData.shared.isSignedIn{
+        didSet{
+            self.userInfoView.isLogin = isLogin
+        }
+    }
+    
     private lazy var itemTableView : UITableView = {
         let table = UITableView()
-        table.backgroundColor = .red
+        table.separatorStyle = .none
+        table.backgroundColor = .clear
+        table.isScrollEnabled = false
         table.register(LeftProfileTableCell.self, forCellReuseIdentifier: "leftProfileTableCell")
         if #available(iOS 15.0, *) {
             table.sectionHeaderTopPadding = 0
@@ -23,7 +31,7 @@ class LeftProfileViewController : UIViewController {
         }else {
             // Fallback on earlier versions
         }
-        //self.view.addSubview(itemTableView)
+        self.view.addSubview(table)
         return table
     }()
     
@@ -41,11 +49,28 @@ class LeftProfileViewController : UIViewController {
         return button
     }()
     
+    private lazy var loginOutButton : UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.setTitle("退出登录", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.addTarget(self, action: #selector(loginOutTapped), for: .touchUpInside)
+        self.view.addSubview(button)
+        return button
+    }()
+    
+    private lazy var loginOutImage : UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "LoginOutIcon")
+        self.view.addSubview(image)
+        return image
+    }()
+    
     init(){
         super.init(nibName: nil, bundle: nil)
         itemTableView.delegate = self
         itemTableView.dataSource = self
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = .white
         self.modalPresentationStyle = .custom
         self.transitioningDelegate = self
         closeImageView.snp.makeConstraints{ make in
@@ -60,10 +85,22 @@ class LeftProfileViewController : UIViewController {
             make.width.equalTo(172.atScale())
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(75.atScale())
         }
-//        itemTableView.snp.makeConstraints{ make in
-//            make.left.right.equalToSuperview()
-//            make.top.equalTo(userInfoView.snp.bottom).offset(40.atScale())
-//        }
+        itemTableView.snp.makeConstraints{ make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(userInfoView.snp.bottom).offset(40.atScale())
+            make.height.equalTo(100.atScale())
+        }
+        loginOutImage.snp.makeConstraints{ make in
+            var SafeHeight : CGFloat = 0
+            SafeHeight = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            make.bottom.equalTo( -50.atScale() - SafeHeight)
+            make.left.equalToSuperview().offset(140.atScale())
+            make.width.height.equalTo(20.atScale())
+        }
+        loginOutButton.snp.makeConstraints{ make in
+            make.left.equalTo(loginOutImage.snp.right).offset(17.5.atScale())
+            make.top.bottom.equalTo(loginOutImage)
+        }
         
     }
     
@@ -82,6 +119,15 @@ class LeftProfileViewController : UIViewController {
     
     @objc func dissmisscction(){
         self.dismiss(animated: true)
+    }
+    
+    @objc func loginOutTapped(){
+        print("loginOutTapped")
+        AccountManager.shared.signOut()
+    }
+    
+    func setAvater(image: UIImage){
+        self.userInfoView.setAvatarOnline(image: image)
     }
     
 }
