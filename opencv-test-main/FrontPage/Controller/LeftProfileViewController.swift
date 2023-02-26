@@ -14,6 +14,13 @@ class LeftProfileViewController : UIViewController {
     var isLogin : Bool = UserData.shared.isSignedIn{
         didSet{
             self.userInfoView.isLogin = isLogin
+            DispatchQueue.main.async() {
+                if self.isLogin{
+                    self.loginOutButton.setTitle("退出登录", for: .normal)
+                }else{
+                    self.loginOutButton.setTitle("前往登录", for: .normal)
+                }
+            }
         }
     }
     
@@ -123,7 +130,11 @@ class LeftProfileViewController : UIViewController {
     
     @objc func loginOutTapped(){
         print("loginOutTapped")
-        AccountManager.shared.signOut()
+        if UserData.shared.isSignedIn{
+            AccountManager.shared.signOut()
+        }else{
+            AccountManager.shared.signIn()
+        }
     }
     
     func setAvater(image: UIImage){
