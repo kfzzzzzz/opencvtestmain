@@ -142,13 +142,25 @@ class FrontPageViewController: UIViewController {
         if UserData.shared.isSignedIn == false{
             AccountManager.shared.signIn()
         }else{
-            AccountManager.shared.signOut()
+            self.showAlert()
         }
         
     }
     
     @objc func openLeftProfile(){
         leftProfileVC.show()
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "是否确认退出登录", message: "被气到了？？", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "确认", style: .default, handler: {
+            action in
+            AccountManager.shared.signOut()
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }

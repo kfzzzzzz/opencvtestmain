@@ -131,7 +131,7 @@ class LeftProfileViewController : UIViewController {
     @objc func loginOutTapped(){
         print("loginOutTapped")
         if UserData.shared.isSignedIn{
-            AccountManager.shared.signOut()
+            self.showAlert()
         }else{
             AccountManager.shared.signIn()
         }
@@ -139,6 +139,18 @@ class LeftProfileViewController : UIViewController {
     
     func setAvater(image: UIImage){
         self.userInfoView.setAvatarOnline(image: image)
+    }
+    
+    func showAlert(){
+        let alertController = UIAlertController(title: "是否确认退出登录", message: "被气到了？？", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "确认", style: .default, handler: {
+            action in
+            AccountManager.shared.signOut()
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
@@ -169,3 +181,5 @@ extension LeftProfileViewController: UIViewControllerTransitioningDelegate {
         LeftProfileDismissAnimation()
     }
 }
+
+
