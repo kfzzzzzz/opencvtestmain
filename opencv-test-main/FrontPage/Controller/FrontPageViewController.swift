@@ -105,14 +105,15 @@ class FrontPageViewController: UIViewController {
     @objc func setUserInfo(){
         print("UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
         if UserData.shared.isSignedIn {
-            if UserData.shared.userImage != ""{
-                AccountManager.shared.retrieveImage(name: UserData.shared.userImage) { (data) in
+            if UserData.shared.userImageURL != ""{
+                AccountManager.shared.retrieveImage(name: UserData.shared.userImageURL) { (data) in
                     DispatchQueue.main.async() {
                         let uim = UIImage(data: data)
                         if UserData.shared.isSignedIn {
                             self.rightHeadPortrait.image = uim
                             self.rightNameLabel.text = UserData.shared.userName
                             self.leftProfileVC.setAvater(image: ((uim ?? UIImage(named: "avatarPlaceholder"))!) )
+                            UserData.shared.userImage = uim
                         }
                     }
                 }
@@ -124,6 +125,7 @@ class FrontPageViewController: UIViewController {
                             self.rightHeadPortrait.image = uim
                             self.rightNameLabel.text = UserData.shared.userName
                             self.leftProfileVC.setAvater(image: ((uim ?? UIImage(named: "avatarPlaceholder"))!) )
+                            UserData.shared.userImage = uim
                         }
                     }
                 }
@@ -168,13 +170,11 @@ class FrontPageViewController: UIViewController {
 
 extension FrontPageViewController: LoginDelegate {
     func isLogin() {
-        print("KFZTEST:FrontPageViewController")
         self.setUserInfo()
         leftProfileVC.isLogin = UserData.shared.isSignedIn
     }
     
     func isLogout() {
-        print("KFZTEST:FrontPageViewController")
         self.setUserInfo()
         leftProfileVC.isLogin = UserData.shared.isSignedIn
     }

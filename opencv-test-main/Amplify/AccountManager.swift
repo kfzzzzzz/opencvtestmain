@@ -163,7 +163,7 @@ class AccountManager : NSObject {
                 }else{
                     print("账号存在")
                     UserData.shared.userName = date[0].userName ?? "气人小子"
-                    UserData.shared.userImage = ""
+                    UserData.shared.userImageURL = ""
                 }
             case .failure(let error):
                 print(error)

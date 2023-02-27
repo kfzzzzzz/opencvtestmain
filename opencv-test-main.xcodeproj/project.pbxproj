@@ -22,6 +22,8 @@
 		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
 		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
 		948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */; };
+		948209EA29ACA2F4009E42A9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E929ACA2F3009E42A9 /* SettingViewController.swift */; };
+		948209EC29ACB100009E42A9 /* SettingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209EB29ACB100009E42A9 /* SettingPresentationController.swift */; };
 		94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */; };
 		94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3B29965FB400A084D3 /* Color_extension.swift */; };
 		94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3D299668BD00A084D3 /* MainTabBarController.swift */; };
@@ -64,6 +66,8 @@
 		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
 		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
 		948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileTableCell.swift; sourceTree = "<group>"; };
+		948209E929ACA2F3009E42A9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		948209EB29ACB100009E42A9 /* SettingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresentationController.swift; sourceTree = "<group>"; };
 		94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		94989D3B29965FB400A084D3 /* Color_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
 		94989D3D299668BD00A084D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				9454DF30297427ED001ED74C /* Assets.xcassets */,
 				9454DF32297427ED001ED74C /* LaunchScreen.storyboard */,
 				9454DF35297427ED001ED74C /* Info.plist */,
+				948209E829ACA180009E42A9 /* Setting */,
 				94EB89DB299F7A230003DAC4 /* FrontPage */,
 				94989D3829965F2D00A084D3 /* Tabbar */,
 				94E9B8E729892DF80058CCBD /* Amplify */,
@@ -202,6 +207,15 @@
 				94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		948209E829ACA180009E42A9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				948209E929ACA2F3009E42A9 /* SettingViewController.swift */,
+				948209EB29ACB100009E42A9 /* SettingPresentationController.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		94989D3829965F2D00A084D3 /* Tabbar */ = {
@@ -431,6 +445,7 @@
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
 				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
+				948209EA29ACA2F4009E42A9 /* SettingViewController.swift in Sources */,
 				948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */,
 				949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */,
 				94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */,
@@ -442,6 +457,7 @@
 				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
 				948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
+				948209EC29ACB100009E42A9 /* SettingPresentationController.swift in Sources */,
 				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
 				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,
 				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,

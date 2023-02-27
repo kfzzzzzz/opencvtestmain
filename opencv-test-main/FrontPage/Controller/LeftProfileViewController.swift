@@ -95,7 +95,7 @@ class LeftProfileViewController : UIViewController {
         itemTableView.snp.makeConstraints{ make in
             make.left.right.equalToSuperview()
             make.top.equalTo(userInfoView.snp.bottom).offset(40.atScale())
-            make.height.equalTo(100.atScale())
+            make.bottom.equalToSuperview()
         }
         loginOutImage.snp.makeConstraints{ make in
             var SafeHeight : CGFloat = 0
@@ -157,7 +157,7 @@ class LeftProfileViewController : UIViewController {
 
 extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -168,7 +168,21 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.row == 1 {
             cell.setcell(image: "ChatIcon", title: "聊天")
         }
+        if indexPath.row == 2{
+            cell.setcell(image: "SettingIcon", title: "设置")
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45.atScale()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            let vc = SettingViewController()
+            vc.show()
+        }
     }
 }
 
