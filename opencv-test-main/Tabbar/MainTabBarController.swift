@@ -24,23 +24,24 @@ class MainTabBarController : UITabBarController {
             let home = FrontPageViewController()
             home.tabBarItem.title = "首页"
 
-            let category = LoginViewController()
-            category.tabBarItem.title = "聊天"
+            let chat = LoginViewController()
+            chat.tabBarItem.title = "聊天"
 
-            let mid = NoteTestController()
+            let mid = FrontPageViewController()
             mid.tabBarItem.title = ""
             mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
             mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
 
-            let cart = LoginViewController()
-            cart.tabBarItem.title = "挑战"
+            let challenge = LoginViewController()
+            challenge.tabBarItem.title = "挑战"
 
             let mine = LoginViewController()
             mine.tabBarItem.title = "我的"
 
-            viewControllers = [home, category, mid, cart, mine]
+            viewControllers = [chat, mid, challenge]
             
             self.tabBar.isTranslucent = false
+            self.selectedIndex = 1
             
         
             // 设置 tabBar & tabBarItem
