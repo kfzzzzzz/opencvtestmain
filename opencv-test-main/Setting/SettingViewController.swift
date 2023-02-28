@@ -11,11 +11,8 @@ import NVActivityIndicatorView
 
 class SettingViewController: UIViewController {
     
-    private lazy var activityIndicatorView : UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(frame: CGRectMake(0, 0,         UIScreen.main.bounds.width*0.8,UIScreen.main.bounds.height*0.4))
-        view.style = UIActivityIndicatorView.Style.large
-        view.color = .pink1()
-        view.hidesWhenStopped = true
+    private lazy var activityIndicatorView : NVActivityIndicatorView = {
+        let view = NVActivityIndicatorView(frame: CGRectMake(0, 0,         UIScreen.main.bounds.width*0.8,UIScreen.main.bounds.height*0.4), type: NVActivityIndicatorType.ballRotateChase, color: UIColor.pink1(),padding: 120.atScale())
         self.view.addSubview(view)
         return view
     }()
