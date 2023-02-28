@@ -90,7 +90,6 @@ class AccountManager : NSObject {
             userData.isSignedIn = status
             if status {
                 userData.userId = Amplify.Auth.getCurrentUser()?.userId ?? "-1"
-                //NotificationCenter.default.post(name: .loginDidSucceed, object: nil)
                 self.checkCreateUser()
             } else {
                 userData.clear()
@@ -101,7 +100,7 @@ class AccountManager : NSObject {
     
     // MARK: - Image Storage
     
-    func storeImage(name: String, image: Data) {
+    func storeImage(name: String, image: Data, completed: @escaping () -> Void) {
         
         //        let options = StorageUploadDataRequest.Options(accessLevel: .private)
         let _ = Amplify.Storage.uploadData(key: name, data: image,// options: options,
@@ -111,6 +110,7 @@ class AccountManager : NSObject {
             switch event {
             case .success(let data):
                 print("Image upload completed: \(data)")
+                completed()
             case .failure(let storageError):
                 print("Image upload failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
             }
@@ -151,7 +151,7 @@ class AccountManager : NSObject {
             switch result{
             case .success(let date):
                 if date.isEmpty{
-                    Amplify.DataStore.save(UserTest(userName: "气人小子", userId: UserData.shared.userId) ){ result in
+                    Amplify.DataStore.save(UserTest(userName: "气人小子", userId: UserData.shared.userId, userImage: "")){ result in
                         switch result{
                         case .success(let date):
                             print("Successfully created \(date.id)")
@@ -162,8 +162,9 @@ class AccountManager : NSObject {
                     }
                 }else{
                     print("账号存在")
+                    UserData.shared.id = date[0].id
                     UserData.shared.userName = date[0].userName ?? "气人小子"
-                    UserData.shared.userImageURL = ""
+                    UserData.shared.userImageURL = date[0].userImage ?? ""
                 }
             case .failure(let error):
                 print(error)

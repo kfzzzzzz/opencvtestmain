@@ -8,6 +8,7 @@ extension UserTest {
     case id
     case userName
     case userId
+    case userImage
     case createdAt
     case updatedAt
   }
@@ -19,10 +20,10 @@ extension UserTest {
     let userTest = UserTest.keys
     
     model.authRules = [
-      rule(allow: .private, operations: [.create, .update, .delete, .read])
+      rule(allow: .private, operations: [.create, .update, .delete, .read]),
+      rule(allow: .owner, ownerField: "owner", identityClaim: "cognito:username", provider: .userPools, operations: [.create, .update, .delete, .read])
     ]
     
-      model.listPluralName = "UserTests"
     model.pluralName = "UserTests"
     
     model.attributes(
@@ -33,6 +34,7 @@ extension UserTest {
       .field(userTest.id, is: .required, ofType: .string),
       .field(userTest.userName, is: .optional, ofType: .string),
       .field(userTest.userId, is: .optional, ofType: .string),
+      .field(userTest.userImage, is: .optional, ofType: .string),
       .field(userTest.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(userTest.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

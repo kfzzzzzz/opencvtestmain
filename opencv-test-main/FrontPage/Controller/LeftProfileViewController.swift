@@ -179,11 +179,13 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
-            let vc = SettingViewController()
-//            vc.modalPresentationStyle = .fullScreen
-//            self.present(vc, animated: false)
-            vc.show()
+        if UserData.shared.isSignedIn == false{
+            AccountManager.shared.signIn()
+        }else{
+            if indexPath.row == 2 {
+                let vc = SettingViewController()
+                vc.show()
+            }
         }
     }
 }

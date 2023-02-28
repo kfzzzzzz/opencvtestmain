@@ -1,7 +1,8 @@
-type UserTest @model @auth(rules: [{allow: private}]) {
+type UserTest @model @auth(rules: [{allow: private}, {allow: owner}]) {
   id: ID!
   userName: String
   userId: String
+  userImage: String
 }
 
 type NewTestModel @model @auth(rules: [{allow: private}]) {
