@@ -27,7 +27,7 @@ class SettingViewController: UIViewController {
         field.textContentType = .username
         field.autocapitalizationType = .none  //自动大写样式
         field.autocorrectionType = .no //自动更正样式
-        field.returnKeyType = .continue //返回键可视
+        field.returnKeyType = .done //返回键可视
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
         field.layer.borderColor = UIColor.lightGray.cgColor
@@ -44,6 +44,9 @@ class SettingViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = UIColor.pink1()
         button.setTitle("保存", for: .normal)
+        button.layer.cornerRadius = 8.atScale()
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(tapConfirmButton), for: .touchUpInside)
         self.view.addSubview(button)
         return button
     }()
@@ -53,6 +56,8 @@ class SettingViewController: UIViewController {
         button.backgroundColor = .gray
         button.setTitle("取消", for: .normal)
         button.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
+        button.layer.cornerRadius = 8.atScale()
+        button.layer.masksToBounds = true
         self.view.addSubview(button)
         return button
     }()
@@ -60,11 +65,9 @@ class SettingViewController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.modalPresentationStyle = .custom
-        self.transitioningDelegate = self
         avatarView.snp.makeConstraints{ make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(100.atScale())
+            make.top.equalToSuperview().offset(40.atScale())
             make.height.width.equalTo(80.atScale())
         }
         nameTextView.snp.makeConstraints{ make in
@@ -74,13 +77,13 @@ class SettingViewController: UIViewController {
             make.height.equalTo(50.atScale())
         }
         confirmButton.snp.makeConstraints{ make in
-            make.bottom.equalToSuperview().offset(-100.atScale())
+            make.bottom.equalToSuperview().offset(-40.atScale())
             make.left.equalTo(nameTextView)
             make.height.equalTo(40.atScale())
             make.width.equalTo(70.atScale())
         }
         cancelButton.snp.makeConstraints{ make in
-            make.bottom.equalToSuperview().offset(-100.atScale())
+            make.bottom.equalToSuperview().offset(-40.atScale())
             make.right.equalTo(nameTextView)
             make.height.equalTo(40.atScale())
             make.width.equalTo(70.atScale())
@@ -90,10 +93,23 @@ class SettingViewController: UIViewController {
         avatarView.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(avatarViewTapped))
         avatarView.addGestureRecognizer(gesture)
+        
+        nameTextView.delegate = self
+    }
+    
+    @objc func tapConfirmButton(){
+        
+        if nameTextView.text != UserData.shared.userName {
+            
+        }
+        if avatarView.image != UserData.shared.userImage {
+            
+        }
+        
     }
     
     @objc func tapCancelButton(){
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
     
     @objc private func avatarViewTapped(){
@@ -101,13 +117,14 @@ class SettingViewController: UIViewController {
         presentPhotoActionSheet()
     }
     
-    // MARK: - public
-    func show(above viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController,
-              completion: (() -> Void)? = nil) {
-        print(viewController)
-        viewController?.present(self, animated: true, completion: completion)
+     //MARK: - public
+    func show() {
+        let vc = UIViewController.getCurrentViewController()
+        self.modalPresentationStyle = .custom
+        self.transitioningDelegate = self
+        vc?.present(self, animated: true)
     }
-    
+
 }
 
 extension SettingViewController: UIViewControllerTransitioningDelegate {
@@ -115,15 +132,21 @@ extension SettingViewController: UIViewControllerTransitioningDelegate {
         let vc = SettingPresentationController(presentedViewController: presented, presenting: presenting)
         return vc
     }
+}
 
+extension SettingViewController : UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension SettingViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func presentPhotoActionSheet(){
-        let actionSheet = UIAlertController(title: "Profile picture", message: "How would likt to select a picture?", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        actionSheet.addAction(UIAlertAction(title: "Take photo", style: .default, handler: {[weak self] _ in self?.presentCamera()}))
-        actionSheet.addAction(UIAlertAction(title: "Chose photo", style: .default, handler: {[weak self] _ in self?.presentPhotoPicker()}))
+        let actionSheet = UIAlertController(title: "头像", message: "选个气人的头像", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "不选了", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "拍个照片", style: .default, handler: {[weak self] _ in self?.presentCamera()}))
+        actionSheet.addAction(UIAlertAction(title: "回忆中选", style: .default, handler: {[weak self] _ in self?.presentPhotoPicker()}))
         
         present(actionSheet,animated: true)
     }
