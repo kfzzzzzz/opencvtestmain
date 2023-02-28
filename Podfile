@@ -17,6 +17,7 @@ target 'opencv-test-main' do
   pod 'AmplifyPlugins/AWSAPIPlugin'         # support for GraphQL API
   pod 'AmplifyPlugins/AWSS3StoragePlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
+  pod 'NVActivityIndicatorView'
 
   flutter_application_path = '../opencv_flutter'
   load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')

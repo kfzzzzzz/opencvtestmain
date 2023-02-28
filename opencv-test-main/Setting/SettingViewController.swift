@@ -7,8 +7,18 @@
 
 import UIKit
 import SnapKit
+import NVActivityIndicatorView
 
 class SettingViewController: UIViewController {
+    
+    private lazy var activityIndicatorView : UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(frame: CGRectMake(0, 0,         UIScreen.main.bounds.width*0.8,UIScreen.main.bounds.height*0.4))
+        view.style = UIActivityIndicatorView.Style.large
+        view.color = .pink1()
+        view.hidesWhenStopped = true
+        self.view.addSubview(view)
+        return view
+    }()
     
     private lazy var  avatarView : UIImageView = {
         let imageView = UIImageView()
@@ -98,12 +108,12 @@ class SettingViewController: UIViewController {
     }
     
     @objc func tapConfirmButton(){
-        
+        activityIndicatorView.startAnimating()
         if nameTextView.text != UserData.shared.userName {
-            
+
         }
         if avatarView.image != UserData.shared.userImage {
-            
+
         }
         
     }
