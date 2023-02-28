@@ -21,10 +21,10 @@ class MainTabBarController : UITabBarController {
             self.tabBar.insertSubview(drawTabBarImageView(), at: 0)
             self.tabBar.isOpaque = true
             
-            let home = FrontPageViewController()
+            let home = ChatViewController()
             home.tabBarItem.title = "首页"
 
-            let chat = LoginViewController()
+            let chat = ChatViewController()
             chat.tabBarItem.title = "聊天"
 
             let mid = FrontPageViewController()
