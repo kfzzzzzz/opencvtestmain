@@ -11,11 +11,33 @@ import SnapKit
 
 class ChatViewController: UIViewController{
     
+    private var chatViewModel = ChatViewModel()
+    
+    private lazy var textEditField : UITextField = {
+        let field = UITextField()
+        field.textContentType = .username
+        field.autocapitalizationType = .none  //自动大写样式
+        field.autocorrectionType = .no //自动更正样式
+        field.returnKeyType = .done //返回键可视
+        field.layer.cornerRadius = 12
+        field.layer.borderWidth = 1
+        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.placeholder = "-------------开始气人---------------"
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        field.leftViewMode = .always
+        field.backgroundColor = .white
+        self.view.addSubview(field)
+        return field
+    }()
+    
     private lazy var messageTable : UITableView = {
         let table = UITableView()
         table.separatorStyle = .none
         table.backgroundColor = .clear
         table.isScrollEnabled = false
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = UITableView.automaticDimension
+        table.autoresizesSubviews = false
         table.register(messageListCell.self, forCellReuseIdentifier: "messageListCell")
         if #available(iOS 15.0, *) {
             table.sectionHeaderTopPadding = 0
@@ -31,26 +53,70 @@ class ChatViewController: UIViewController{
     
     init(){
         super.init(nibName: nil, bundle: nil)
-        self.view.backgroundColor = .yellow
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+        chatViewModel.delegate = self
+        textEditField.delegate = self
         messageTable.delegate = self
         messageTable.dataSource = self
+        textEditField.snp.makeConstraints{ make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.left.equalToSuperview().offset(10.atScale())
+            make.right.equalToSuperview().offset(-10.atScale())
+            make.height.equalTo(30.atScale())
+        }
+        messageTable.snp.makeConstraints{ make in
+            make.top.equalTo(textEditField.snp.bottom).offset(10.atScale())
+            make.bottom.left.right.equalToSuperview()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.chatViewModel.getChatRoom(){
+            print("KFZTEST:chatViewModel.messages.count:\(self.chatViewModel.messages.count)")
+            self.messageTable.reloadData()
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
 
+extension ChatViewController: ChatViewModelDelegate {
+    func updateDate() {
+        messageTable.reloadData()
+    }
+}
+
+extension ChatViewController : UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return chatViewModel.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageListCell", for: indexPath) as! messageListCell
+        print(chatViewModel.messages[indexPath.row])
+        cell.setData(message: chatViewModel.messages[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.atScale()
     }
     
 }
