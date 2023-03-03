@@ -183,15 +183,15 @@ class LoginViewController: UIViewController {
         print("imageViewTapped")
 //        let vc = RegisterViewController()
 //        //vc.title = "Cteate Account"
-        if UserData.shared.isSignedIn {
-            //let vc = NoteTestController()
-            //let nav = navigationController
-            let vc = NoteTestController()
-            //let nav = UINavigationController(rootViewController: vc)
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false)
-            //self.present(vc, animated: true)
-        }
+//        if UserData.shared.isSignedIn {
+//            //let vc = NoteTestController()
+//            //let nav = navigationController
+//            let vc = NoteTestController()
+//            //let nav = UINavigationController(rootViewController: vc)
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: false)
+//            //self.present(vc, animated: true)
+//        }
 //        self.modalPresentationStyle = .fullScreen
 //        self.present(vc, animated: true)
         //navigationController?.pushViewController(vc, animated: true)
@@ -208,11 +208,11 @@ class LoginViewController: UIViewController {
         
         //spinner.show(in: view)
         
-        if UserData.shared.isSignedIn == false{
-            AccountManager.shared.signIn()
-        }else{
-            AccountManager.shared.signOut()
-        }
+//        if UserData.shared.isSignedIn == false{
+//            AccountManager.shared.signIn()
+//        }else{
+//            AccountManager.shared.signOut()
+//        }
         
         //Firebase Log In
 //        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion:{ [weak self] authResult, error in
