@@ -11,6 +11,7 @@ import SnapKit
 
 class ChatViewController: UIViewController{
     
+    private var isFisrstAppear: Bool = true
     private var chatViewModel = ChatViewModel()
     
     private lazy var textEditField : UITextField = {
@@ -18,11 +19,11 @@ class ChatViewController: UIViewController{
         field.textContentType = .username
         field.autocapitalizationType = .none  //自动大写样式
         field.autocorrectionType = .no //自动更正样式
-        field.returnKeyType = .done //返回键可视
+        field.returnKeyType = .send //返回键可视
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
         field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "-------------开始气人---------------"
+        field.placeholder = "----------------开始气人-----------------"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -34,7 +35,7 @@ class ChatViewController: UIViewController{
         let table = UITableView()
         table.separatorStyle = .none
         table.backgroundColor = .clear
-        table.isScrollEnabled = false
+        table.isScrollEnabled = true
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = UITableView.automaticDimension
         table.autoresizesSubviews = false
@@ -75,10 +76,19 @@ class ChatViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.chatViewModel.getChatRoom(){
-            print("KFZTEST:chatViewModel.messages.count:\(self.chatViewModel.messages.count)")
-            self.messageTable.reloadData()
+        
+        if self.isFisrstAppear {
+            self.chatViewModel.nowUser = UserTest(id: UserData.shared.id, userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
+            self.chatViewModel.getChatRoom(){
+                self.messageTable.reloadData()
+            }
+            self.isFisrstAppear = false
         }
+        self.chatViewModel.getRealTimeMessage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.chatViewModel.stopGetMessage()
     }
     
     required init?(coder: NSCoder) {
@@ -88,13 +98,20 @@ class ChatViewController: UIViewController{
 
 extension ChatViewController: ChatViewModelDelegate {
     func updateDate() {
-        messageTable.reloadData()
+        DispatchQueue.main.async() {
+            self.messageTable.reloadData()
+        }
     }
 }
 
 extension ChatViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if !textField.text!.isEmpty{
+            chatViewModel.sendMessage(body: textField.text!){
+                textField.text = ""
+            }
+        }
         return true
     }
 }

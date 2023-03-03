@@ -180,7 +180,6 @@ extension FrontPageViewController: LoginDelegate {
     }
     
     func updateUserInfo() {
-        print("KFZTEST:FrontPageViewController")
         self.setUserInfo()
         leftProfileVC.isLogin = UserData.shared.isSignedIn
     }
