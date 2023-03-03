@@ -18,6 +18,8 @@ target 'opencv-test-main' do
   pod 'AmplifyPlugins/AWSS3StoragePlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'NVActivityIndicatorView'
+  pod 'Toast-Swift', '~> 5.0.1'
+  pod 'PaddingLabel', '1.2'
   
 
   flutter_application_path = '../opencv_flutter'

@@ -79,17 +79,12 @@ class messageListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(message: Message){
+    func setData(message: Message, avatar: UIImage){
         self.message = message
         self.sender = message.sender
         messageBubble.text = message.body
         senderName.text = sender?.userName
-        AccountManager.shared.retrieveImage(name: sender?.userImage ?? "TestLovePic%403x.png"){(data) in
-            DispatchQueue.main.async() {
-                let uim = UIImage(data: data)
-                self.avaterImage.image = uim
-            }
-        }
+        self.avaterImage.image = avatar
     }
     
 }

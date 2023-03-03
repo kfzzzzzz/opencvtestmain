@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import Toast_Swift
 
 class ChatViewController: UIViewController{
     
@@ -107,6 +108,10 @@ extension ChatViewController: ChatViewModelDelegate {
 extension ChatViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if UserData.shared.isSignedIn == false{
+            self.view.makeToast("气死了，先登录再气人！")
+            return true
+        }
         if !textField.text!.isEmpty{
             chatViewModel.sendMessage(body: textField.text!){
                 textField.text = ""
@@ -123,8 +128,21 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageListCell", for: indexPath) as! messageListCell
-        print(chatViewModel.messages[indexPath.row])
-        cell.setData(message: chatViewModel.messages[indexPath.row])
+        let senderImage = chatViewModel.messages[indexPath.row].sender?.userImage ?? "TestLovePic%403x.png"
+        var avater = chatViewModel.usersAvatar[senderImage]
+        if avater != nil{
+            cell.setData(message: chatViewModel.messages[indexPath.row], avatar: avater!)
+        }else{
+            AccountManager.shared.retrieveImage(name: senderImage){(data) in
+                DispatchQueue.main.async() {
+                    let uim = UIImage(data: data)
+                    avater = uim
+                    self.chatViewModel.usersAvatar[senderImage] = uim
+                    cell.setData(message: self.chatViewModel.messages[indexPath.row], avatar: avater!)
+                    
+                }
+                    }
+        }
         return cell
     }
     

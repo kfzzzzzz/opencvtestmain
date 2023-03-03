@@ -18,9 +18,9 @@ class ChatViewModel {
     weak var delegate : ChatViewModelDelegate?
     var messages: [Message] = []
     var chatRoom: ChatRoom?
-    var users: [UserTest] = []
     var nowUser = UserTest(id: UserData.shared.id, userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
     var getMessage: AnyCancellable?
+    var usersAvatar : [String : UIImage] = [:]
     
     func getChatRoom(completed: @escaping () -> Void){
         Amplify.DataStore.query(ChatRoom.self){ result in
