@@ -47,6 +47,10 @@
 		94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */; };
 		94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */; };
 		94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */; };
+		94E84AA029C2F30500A2F3FB /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 94E84A9F29C2F30500A2F3FB /* OpenAISwift */; };
+		94E84AA329C2F4D300A2F3FB /* chatGPTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E84AA229C2F4D300A2F3FB /* chatGPTManager.swift */; };
+		94E84AA629C308D500A2F3FB /* chatGPTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E84AA529C308D500A2F3FB /* chatGPTViewController.swift */; };
+		94E84AA829C30C3B00A2F3FB /* chatGPTTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E84AA729C30C3B00A2F3FB /* chatGPTTableCell.swift */; };
 		94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8E829892E140058CCBD /* AccountManager.swift */; };
 		94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EA29893AD70058CCBD /* UserDataModel.swift */; };
 		94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8EC298A4D170058CCBD /* NoteTestController.swift */; };
@@ -102,6 +106,9 @@
 		94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileViewController.swift; sourceTree = "<group>"; };
 		94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileShowAnimation.swift; sourceTree = "<group>"; };
 		94E360D429A7930C002C78A4 /* LeftProfileDismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileDismissAnimation.swift; sourceTree = "<group>"; };
+		94E84AA229C2F4D300A2F3FB /* chatGPTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatGPTManager.swift; sourceTree = "<group>"; };
+		94E84AA529C308D500A2F3FB /* chatGPTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatGPTViewController.swift; sourceTree = "<group>"; };
+		94E84AA729C30C3B00A2F3FB /* chatGPTTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatGPTTableCell.swift; sourceTree = "<group>"; };
 		94E9B8E829892E140058CCBD /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		94E9B8EA29893AD70058CCBD /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		94E9B8EC298A4D170058CCBD /* NoteTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTestController.swift; sourceTree = "<group>"; };
@@ -117,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E84AA029C2F30500A2F3FB /* OpenAISwift in Frameworks */,
 				EFFC8651D080B16F8C9080A0 /* Pods_opencv_test_main.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +196,7 @@
 				9454DF30297427ED001ED74C /* Assets.xcassets */,
 				9454DF32297427ED001ED74C /* LaunchScreen.storyboard */,
 				9454DF35297427ED001ED74C /* Info.plist */,
+				94E84AA129C2F4AB00A2F3FB /* chatGPT */,
 				948209EF29ADFE59009E42A9 /* chatting */,
 				948209E829ACA180009E42A9 /* Setting */,
 				94EB89DB299F7A230003DAC4 /* FrontPage */,
@@ -329,6 +338,16 @@
 			path = login;
 			sourceTree = "<group>";
 		};
+		94E84AA129C2F4AB00A2F3FB /* chatGPT */ = {
+			isa = PBXGroup;
+			children = (
+				94E84AA229C2F4D300A2F3FB /* chatGPTManager.swift */,
+				94E84AA529C308D500A2F3FB /* chatGPTViewController.swift */,
+				94E84AA729C30C3B00A2F3FB /* chatGPTTableCell.swift */,
+			);
+			path = chatGPT;
+			sourceTree = "<group>";
+		};
 		94E9B8E729892DF80058CCBD /* Amplify */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +397,9 @@
 			dependencies = (
 			);
 			name = "opencv-test-main";
+			packageProductDependencies = (
+				94E84A9F29C2F30500A2F3FB /* OpenAISwift */,
+			);
 			productName = "opencv-test-main";
 			productReference = 9454DF24297427E9001ED74C /* 心态兄弟.app */;
 			productType = "com.apple.product-type.application";
@@ -406,6 +428,9 @@
 				Base,
 			);
 			mainGroup = 9454DF1B297427E9001ED74C;
+			packageReferences = (
+				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+			);
 			productRefGroup = 9454DF25297427E9001ED74C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -501,6 +526,7 @@
 				94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */,
 				949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */,
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
+				94E84AA629C308D500A2F3FB /* chatGPTViewController.swift in Sources */,
 				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
 				948209EA29ACA2F4009E42A9 /* SettingViewController.swift in Sources */,
@@ -509,6 +535,7 @@
 				949C197729AF2DCD00E57CAD /* UILable+Utils.swift in Sources */,
 				94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */,
 				94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */,
+				94E84AA829C30C3B00A2F3FB /* chatGPTTableCell.swift in Sources */,
 				9454DF2C297427E9001ED74C /* ViewController.swift in Sources */,
 				94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */,
 				94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */,
@@ -537,6 +564,7 @@
 				FFCCCAC9103FFDE0C12C7C3E /* ChatRoom.swift in Sources */,
 				82FF718100E2AC7C3BB91CC2 /* Message+Schema.swift in Sources */,
 				92D58397A5433AEA7A93E505 /* Message.swift in Sources */,
+				94E84AA329C2F4D300A2F3FB /* chatGPTManager.swift in Sources */,
 				949C197A29AF4E1D00E57CAD /* ChatViewModel.swift in Sources */,
 				948209F229ADFE8F009E42A9 /* messageView.swift in Sources */,
 			);
@@ -762,6 +790,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		94E84A9F29C2F30500A2F3FB /* OpenAISwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			productName = OpenAISwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9454DF1C297427E9001ED74C /* Project object */;
 }

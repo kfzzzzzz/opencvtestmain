@@ -1,18 +1,23 @@
 //
-//  messageListCell.swift
+//  chatGPTTableCell.swift
 //  opencv-test-main
 //
-//  Created by 孔繁臻 on 2/28/23.
+//  Created by 孔繁臻 on 3/16/23.
 //
 
 import Foundation
 import UIKit
 import SnapKit
+//import PaddingLabel
 
-class messageListCell: UITableViewCell {
+class chatGPTTableCell: UITableViewCell {
     
-    private var message: Message?
-    private var sender: UserTest?
+    enum type{
+        case user
+        case chatGPT
+    }
+    
+    private var type: type?
     
     private lazy var avaterImage: UIImageView = {
         let image = UIImageView()
@@ -75,12 +80,16 @@ class messageListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(message: Message, avatar: UIImage){
-        self.message = message
-        self.sender = message.sender
-        messageBubble.text = message.body
-        senderName.text = sender?.userName
-        self.avaterImage.image = avatar
+    func setData(text: String, type: type){
+        messageBubble.text = text
+        switch type{
+        case .user:
+            senderName.text = UserData.shared.userName
+            self.avaterImage.image = UserData.shared.userImage
+        case .chatGPT:
+            senderName.text = "ChatGPT"
+            self.avaterImage.image = UIImage(named: "GPT")
+        }
     }
     
 }

@@ -32,8 +32,8 @@ class MainTabBarController : UITabBarController {
             mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
             mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
 
-            let challenge = LoginViewController()
-            challenge.tabBarItem.title = "挑战"
+            let challenge = chatGPTViewController()
+            challenge.tabBarItem.title = "chatGPT"
 
             let mine = LoginViewController()
             mine.tabBarItem.title = "我的"
@@ -57,7 +57,7 @@ class MainTabBarController : UITabBarController {
         tabBar.tintColor = selectedColor
         tabBar.barTintColor = bgColor
         if #available(iOS 15.0, *) {
-            var appearance = UITabBarAppearance()
+            let appearance = UITabBarAppearance()
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = attributesNormal
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = attributesSelected
             appearance.backgroundColor = UIColor.pink1()
