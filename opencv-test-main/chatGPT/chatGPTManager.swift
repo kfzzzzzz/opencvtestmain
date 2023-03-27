@@ -12,7 +12,28 @@ class chatGPTManager: NSObject {
     
     static let shared = chatGPTManager()
     
-    let openAI = OpenAISwift(authToken: "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")
+    private var openAI = OpenAISwift(authToken: "")
+    
+    private var isInit = false
+    
+    private var key = ""{
+        didSet{
+            self.openAI = OpenAISwift(authToken: key)
+        }
+    }
+    
+    override init() {
+        super.init()
+        AccountManager.shared.retrieveImage(name: "GPTKEY.txt") { [self] (data) in
+            if let string = String(data: data, encoding: .utf8) {
+                self.key = string
+                self.isInit = true
+            } else {
+                print("无法将Data数据转换成String")
+            }
+        }
+    }
+    
     
     func sendMessageToGPT(inputText : String, completion: ((String) -> Void)?) {
         openAI.sendCompletion(with: inputText,model: .gpt3(.davinci) ,maxTokens: 500) { result in // Result<OpenAI, OpenAIError>
@@ -31,6 +52,10 @@ class chatGPTManager: NSObject {
             let chat: [ChatMessage] = [
                 ChatMessage(role: .user, content: inputText)
             ]
+            
+            if self.isInit == false {
+                completion?("没有初始化")
+            }
                         
             let result = try await openAI.sendChat(with: chat)
             completion?(result.choices.first?.message.content.trimmingCharacters(in: .newlines) ?? "Nothing")
