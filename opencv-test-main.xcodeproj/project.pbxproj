@@ -15,6 +15,9 @@
 		72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */; };
 		82FF718100E2AC7C3BB91CC2 /* Message+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C05697F54C16B3BB3FAD1 /* Message+Schema.swift */; };
 		92D58397A5433AEA7A93E505 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319F6E849EACC8001F009C9 /* Message.swift */; };
+		942D249829D1767000C8223D /* FrontPageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D249729D1767000C8223D /* FrontPageTableCell.swift */; };
+		942D249B29D181AB00C8223D /* FrontPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D249A29D181AB00C8223D /* FrontPageViewModel.swift */; };
+		942D249D29D194E900C8223D /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D249C29D194E900C8223D /* EmptyView.swift */; };
 		9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF27297427E9001ED74C /* AppDelegate.swift */; };
 		9454DF2C297427E9001ED74C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF2B297427E9001ED74C /* ViewController.swift */; };
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
@@ -72,6 +75,9 @@
 		7C1C05697F54C16B3BB3FAD1 /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
 		86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTest+Schema.swift"; path = "amplify/generated/models/UserTest+Schema.swift"; sourceTree = "<group>"; };
 		8C0EC5005C936EC007FB87BC /* Pods-opencv-test-main.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.release.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.release.xcconfig"; sourceTree = "<group>"; };
+		942D249729D1767000C8223D /* FrontPageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTableCell.swift; sourceTree = "<group>"; };
+		942D249A29D181AB00C8223D /* FrontPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewModel.swift; sourceTree = "<group>"; };
+		942D249C29D194E900C8223D /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		9454DF24297427E9001ED74C /* 心态兄弟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "心态兄弟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9454DF27297427E9001ED74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9454DF2B297427E9001ED74C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +172,14 @@
 			name = AmplifyConfig;
 			sourceTree = "<group>";
 		};
+		942D249929D1819500C8223D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				942D249A29D181AB00C8223D /* FrontPageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9454DF1B297427E9001ED74C = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */,
+				942D249C29D194E900C8223D /* EmptyView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -221,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */,
+				942D249729D1767000C8223D /* FrontPageTableCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -361,6 +377,7 @@
 		94EB89DB299F7A230003DAC4 /* FrontPage */ = {
 			isa = PBXGroup;
 			children = (
+				942D249929D1819500C8223D /* ViewModel */,
 				948209E429A893A2009E42A9 /* Animation */,
 				948209E329A89396009E42A9 /* cell */,
 				948209DE29A85836009E42A9 /* view */,
@@ -557,6 +574,7 @@
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
 				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
 				94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */,
+				942D249829D1767000C8223D /* FrontPageTableCell.swift in Sources */,
 				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
 				94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */,
 				70379954304F70B87DC61DCC /* UserTest.swift in Sources */,
@@ -567,6 +585,8 @@
 				94E84AA329C2F4D300A2F3FB /* chatGPTManager.swift in Sources */,
 				949C197A29AF4E1D00E57CAD /* ChatViewModel.swift in Sources */,
 				948209F229ADFE8F009E42A9 /* messageView.swift in Sources */,
+				942D249B29D181AB00C8223D /* FrontPageViewModel.swift in Sources */,
+				942D249D29D194E900C8223D /* EmptyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
