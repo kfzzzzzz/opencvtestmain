@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // initialize Amplify
          _ = AccountManager.shared
         _ = chatGPTManager.shared
-        
+        _ = stableDiffusionManager.shared
         
         return true
     }
