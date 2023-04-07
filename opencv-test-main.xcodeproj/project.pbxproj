@@ -18,7 +18,6 @@
 		942D249829D1767000C8223D /* FrontPageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D249729D1767000C8223D /* FrontPageTableCell.swift */; };
 		942D249B29D181AB00C8223D /* FrontPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D249A29D181AB00C8223D /* FrontPageViewModel.swift */; };
 		942D249D29D194E900C8223D /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942D249C29D194E900C8223D /* EmptyView.swift */; };
-		94363CFE29D7048400BD8558 /* stableDiffusionTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94363CFD29D7048400BD8558 /* stableDiffusionTestManager.swift */; };
 		9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF27297427E9001ED74C /* AppDelegate.swift */; };
 		9454DF2C297427E9001ED74C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454DF2B297427E9001ED74C /* ViewController.swift */; };
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
@@ -79,7 +78,6 @@
 		942D249729D1767000C8223D /* FrontPageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTableCell.swift; sourceTree = "<group>"; };
 		942D249A29D181AB00C8223D /* FrontPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageViewModel.swift; sourceTree = "<group>"; };
 		942D249C29D194E900C8223D /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		94363CFD29D7048400BD8558 /* stableDiffusionTestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stableDiffusionTestManager.swift; sourceTree = "<group>"; };
 		9454DF24297427E9001ED74C /* 心态兄弟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "心态兄弟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9454DF27297427E9001ED74C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9454DF2B297427E9001ED74C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -182,14 +180,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		94363CFC29D7044F00BD8558 /* stableDiffusion */ = {
-			isa = PBXGroup;
-			children = (
-				94363CFD29D7048400BD8558 /* stableDiffusionTestManager.swift */,
-			);
-			path = stableDiffusion;
-			sourceTree = "<group>";
-		};
 		9454DF1B297427E9001ED74C = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +210,6 @@
 				9454DF30297427ED001ED74C /* Assets.xcassets */,
 				9454DF32297427ED001ED74C /* LaunchScreen.storyboard */,
 				9454DF35297427ED001ED74C /* Info.plist */,
-				94363CFC29D7044F00BD8558 /* stableDiffusion */,
 				94E84AA129C2F4AB00A2F3FB /* chatGPT */,
 				948209EF29ADFE59009E42A9 /* chatting */,
 				948209E829ACA180009E42A9 /* Setting */,
@@ -588,7 +577,6 @@
 				942D249829D1767000C8223D /* FrontPageTableCell.swift in Sources */,
 				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
 				94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */,
-				94363CFE29D7048400BD8558 /* stableDiffusionTestManager.swift in Sources */,
 				70379954304F70B87DC61DCC /* UserTest.swift in Sources */,
 				C0C773BF8EEE8C7B215AC43A /* ChatRoom+Schema.swift in Sources */,
 				FFCCCAC9103FFDE0C12C7C3E /* ChatRoom.swift in Sources */,

@@ -182,9 +182,6 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
         if UserData.shared.isSignedIn == false{
             AccountManager.shared.signIn()
         }else{
-            if indexPath.row == 0 {
-                stableDiffusionManager.shared.testRequest()
-            }
             if indexPath.row == 2 {
                 let vc = SettingViewController()
                 vc.show()
