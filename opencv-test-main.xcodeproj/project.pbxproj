@@ -23,7 +23,6 @@
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
-		9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459DA8C29990F040014E402 /* TestTabVIew.swift */; };
 		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
 		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
 		948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */; };
@@ -33,8 +32,6 @@
 		948209F229ADFE8F009E42A9 /* messageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209F129ADFE8F009E42A9 /* messageView.swift */; };
 		948209F529ADFF0D009E42A9 /* messageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209F429ADFF0D009E42A9 /* messageListCell.swift */; };
 		948209F829ADFF46009E42A9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209F729ADFF46009E42A9 /* ChatViewController.swift */; };
-		94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */; };
-		94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3B29965FB400A084D3 /* Color_extension.swift */; };
 		94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D3D299668BD00A084D3 /* MainTabBarController.swift */; };
 		94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94989D4229966E1F00A084D3 /* Utils+My.swift */; };
 		94989D442996718100A084D3 /* SmileySans-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */; };
@@ -85,7 +82,6 @@
 		9454DF30297427ED001ED74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9459DA8C29990F040014E402 /* TestTabVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabVIew.swift; sourceTree = "<group>"; };
 		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
 		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
 		948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileTableCell.swift; sourceTree = "<group>"; };
@@ -95,8 +91,6 @@
 		948209F129ADFE8F009E42A9 /* messageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageView.swift; sourceTree = "<group>"; };
 		948209F429ADFF0D009E42A9 /* messageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageListCell.swift; sourceTree = "<group>"; };
 		948209F729ADFF46009E42A9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
-		94989D3B29965FB400A084D3 /* Color_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
 		94989D3D299668BD00A084D3 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		94989D4029966D3C00A084D3 /* SmileySans-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmileySans-Oblique.ttf"; sourceTree = "<group>"; };
 		94989D4229966E1F00A084D3 /* Utils+My.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+My.swift"; sourceTree = "<group>"; };
@@ -306,10 +300,7 @@
 		94989D3829965F2D00A084D3 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				94989D3B29965FB400A084D3 /* Color_extension.swift */,
-				94989D3929965F3D00A084D3 /* RootTabBarViewController.swift */,
 				94989D3D299668BD00A084D3 /* MainTabBarController.swift */,
-				9459DA8C29990F040014E402 /* TestTabVIew.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -554,10 +545,8 @@
 				94E9B8ED298A4D170058CCBD /* NoteTestController.swift in Sources */,
 				94E84AA829C30C3B00A2F3FB /* chatGPTTableCell.swift in Sources */,
 				9454DF2C297427E9001ED74C /* ViewController.swift in Sources */,
-				94989D3A29965F3D00A084D3 /* RootTabBarViewController.swift in Sources */,
 				94E9B8E929892E140058CCBD /* AccountManager.swift in Sources */,
 				9454DF28297427E9001ED74C /* AppDelegate.swift in Sources */,
-				9459DA8D29990F040014E402 /* TestTabVIew.swift in Sources */,
 				948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */,
 				948209EE29AD9832009E42A9 /* UIViewController+Utils.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
@@ -566,7 +555,6 @@
 				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,
 				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,
 				948209F829ADFF46009E42A9 /* ChatViewController.swift in Sources */,
-				94989D3C29965FB400A084D3 /* Color_extension.swift in Sources */,
 				948209F529ADFF0D009E42A9 /* messageListCell.swift in Sources */,
 				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,
 				94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */,
