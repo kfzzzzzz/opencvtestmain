@@ -21,7 +21,7 @@ target 'opencv-test-main' do
   pod 'Toast-Swift', '~> 5.0.1'
   
 
-  flutter_application_path = '../opencv_flutter'
+  flutter_application_path = '../xintai_flutter'
   load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
   
   install_all_flutter_pods(flutter_application_path)

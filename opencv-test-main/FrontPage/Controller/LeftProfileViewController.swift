@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import Flutter
 
 class LeftProfileViewController : UIViewController {
     
@@ -182,6 +183,12 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
         if UserData.shared.isSignedIn == false{
             AccountManager.shared.signIn()
         }else{
+            if indexPath.row == 1 {
+                let vc = FlutterViewController(
+                    project: nil, initialRoute: "tip3", nibName: nil, bundle: nil)
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false)
+            }
             if indexPath.row == 2 {
                 let vc = SettingViewController()
                 vc.show()

@@ -23,6 +23,7 @@
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
+		945E6CD729DFF44F00ABDEBE /* BaseFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E6CD629DFF44F00ABDEBE /* BaseFlutterViewController.swift */; };
 		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
 		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
 		948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */; };
@@ -82,6 +83,7 @@
 		9454DF30297427ED001ED74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945E6CD629DFF44F00ABDEBE /* BaseFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlutterViewController.swift; sourceTree = "<group>"; };
 		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
 		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
 		948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileTableCell.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				9454DF30297427ED001ED74C /* Assets.xcassets */,
 				9454DF32297427ED001ED74C /* LaunchScreen.storyboard */,
 				9454DF35297427ED001ED74C /* Info.plist */,
+				945E6CD529DFF42100ABDEBE /* Flutter */,
 				94E84AA129C2F4AB00A2F3FB /* chatGPT */,
 				948209EF29ADFE59009E42A9 /* chatting */,
 				948209E829ACA180009E42A9 /* Setting */,
@@ -215,6 +218,14 @@
 				94989D3F29966D1E00A084D3 /* Font */,
 			);
 			path = "opencv-test-main";
+			sourceTree = "<group>";
+		};
+		945E6CD529DFF42100ABDEBE /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				945E6CD629DFF44F00ABDEBE /* BaseFlutterViewController.swift */,
+			);
+			path = Flutter;
 			sourceTree = "<group>";
 		};
 		948209DE29A85836009E42A9 /* view */ = {
@@ -534,6 +545,7 @@
 				94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */,
 				949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */,
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
+				945E6CD729DFF44F00ABDEBE /* BaseFlutterViewController.swift in Sources */,
 				94E84AA629C308D500A2F3FB /* chatGPTViewController.swift in Sources */,
 				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
