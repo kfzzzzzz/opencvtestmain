@@ -1,0 +1,3 @@
+[submodule "Submoudle"]
+	path = Submoudle
+	url = git@github.com:kfzzzzzz/xintai_flutter.git
