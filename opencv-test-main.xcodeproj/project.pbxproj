@@ -24,6 +24,7 @@
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
 		945E6CDB29E426BF00ABDEBE /* BoostDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E6CDA29E426BE00ABDEBE /* BoostDelegate.swift */; };
+		945E6CDD29E53C2C00ABDEBE /* FlutterMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E6CDC29E53C2C00ABDEBE /* FlutterMessageManager.swift */; };
 		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
 		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
 		948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */; };
@@ -84,6 +85,7 @@
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945E6CDA29E426BE00ABDEBE /* BoostDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostDelegate.swift; sourceTree = "<group>"; };
+		945E6CDC29E53C2C00ABDEBE /* FlutterMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterMessageManager.swift; sourceTree = "<group>"; };
 		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
 		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
 		948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileTableCell.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				945E6CDA29E426BE00ABDEBE /* BoostDelegate.swift */,
+				945E6CDC29E53C2C00ABDEBE /* FlutterMessageManager.swift */,
 			);
 			path = Flutter;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
 				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
 				94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */,
+				945E6CDD29E53C2C00ABDEBE /* FlutterMessageManager.swift in Sources */,
 				942D249829D1767000C8223D /* FrontPageTableCell.swift in Sources */,
 				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
 				94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */,

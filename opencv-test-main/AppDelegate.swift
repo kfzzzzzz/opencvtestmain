@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //创建代理，做初始化操作
         let delegate = BoostDelegate()
         FlutterBoost.instance().setup(application, delegate: delegate) { engine in
-
+            FlutterMessageManager.shared.engine = engine
+            FlutterMessageManager.shared.handleMessage()
         }
         
         return true

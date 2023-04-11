@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import flutter_boost
 
 class MainTabBarController : UITabBarController {
     
@@ -32,7 +33,11 @@ class MainTabBarController : UITabBarController {
             mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
             mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
 
-            let challenge = chatGPTViewController()
+            let vc:FBFlutterViewContainer = FBFlutterViewContainer()
+            let options = FlutterBoostRouteOptions()
+            options.pageName = "example"
+            vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
+            let challenge = vc
             challenge.tabBarItem.title = "chatGPT"
 
             let mine = LoginViewController()

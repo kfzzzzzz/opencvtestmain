@@ -42,12 +42,12 @@ class BoostDelegate: NSObject,FlutterBoostDelegate {
         //对这个页面设置结果
         resultTable[options.pageName] = options.onPageFinished;
         
-        ViewController.getCurrentViewController()?.present(vc, animated: true)
+        ViewController.getCurrentViewController()?.present(vc, animated: false)
     }
 
     func popRoute(_ options: FlutterBoostRouteOptions!) {
         if let vc = ViewController.getCurrentViewController() as? FBFlutterViewContainer {
-            vc.dismiss(animated: true, completion: nil)
+            vc.dismiss(animated: false, completion: nil)
         }
 //        //如果当前被present的vc是container，那么就执行dismiss逻辑
 //        if let vc = self.navigationController?.presentedViewController as? FBFlutterViewContainer,vc.uniqueIDString() == options.uniqueId{
