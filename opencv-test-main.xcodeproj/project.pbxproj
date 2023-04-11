@@ -23,7 +23,7 @@
 		9454DF2F297427E9001ED74C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF2D297427E9001ED74C /* Main.storyboard */; };
 		9454DF31297427ED001ED74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF30297427ED001ED74C /* Assets.xcassets */; };
 		9454DF34297427ED001ED74C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9454DF32297427ED001ED74C /* LaunchScreen.storyboard */; };
-		945E6CD729DFF44F00ABDEBE /* BaseFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E6CD629DFF44F00ABDEBE /* BaseFlutterViewController.swift */; };
+		945E6CDB29E426BF00ABDEBE /* BoostDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E6CDA29E426BE00ABDEBE /* BoostDelegate.swift */; };
 		948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */; };
 		948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E129A89223009E42A9 /* UIButton+enlarge.swift */; };
 		948209E729A894C4009E42A9 /* LeftProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */; };
@@ -83,7 +83,7 @@
 		9454DF30297427ED001ED74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9454DF33297427ED001ED74C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9454DF35297427ED001ED74C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		945E6CD629DFF44F00ABDEBE /* BaseFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlutterViewController.swift; sourceTree = "<group>"; };
+		945E6CDA29E426BE00ABDEBE /* BoostDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostDelegate.swift; sourceTree = "<group>"; };
 		948209DF29A8585E009E42A9 /* FrontPageAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageAvatarView.swift; sourceTree = "<group>"; };
 		948209E129A89223009E42A9 /* UIButton+enlarge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+enlarge.swift"; sourceTree = "<group>"; };
 		948209E629A894C4009E42A9 /* LeftProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileTableCell.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		945E6CD529DFF42100ABDEBE /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
-				945E6CD629DFF44F00ABDEBE /* BaseFlutterViewController.swift */,
+				945E6CDA29E426BE00ABDEBE /* BoostDelegate.swift */,
 			);
 			path = Flutter;
 			sourceTree = "<group>";
@@ -404,12 +404,12 @@
 			buildConfigurationList = 9454DF38297427ED001ED74C /* Build configuration list for PBXNativeTarget "opencv-test-main" */;
 			buildPhases = (
 				881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */,
-				2EEBDC47855B47F7E02EA9F6 /* [CP-User] Run Flutter Build opencv_flutter Script */,
+				2A1C4D94F512DDE3C062ECEB /* [CP-User] Run Flutter Build xintai_flutter Script */,
 				9454DF20297427E9001ED74C /* Sources */,
 				9454DF21297427E9001ED74C /* Frameworks */,
 				9454DF22297427E9001ED74C /* Resources */,
 				F3B581C7F95F0BB5775B0F68 /* [CP] Embed Pods Frameworks */,
-				3A1B53E7F33DB33AF71A84BD /* [CP-User] Embed Flutter Build opencv_flutter Script */,
+				2000729DD355213AE427642A /* [CP-User] Embed Flutter Build xintai_flutter Script */,
 			);
 			buildRules = (
 			);
@@ -476,25 +476,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2EEBDC47855B47F7E02EA9F6 /* [CP-User] Run Flutter Build opencv_flutter Script */ = {
+		2000729DD355213AE427642A /* [CP-User] Embed Flutter Build xintai_flutter Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			name = "[CP-User] Run Flutter Build opencv_flutter Script";
+			name = "[CP-User] Embed Flutter Build xintai_flutter Script";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/Submoudle/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
 		};
-		3A1B53E7F33DB33AF71A84BD /* [CP-User] Embed Flutter Build opencv_flutter Script */ = {
+		2A1C4D94F512DDE3C062ECEB /* [CP-User] Run Flutter Build xintai_flutter Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			name = "[CP-User] Embed Flutter Build opencv_flutter Script";
+			name = "[CP-User] Run Flutter Build xintai_flutter Script";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../opencv_flutter/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/Submoudle/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
 		};
 		881A3F978B84BAA28D6B1A4B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -545,7 +545,6 @@
 				94E9B8EB29893AD70058CCBD /* UserDataModel.swift in Sources */,
 				949F1F6C2988D3EB004B7C3C /* LoginViewController.swift in Sources */,
 				949F1F6A2988D3AF004B7C3C /* RegisterViewController.swift in Sources */,
-				945E6CD729DFF44F00ABDEBE /* BaseFlutterViewController.swift in Sources */,
 				94E84AA629C308D500A2F3FB /* chatGPTViewController.swift in Sources */,
 				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
@@ -564,6 +563,7 @@
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
 				948209EC29ACB100009E42A9 /* SettingPresentationController.swift in Sources */,
 				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
+				945E6CDB29E426BF00ABDEBE /* BoostDelegate.swift in Sources */,
 				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,
 				94989D4329966E1F00A084D3 /* Utils+My.swift in Sources */,
 				948209F829ADFF46009E42A9 /* ChatViewController.swift in Sources */,

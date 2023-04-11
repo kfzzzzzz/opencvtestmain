@@ -8,31 +8,29 @@
 import UIKit
 import Flutter
 import FlutterPluginRegistrant
+import flutter_boost
 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    lazy var flutterEngine = FlutterEngine(name: "my flutter engine")
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        flutterEngine.navigationChannel.invokeMethod("setInitialRoute", arguments:"tip2")
-        flutterEngine.run();
-        // Connects plugins with iOS platform code to this app.
-        GeneratedPluginRegistrant.register(with: self.flutterEngine);
-        
         
         // initialize Amplify
          _ = AccountManager.shared
         _ = chatGPTManager.shared
         
+        //创建代理，做初始化操作
+        let delegate = BoostDelegate()
+        FlutterBoost.instance().setup(application, delegate: delegate) { engine in
+
+        }
         
         return true
     }
 
     // MARK: UISceneSession Lifecycle
     var window: UIWindow?
-
-
 }
 

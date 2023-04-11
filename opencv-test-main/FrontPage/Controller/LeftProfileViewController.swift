@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 import SnapKit
 import Flutter
+import flutter_boost
 
 class LeftProfileViewController : UIViewController {
+    
     
     var isLogin : Bool = UserData.shared.isSignedIn{
         didSet{
@@ -184,10 +186,9 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
             AccountManager.shared.signIn()
         }else{
             if indexPath.row == 1 {
-                let vc = FlutterViewController(
-                    project: nil, initialRoute: "tip3", nibName: nil, bundle: nil)
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: false)
+                let options = FlutterBoostRouteOptions()
+                options.pageName = "GPTPage"
+                FlutterBoost.instance().open(options)
             }
             if indexPath.row == 2 {
                 let vc = SettingViewController()
