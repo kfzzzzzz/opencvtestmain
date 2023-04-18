@@ -155,20 +155,34 @@ class AccountManager : NSObject {
     }
     
     //更新用户属性
-    public func updateAttribute(attribute: AuthUserAttribute) {
-        Amplify.Auth.update(userAttribute: attribute) { result in
-            do {
-                let updateResult = try result.get()
-                switch updateResult.nextStep {
-                case .confirmAttributeWithCode(let deliveryDetails, let info):
-                    print("Confirm the attribute with details send to - \(deliveryDetails) \(info)")
-                case .done:
-                    print("Update completed")
-                }
-            } catch {
-                print("Update attribute failed with error \(error)")
+    public func updateAttribute(attribute: [AuthUserAttribute], completed: (() -> Void)? = nil) {
+        Amplify.Auth.update(userAttributes: attribute) { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+                completed?()
+            case .success(_):
+                self.updateUserData(withSignInStatus: true)
+                completed?()
             }
         }
+//        Amplify.Auth.update(userAttribute: attribute) { result in
+//            do {
+//                let updateResult = try result.get()
+//                switch updateResult.nextStep {
+//                case .confirmAttributeWithCode(let deliveryDetails, let info):
+//                    print("Confirm the attribute with details send to - \(deliveryDetails) \(info)")
+//                    completed?()
+//                case .done:
+//                    print("Update completed")
+//                    self.updateUserData(withSignInStatus: true)
+//                    completed?()
+//                }
+//            } catch {
+//                print("Update attribute failed with error \(error)")
+//                completed?()
+//            }
+//        }
     }
     
 
@@ -264,38 +278,11 @@ class AccountManager : NSObject {
                 } else {
                     completed(nil)
                 }
-            case .failure(let error):
+            case .failure(_):
                 completed(nil)
             }
         }
     }
-    
-//    func checkCreateUser(){
-//        Amplify.DataStore.query(UserTest.self, where: UserTest.keys.userId == UserData.shared.userId){ result in
-//            switch result{
-//            case .success(let date):
-//                if date.isEmpty{
-//                    print("--------------账号不存在----------------")
-//                    Amplify.DataStore.save(UserTest(userName: "气人小子", userId: UserData.shared.userId, userImage: "")){ result in
-//                        switch result{
-//                        case .success(let date):
-//                            print("Successfully created \(date.id)")
-//                        case .failure(let error):
-//                            print(error)
-//                        }
-//                        return
-//                    }
-//                }else{
-//                    print("账号存在")
-//                    UserData.shared.userName = date[0].userName ?? "气人小子"
-//                    UserData.shared.userImageURL = date[0].userImage ?? ""
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//            return
-//        }
-//    }
 }
     
 

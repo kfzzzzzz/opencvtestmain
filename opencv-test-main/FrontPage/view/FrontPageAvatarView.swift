@@ -11,22 +11,6 @@ import SnapKit
 
 class FrontPageAvatarView : UIView{
     
-//    var isLogin : Bool = UserData.shared.isSignedIn {
-//        didSet{
-//            DispatchQueue.main.async() {
-//                if self.isLogin{
-//                    self.userStauts.text = "在线"
-//                    self.userStauts.textColor = .green
-//                    self.avatarTopRight.backgroundColor = .green
-//                }else{
-//                    self.userStauts.text = "离线"
-//                    self.userStauts.textColor = .gray
-//                    self.avatarTopRight.backgroundColor = .gray
-//                }
-//            }
-//        }
-//    }
-    
     static let avatarImageWidth : CGFloat = 60.atScale()
     
     private lazy var avatarImage : UIImageView = {
@@ -69,9 +53,19 @@ class FrontPageAvatarView : UIView{
         return label
     }()
     
+    @objc func updateUserInfo(){
+        DispatchQueue.main.async {
+            self.avatarImage.image = UserData.shared.userImage
+            self.userNameLable.text = UserData.shared.userName
+        }
+    }
+    
     
     init(){
         super.init(frame: .zero)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUserInfo), name: Notification.Name.updateUserData, object: nil)
+        
         avatarImage.snp.makeConstraints{ make in
             make.top.left.equalToSuperview()
             make.height.width.equalTo(FrontPageAvatarView.avatarImageWidth)
@@ -93,9 +87,13 @@ class FrontPageAvatarView : UIView{
             make.left.equalTo(userNameLable)
         }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
+required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+}
+
+deinit{
+    NotificationCenter().removeObserver(self)
+}
 
 }

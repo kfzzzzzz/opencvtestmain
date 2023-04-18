@@ -136,8 +136,10 @@ class FrontPageViewController: UIViewController {
     }
     
     @objc func updateUserInfo(){
-        rightHeadPortrait.image = UserData.shared.userImage
-        rightNameLabel.text = UserData.shared.userName
+        DispatchQueue.main.async {
+            self.rightHeadPortrait.image = UserData.shared.userImage
+            self.rightNameLabel.text = UserData.shared.userName
+        }
     }
     
     @objc func openLeftProfile(){
