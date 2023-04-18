@@ -106,46 +106,50 @@ class SettingViewController: UIViewController {
     }
     
     @objc func tapConfirmButton(){
-        activityIndicatorView.startAnimating()
-        var userTestData = UserTest(id: UserData.shared.id, userName: nameTextView.text, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
-        if nameTextView.text == UserData.shared.userName && avatarView.image == UserData.shared.userImage{
-            activityIndicatorView.stopAnimating()
-            self.tapCancelButton()
-            return
-        }else if nameTextView.text != UserData.shared.userName && avatarView.image == UserData.shared.userImage{
-            Amplify.DataStore.save(userTestData){ result in
-                switch result{
-                case .success(let date):
-                    AccountManager.shared.updateUserData(withSignInStatus: UserData.shared.isSignedIn)
-                    print("Successfully created \(date.id)")
-                case .failure(let error):
-                    print(error)
-                }
-                DispatchQueue.main.async() {
-                    self.activityIndicatorView.stopAnimating()
-                }
-                return
-            }
-        }else{
-            userTestData.userImage = UserData.shared.userId + ".jpg"
-            AccountManager.shared.storeImage(name: userTestData.userImage ?? "", image: avatarView.image!.jpegData(compressionQuality: 0.8)!){
-                Amplify.DataStore.save(userTestData){ result in
-                    switch result{
-                    case .success(let date):
-                        AccountManager.shared.updateUserData(withSignInStatus: UserData.shared.isSignedIn)
-                        print("Successfully created \(date.id)")
-                    case .failure(let error):
-                        print(error)
-                    }
-                    DispatchQueue.main.async() {
-                        self.activityIndicatorView.stopAnimating()
-                    }
-                    return
-                }
-            }
-        }
         
     }
+    
+//    @objc func tapConfirmButton(){
+//        activityIndicatorView.startAnimating()
+//        var userTestData = UserTest(id: UserData.shared.id, userName: nameTextView.text, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
+//        if nameTextView.text == UserData.shared.userName && avatarView.image == UserData.shared.userImage{
+//            activityIndicatorView.stopAnimating()
+//            self.tapCancelButton()
+//            return
+//        }else if nameTextView.text != UserData.shared.userName && avatarView.image == UserData.shared.userImage{
+//            Amplify.DataStore.save(userTestData){ result in
+//                switch result{
+//                case .success(let date):
+//                    AccountManager.shared.updateUserData(withSignInStatus: UserData.shared.isSignedIn)
+//                    print("Successfully created \(date.id)")
+//                case .failure(let error):
+//                    print(error)
+//                }
+//                DispatchQueue.main.async() {
+//                    self.activityIndicatorView.stopAnimating()
+//                }
+//                return
+//            }
+//        }else{
+//            userTestData.userImage = UserData.shared.userId + ".jpg"
+//            AccountManager.shared.storeImage(name: userTestData.userImage ?? "", image: avatarView.image!.jpegData(compressionQuality: 0.8)!){
+//                Amplify.DataStore.save(userTestData){ result in
+//                    switch result{
+//                    case .success(let date):
+//                        AccountManager.shared.updateUserData(withSignInStatus: UserData.shared.isSignedIn)
+//                        print("Successfully created \(date.id)")
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                    DispatchQueue.main.async() {
+//                        self.activityIndicatorView.stopAnimating()
+//                    }
+//                    return
+//                }
+//            }
+//        }
+//
+//    }
     
     @objc func tapCancelButton(){
         self.dismiss(animated: true)

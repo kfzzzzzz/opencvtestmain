@@ -6,10 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
 class LoginViewController: UIViewController {
-    
-    //private let spinner = JGProgressHUD(style: .dark)
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -26,21 +25,6 @@ class LoginViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
-//    private let emailField : UITextField = {
-//        let field = UITextField()
-//        field.autocapitalizationType = .none  //自动大写样式
-//        field.autocorrectionType = .no //自动更正样式
-//        field.returnKeyType = .continue //返回键可视
-//        field.layer.cornerRadius = 12
-//        field.layer.borderWidth = 1
-//        field.layer.borderColor = UIColor.lightGray.cgColor
-//        field.placeholder = "Email Address ..."
-//        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-//        field.leftViewMode = .always
-//        field.backgroundColor = .white
-//        return field
-//    }()
     
     private lazy var emailField: ATPhoneNumberTextField = {
         let textField = ATPhoneNumberTextField.init(frame: .zero)
@@ -81,22 +65,6 @@ class LoginViewController: UIViewController {
         return textField
     } ()
     
-//    private let passwordField : UITextField = {
-//        let field = UITextField()
-//        field.autocapitalizationType = .none  //自动大写样式
-//        field.autocorrectionType = .no //自动更正样式
-//        field.returnKeyType = .done //返回键可视
-//        field.layer.cornerRadius = 12
-//        field.layer.borderWidth = 1
-//        field.layer.borderColor = UIColor.lightGray.cgColor
-//        field.placeholder = "Password ..."
-//        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-//        field.leftViewMode = .always
-//        field.backgroundColor = .white
-//        field.isSecureTextEntry = true
-//        return field
-//    }()
-    
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Log In", for: .normal)
@@ -108,28 +76,10 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-   //private let FacebookloginButton : FBLoginButton = FBLoginButton()
-    
-//    private let FacebookloginButton : FBLoginButton = {
-//        let button = FBLoginButton()
-//        button.permissions = ["email, public_profile"]
-//        return button
-//    }()
-    
-    //private let googleLoginButton = GIDSignInButton()
-    
     private var loginOberver: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //loginOberver = NotificationCenter.default.addObserver(forName: .didLogInNotification, object: nil, queue: .main, using: { [weak self] _ in
-            
-           // self?.navigationController?.dismiss(animated: true, completion: nil)
-       // })
-        
-        //GIDSignIn.sharedInstance()?.presentingViewController = self
-        //title = "Log in"
         view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(didTapRegister))
@@ -181,25 +131,14 @@ class LoginViewController: UIViewController {
     
     @objc private func imageViewTapped(){
         print("imageViewTapped")
-//        let vc = RegisterViewController()
-//        //vc.title = "Cteate Account"
-//        if UserData.shared.isSignedIn {
-//            //let vc = NoteTestController()
-//            //let nav = navigationController
-//            let vc = NoteTestController()
-//            //let nav = UINavigationController(rootViewController: vc)
-//            vc.modalPresentationStyle = .fullScreen
-//            self.present(vc, animated: false)
-//            //self.present(vc, animated: true)
-//        }
-//        self.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true)
-        //navigationController?.pushViewController(vc, animated: true)
+        print("KFZTEST:UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
     }
     
     @objc private func loginButtonTapped(){
-//        emailField.resignFirstResponder()
-//        passwordField.resignFirstResponder()
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
+        AccountManager.shared.signIn(username: "+8619859253270", password: "zz88718259")
 //
 //        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty else{
 //            alerUserLoginError()

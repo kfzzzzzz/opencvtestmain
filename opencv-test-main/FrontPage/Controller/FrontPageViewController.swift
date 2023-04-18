@@ -26,7 +26,7 @@ class FrontPageViewController: UIViewController {
     }()
     
     private lazy var rightHeadPortrait: UIImageView = {
-        var image = UIImageView(image: UIImage(named: "avatarPlaceholder"))
+        var image = UIImageView(image: UserData.shared.userImage)
         image.layer.cornerRadius = FrontPageViewController.avatarWidth/2
         image.layer.masksToBounds = true
         image.layer.borderWidth = 2
@@ -37,7 +37,7 @@ class FrontPageViewController: UIViewController {
     
     private lazy var rightNameLabel : UILabel = {
         var label = UILabel()
-        label.text = "未登录"
+        label.text = UserData.shared.userName
         label.textAlignment = .center
         label.font = UIFont.SmileySans(16.atScale())
         label.numberOfLines = 1
@@ -50,7 +50,7 @@ class FrontPageViewController: UIViewController {
     private lazy var loginButton : UIButton = {
         var button = UIButton()
         button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         view.addSubview(button)
         return button
     }()
@@ -85,6 +85,7 @@ class FrontPageViewController: UIViewController {
         self.frontPageTableView.delegate = self
         self.frontPageTableView.dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUserInfo), name: Notification.Name.updateUserData, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -94,11 +95,6 @@ class FrontPageViewController: UIViewController {
     deinit{
         NotificationCenter().removeObserver(self)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        AccountManager.shared.delegate = self
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,58 +135,16 @@ class FrontPageViewController: UIViewController {
         }
     }
     
-    @objc func setUserInfo(){
-        print("UserData.shared.isSignedIn:\(UserData.shared.isSignedIn)")
-        if UserData.shared.isSignedIn {
-            if UserData.shared.userImageURL != ""{
-                AccountManager.shared.retrieveImage(name: UserData.shared.userImageURL) { (data) in
-                    DispatchQueue.main.async() {
-                        let uim = UIImage(data: data)
-                        if UserData.shared.isSignedIn {
-                            self.rightHeadPortrait.image = uim
-                            self.rightNameLabel.text = UserData.shared.userName
-                            self.leftProfileVC.setAvater(image: ((uim ?? UIImage(named: "avatarPlaceholder"))!) )
-                            UserData.shared.userImage = uim
-                        }
-                    }
-                }
-            }else{
-                AccountManager.shared.retrieveImage(name: "TestLovePic%403x.png") { (data) in
-                    DispatchQueue.main.async() {
-                        let uim = UIImage(data: data)
-                        if UserData.shared.isSignedIn {
-                            self.rightHeadPortrait.image = uim
-                            self.rightNameLabel.text = UserData.shared.userName
-                            self.leftProfileVC.setAvater(image: ((uim ?? UIImage(named: "avatarPlaceholder"))!) )
-                            UserData.shared.userImage = uim
-                        }
-                    }
-                }
-            }
-        }else{
-            DispatchQueue.main.async() {
-                self.rightHeadPortrait.image = UIImage(named: "avatarPlaceholder")
-                self.rightNameLabel.text = UserData.shared.userName
-            }
-        }
-
-    }
-    
-    @objc func loginButtonTapped(){
-        
-        if UserData.shared.isSignedIn == false{
-            AccountManager.shared.signIn()
-        }else{
-            self.showAlert()
-        }
-        
+    @objc func updateUserInfo(){
+        rightHeadPortrait.image = UserData.shared.userImage
+        rightNameLabel.text = UserData.shared.userName
     }
     
     @objc func openLeftProfile(){
         leftProfileVC.show()
     }
     
-    func showAlert(){
+    @objc func showAlert(){
         let alertController = UIAlertController(title: "是否确认退出登录", message: "被气到了？？", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "确认", style: .default, handler: {
@@ -202,24 +156,6 @@ class FrontPageViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-}
-
-
-extension FrontPageViewController: LoginDelegate {
-    func isLogin() {
-        self.setUserInfo()
-        leftProfileVC.isLogin = UserData.shared.isSignedIn
-    }
-    
-    func isLogout() {
-        self.setUserInfo()
-        leftProfileVC.isLogin = UserData.shared.isSignedIn
-    }
-    
-    func updateUserInfo() {
-        self.setUserInfo()
-        leftProfileVC.isLogin = UserData.shared.isSignedIn
-    }
 }
 
 extension FrontPageViewController: UITableViewDelegate, UITableViewDataSource {

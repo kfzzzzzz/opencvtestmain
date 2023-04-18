@@ -13,20 +13,6 @@ import flutter_boost
 
 class LeftProfileViewController : UIViewController {
     
-    
-    var isLogin : Bool = UserData.shared.isSignedIn{
-        didSet{
-            self.userInfoView.isLogin = isLogin
-            DispatchQueue.main.async() {
-                if self.isLogin{
-                    self.loginOutButton.setTitle("退出登录", for: .normal)
-                }else{
-                    self.loginOutButton.setTitle("前往登录", for: .normal)
-                }
-            }
-        }
-    }
-    
     private lazy var itemTableView : UITableView = {
         let table = UITableView()
         table.separatorStyle = .none
@@ -64,7 +50,7 @@ class LeftProfileViewController : UIViewController {
         button.backgroundColor = .clear
         button.setTitle("退出登录", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-        button.addTarget(self, action: #selector(loginOutTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         self.view.addSubview(button)
         return button
     }()
@@ -102,7 +88,7 @@ class LeftProfileViewController : UIViewController {
         }
         loginOutImage.snp.makeConstraints{ make in
             var SafeHeight : CGFloat = 0
-            SafeHeight = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            SafeHeight = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0
             make.bottom.equalTo( -50.atScale() - SafeHeight)
             make.left.equalToSuperview().offset(140.atScale())
             make.width.height.equalTo(20.atScale())
@@ -122,29 +108,21 @@ class LeftProfileViewController : UIViewController {
         super.viewDidLoad()
     }
     
-    func show(above viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController,
-              completion: (() -> Void)? = nil) {
-        viewController?.present(self, animated: true, completion: completion)
+//    func show(above viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController,
+//              completion: (() -> Void)? = nil) {
+//        UIViewController.getCurrentViewController()?.present(self, animated: true)
+//        viewController?.present(self, animated: true, completion: completion)
+//    }
+    
+    func show(){
+        UIViewController.getCurrentViewController()?.present(self, animated: true)
     }
     
     @objc func dissmisscction(){
         self.dismiss(animated: true)
     }
     
-    @objc func loginOutTapped(){
-        print("loginOutTapped")
-        if UserData.shared.isSignedIn{
-            self.showAlert()
-        }else{
-            AccountManager.shared.signIn()
-        }
-    }
-    
-    func setAvater(image: UIImage){
-        self.userInfoView.setAvatarOnline(image: image)
-    }
-    
-    func showAlert(){
+    @objc func showAlert(){
         let alertController = UIAlertController(title: "是否确认退出登录", message: "被气到了？？", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "确认", style: .default, handler: {

@@ -45,13 +45,72 @@ class AccountManager : NSObject {
                 break
             }
         }
-        // let's check if user is signedIn or not
+
+    }
+    
+    public func fetchAuthSession(completed: @escaping (Bool) -> Void){
         _ = Amplify.Auth.fetchAuthSession { (result) in
             do {
                 let session = try result.get()
-                self.updateUserData(withSignInStatus: session.isSignedIn)
+                self.updateUserData(withSignInStatus: session.isSignedIn) { _ in
+                    completed(session.isSignedIn)
+                }
             } catch {
                 print("Fetch auth session failed with error - \(error)")
+            }
+        }
+    }
+    
+    //注册用户
+    public func signUp(username: String, password: String, email: String) {
+        let userAttributes = [AuthUserAttribute(.email, value: email)]
+        let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
+        Amplify.Auth.signUp(username: username, password: password, options: options) { result in
+            switch result {
+            case .success(let signUpResult):
+                if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
+                    print("Delivery details \(String(describing: deliveryDetails))")
+                } else {
+                    print("SignUp Complete")
+                }
+            case .failure(let error):
+                print("An error occurred while registering a user \(error)")
+            }
+        }
+    }
+    
+    //确认用户注册
+    func confirmSignUp(for username: String, with confirmationCode: String) {
+        Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
+            switch result {
+            case .success:
+                print("Confirm signUp succeeded")
+            case .failure(let error):
+                print("An error occurred while confirming sign up \(error)")
+            }
+        }
+    }
+    
+    //登录用户
+    public func signIn(username: String, password: String) {
+        Amplify.Auth.signIn(username: username, password: password) { result in
+            switch result {
+            case .success:
+                print("Sign in succeeded")
+            case .failure(let error):
+                print("Sign in failed \(error)")
+            }
+        }
+    }
+    
+    //确认用户登录成功
+    public func confirmSignIn() {
+        Amplify.Auth.confirmSignIn(challengeResponse: "<confirmation code received via SMS>") { result in
+            switch result {
+            case .success(let signInResult):
+                print("Confirm sign in succeeded. Next step: \(signInResult.nextStep)")
+            case .failure(let error):
+                print("Confirm sign in failed \(error)")
             }
         }
     }
@@ -76,6 +135,18 @@ class AccountManager : NSObject {
             case .success:
                 UserData.shared.clear()
                 self.delegate?.isLogout()
+                
+                DispatchQueue.main.async {
+                    if let navigationController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController {
+                        navigationController.popToRootViewController(animated: false)
+                    }
+                    let loginViewController = XTLoginViewController()
+                    let navigationController = UINavigationController(rootViewController: loginViewController)
+                    navigationController.isNavigationBarHidden = true
+                    UIApplication.shared.windows.first?.rootViewController = navigationController
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                }
+                
                 print("Successfully signed out")
             case .failure(let error):
                 print("Sign out failed with error \(error)")
@@ -83,18 +154,56 @@ class AccountManager : NSObject {
         }
     }
     
-    // change our internal state, this triggers an UI update on the main thread
-    func updateUserData(withSignInStatus status : Bool) {
-        DispatchQueue.main.async() {
-            let userData : UserData = .shared
-            userData.isSignedIn = status
-            if status {
-                userData.userId = Amplify.Auth.getCurrentUser()?.userId ?? "-1"
-                self.checkCreateUser()
-            } else {
-                userData.clear()
+    //更新用户属性
+    public func updateAttribute(attribute: AuthUserAttribute) {
+        Amplify.Auth.update(userAttribute: attribute) { result in
+            do {
+                let updateResult = try result.get()
+                switch updateResult.nextStep {
+                case .confirmAttributeWithCode(let deliveryDetails, let info):
+                    print("Confirm the attribute with details send to - \(deliveryDetails) \(info)")
+                case .done:
+                    print("Update completed")
+                }
+            } catch {
+                print("Update attribute failed with error \(error)")
             }
-            self.delegate?.updateUserInfo()
+        }
+    }
+    
+
+    func updateUserData(withSignInStatus status: Bool, completed: ((Bool) -> Void)? = nil) {
+        DispatchQueue.main.async() {
+            UserData.shared.isSignedIn = status
+            if status {
+                UserData.shared.userId = Amplify.Auth.getCurrentUser()?.userId ?? "-1"
+                Amplify.Auth.fetchUserAttributes() { result in
+                    switch result {
+                    case .success(let attributes):
+                        UserData.shared.userName = attributes.first(where: { $0.key == .name })?.value ?? "气人小子"
+                        UserData.shared.userImageURL = attributes.first(where: { $0.key == .picture })?.value ?? ""
+                        self.retrieveImage(name: UserData.shared.userImageURL) { result in
+                            switch result {
+                            case let .success(data):
+                                UserData.shared.userImage = UIImage(data: data)
+                            case .failure(_):
+                                UserData.shared.userImage = UIImage(named: "avatarPlaceholder")
+                            }
+                            NotificationCenter.default.post(name: Notification.Name.updateUserData, object: nil)
+                            self.delegate?.updateUserInfo()
+                            completed?(true)
+                        }
+                    case .failure(let error):
+                        print("获取用户信息失败:\(error)")
+                        completed?(false)
+                    }
+                }
+            } else {
+                UserData.shared.clear()
+                NotificationCenter.default.post(name: Notification.Name.updateUserData, object: nil)
+                self.delegate?.updateUserInfo()
+                completed?(true)
+            }
         }
     }
     
@@ -117,17 +226,17 @@ class AccountManager : NSObject {
         })
     }
     
-    func retrieveImage(name: String, completed: @escaping (Data) -> Void) {
+    func retrieveImage(name: String, completed: @escaping (Result<Data, Error>) -> Void) {
         let _ = Amplify.Storage.downloadData(key: name,
                                              progressListener: { progress in
-            // in case you want to monitor progress
         }, resultListener: { (event) in
             switch event {
             case let .success(data):
-                print("Image \(name) loaded")
-                completed(data)
+                print("图片 \(name) 加载成功")
+                completed(.success(data))
             case let .failure(storageError):
-                print("Can not download image: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                print("无法加载图片: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                completed(.failure(storageError))
             }
         }
         )
@@ -146,32 +255,47 @@ class AccountManager : NSObject {
         )
     }
     
-    func checkCreateUser(){
-        Amplify.DataStore.query(UserTest.self, where: UserTest.keys.userId == UserData.shared.userId){ result in
-            switch result{
-            case .success(let date):
-                if date.isEmpty{
-                    Amplify.DataStore.save(UserTest(userName: "气人小子", userId: UserData.shared.userId, userImage: "")){ result in
-                        switch result{
-                        case .success(let date):
-                            print("Successfully created \(date.id)")
-                        case .failure(let error):
-                            print(error)
-                        }
-                        return
-                    }
-                }else{
-                    print("账号存在")
-                    UserData.shared.id = date[0].id
-                    UserData.shared.userName = date[0].userName ?? "气人小子"
-                    UserData.shared.userImageURL = date[0].userImage ?? ""
+    func fetchUserAttributes(key : AuthUserAttributeKey, completed: @escaping (String?) -> Void){
+        Amplify.Auth.fetchUserAttributes() { result in
+            switch result {
+            case .success(let attributes):
+                if let singleAttribute = attributes.first(where: { $0.key == key }) {
+                    completed(singleAttribute.value)
+                } else {
+                    completed(nil)
                 }
             case .failure(let error):
-                print(error)
+                completed(nil)
             }
-            return
         }
     }
+    
+//    func checkCreateUser(){
+//        Amplify.DataStore.query(UserTest.self, where: UserTest.keys.userId == UserData.shared.userId){ result in
+//            switch result{
+//            case .success(let date):
+//                if date.isEmpty{
+//                    print("--------------账号不存在----------------")
+//                    Amplify.DataStore.save(UserTest(userName: "气人小子", userId: UserData.shared.userId, userImage: "")){ result in
+//                        switch result{
+//                        case .success(let date):
+//                            print("Successfully created \(date.id)")
+//                        case .failure(let error):
+//                            print(error)
+//                        }
+//                        return
+//                    }
+//                }else{
+//                    print("账号存在")
+//                    UserData.shared.userName = date[0].userName ?? "气人小子"
+//                    UserData.shared.userImageURL = date[0].userImage ?? ""
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//            return
+//        }
+//    }
 }
     
 
@@ -196,5 +320,8 @@ extension Notification.Name {
     
     /// 绑定成功
     static let accountDidBound = Notification.Name("accountDidBound")
+    
+    /// 用户信息刷新
+    static let updateUserData = Notification.Name("updateUserData")
 }
 

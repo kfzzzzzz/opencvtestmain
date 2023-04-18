@@ -27,7 +27,6 @@ public let ScreenH = UIScreen.main.bounds.height
 // tabbar突出高度度 20
 public let standOutHeight: CGFloat = padSize(28.atScale(), withPhoneSize: 28.atScale())
 
-
 // 画tabBar背景
 func drawTabBarImageView() -> UIImageView{
     // 标签栏的高度
@@ -146,6 +145,13 @@ func padSize(_ padSize: CGFloat, withPhoneSize phoneSize: CGFloat) -> CGFloat {
         return padSize
     }
     return phoneSize
+}
+
+func scalePadSize(_ padSize: CGFloat, withPhoneSize phoneSize: CGFloat) -> CGFloat {
+    if UIDevice.current.userInterfaceIdiom == .pad {
+        return padSize.atScale()
+    }
+    return phoneSize.atScale()
 }
 
 /**

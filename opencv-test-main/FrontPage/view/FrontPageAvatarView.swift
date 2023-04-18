@@ -11,24 +11,21 @@ import SnapKit
 
 class FrontPageAvatarView : UIView{
     
-    var isLogin : Bool = UserData.shared.isSignedIn{
-        didSet{
-            DispatchQueue.main.async() {
-                if self.isLogin{
-                    self.userStauts.text = "在线"
-                    self.userStauts.textColor = .green
-                    self.avatarTopRight.backgroundColor = .green
-                    self.userNameLable.text = UserData.shared.userName
-                }else{
-                    self.userStauts.text = "离线"
-                    self.userStauts.textColor = .gray
-                    self.avatarTopRight.backgroundColor = .gray
-                    self.userNameLable.text = "未登录"
-                    self.avatarImage.image = UIImage(named: "avatarPlaceholder")
-                }
-            }
-        }
-    }
+//    var isLogin : Bool = UserData.shared.isSignedIn {
+//        didSet{
+//            DispatchQueue.main.async() {
+//                if self.isLogin{
+//                    self.userStauts.text = "在线"
+//                    self.userStauts.textColor = .green
+//                    self.avatarTopRight.backgroundColor = .green
+//                }else{
+//                    self.userStauts.text = "离线"
+//                    self.userStauts.textColor = .gray
+//                    self.avatarTopRight.backgroundColor = .gray
+//                }
+//            }
+//        }
+//    }
     
     static let avatarImageWidth : CGFloat = 60.atScale()
     
@@ -38,14 +35,14 @@ class FrontPageAvatarView : UIView{
         image.layer.masksToBounds = true
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.pink1().cgColor
-        image.image = UIImage(named: "avatarPlaceholder")
+        image.image = UserData.shared.userImage
         self.addSubview(image)
         return image
     }()
     
     private lazy var avatarTopRight : UIView  = {
         let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = .green
         view.layer.cornerRadius = FrontPageAvatarView.avatarImageWidth/6
         view.layer.masksToBounds = true
         self.addSubview(view)
@@ -54,7 +51,7 @@ class FrontPageAvatarView : UIView{
     
     private lazy var userNameLable : UILabel = {
         let label = UILabel()
-        label.text = "未登录"
+        label.text = UserData.shared.userName
         label.textColor = UIColor.pink1()
         label.numberOfLines = 1
         label.font = UIFont.PFSemibold(16.atScale())
@@ -65,8 +62,8 @@ class FrontPageAvatarView : UIView{
     
     private lazy var userStauts : UILabel = {
         let label = UILabel()
-        label.text = "离线"
-        label.textColor = .gray
+        label.text = "在线"
+        label.textColor = .green
         label.font = UIFont.PFRegular(14.atScale())
         self.addSubview(label)
         return label
@@ -100,12 +97,5 @@ class FrontPageAvatarView : UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setAvatarOnline(image : UIImage){
-        DispatchQueue.main.async() {
-            self.avatarImage.image = image
-        }
-    }
-    
 
 }

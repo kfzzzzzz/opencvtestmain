@@ -19,6 +19,7 @@ target 'opencv-test-main' do
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'NVActivityIndicatorView'
   pod 'Toast-Swift', '~> 5.0.1'
+  pod 'FLEX', :configurations => ['Debug']
   
 
   flutter_application_path = '../opencv-test-main/Submoudle'

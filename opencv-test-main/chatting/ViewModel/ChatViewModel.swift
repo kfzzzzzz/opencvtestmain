@@ -18,7 +18,7 @@ class ChatViewModel {
     weak var delegate : ChatViewModelDelegate?
     var messages: [Message] = []
     var chatRoom: ChatRoom?
-    var nowUser = UserTest(id: UserData.shared.id, userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
+    var nowUser = UserTest(id: "", userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
     var getMessage: AnyCancellable?
     var usersAvatar : [String : UIImage] = [:]
     

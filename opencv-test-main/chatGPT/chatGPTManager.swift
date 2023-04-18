@@ -24,14 +24,14 @@ class chatGPTManager: NSObject {
     
     override init() {
         super.init()
-        AccountManager.shared.retrieveImage(name: "GPTKEY.txt") { [self] (data) in
-            if let string = String(data: data, encoding: .utf8) {
-                self.key = string
-                self.isInit = true
-            } else {
-                print("无法将Data数据转换成String")
-            }
-        }
+//        AccountManager.shared.retrieveImage(name: "GPTKEY.txt") { [self] (data) in
+//            if let string = String(data: data, encoding: .utf8) {
+//                self.key = string
+//                self.isInit = true
+//            } else {
+//                print("无法将Data数据转换成String")
+//            }
+//        }
     }
     
     

@@ -9,42 +9,35 @@ import UIKit
 import SnapKit
 import Flutter
 import FlutterPluginRegistrant
+#if DEBUG
+import FLEX
+#endif
 
 class ViewController: UIViewController {
-    
-    private let loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("go to Flutter", for: .normal)
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
-        button.layer.masksToBounds = true
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-        return button
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .yellow
-        
-        loginButton.addTarget(self, action: #selector(aaaaa), for: .touchUpInside)
-        // Do any additional setup after loading the view.
-        view.addSubview(loginButton)
-        
-        loginButton.snp.makeConstraints{ make in
-            make.center.equalToSuperview()
-            make.width.equalTo(200)
-            make.height.equalTo(50)
-        }
-    }
-    
-    
-    @objc func aaaaa(){
-
-        let flutterViewController = FlutterViewController(project: nil, initialRoute: "kfz_camera", nibName: nil, bundle: nil)
-        self.present(flutterViewController, animated: true, completion: nil)
-    }
-
-
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidLoad()
+//
+//#if DEBUG
+//        FLEXManager.shared.showExplorer()
+//#endif
+//
+//        AccountManager.shared.fetchAuthSession { isSignedIn in
+//            // 检查用户是否已经登录
+//            DispatchQueue.main.async {
+//                if isSignedIn {
+//                    let vc = MainTabBarController()
+//                    vc.modalPresentationStyle = .fullScreen
+//                    self.present(vc, animated: false)
+//                } else {
+//                    let vc = LoginViewController()
+//                    vc.modalPresentationStyle = .fullScreen
+//                    self.present(vc, animated: false)
+//                }
+//            }
+//
+//        }
+//
+//    }
 }
 

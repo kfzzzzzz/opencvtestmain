@@ -79,7 +79,7 @@ class ChatViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         
         if self.isFisrstAppear {
-            self.chatViewModel.nowUser = UserTest(id: UserData.shared.id, userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
+//            self.chatViewModel.nowUser = UserTest(id: UserData.shared.id, userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
             self.chatViewModel.getChatRoom(){
                 self.messageTable.reloadData()
             }
@@ -133,15 +133,15 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         if avater != nil{
             cell.setData(message: chatViewModel.messages[indexPath.row], avatar: avater!)
         }else{
-            AccountManager.shared.retrieveImage(name: senderImage){(data) in
-                DispatchQueue.main.async() {
-                    let uim = UIImage(data: data)
-                    avater = uim
-                    self.chatViewModel.usersAvatar[senderImage] = uim
-                    cell.setData(message: self.chatViewModel.messages[indexPath.row], avatar: avater!)
-                    
-                }
-                    }
+//            AccountManager.shared.retrieveImage(name: senderImage){(data) in
+//                DispatchQueue.main.async() {
+//                    let uim = UIImage(data: data)
+//                    avater = uim
+//                    self.chatViewModel.usersAvatar[senderImage] = uim
+//                    cell.setData(message: self.chatViewModel.messages[indexPath.row], avatar: avater!)
+//                    
+//                }
+//                    }
         }
         return cell
     }
