@@ -46,6 +46,8 @@
 		949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */; };
 		949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */; };
 		94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */; };
+		94D8B9F629EE943C00F5E102 /* XTRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9F529EE943B00F5E102 /* XTRegisterViewController.swift */; };
+		94D8B9F829EEB19A00F5E102 /* ConfirmCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */; };
 		94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */; };
 		94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */; };
 		94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */; };
@@ -107,6 +109,8 @@
 		949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATRoundRectTextField.swift; sourceTree = "<group>"; };
 		94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
+		94D8B9F529EE943B00F5E102 /* XTRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTRegisterViewController.swift; sourceTree = "<group>"; };
+		94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeView.swift; sourceTree = "<group>"; };
 		94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileViewController.swift; sourceTree = "<group>"; };
 		94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileShowAnimation.swift; sourceTree = "<group>"; };
@@ -350,13 +354,23 @@
 		949F1F71298904FE004B7C3C /* login */ = {
 			isa = PBXGroup;
 			children = (
+				94D8B9F929EEB19F00F5E102 /* view */,
 				949F1F6B2988D3EB004B7C3C /* LoginViewController.swift */,
 				949F1F6F2988D4D1004B7C3C /* ATRoundRectTextField.swift */,
 				949F1F6D2988D495004B7C3C /* ATPhoneNumberTextField.swift */,
 				949F1F692988D3AF004B7C3C /* RegisterViewController.swift */,
 				9410503229E6B54D00A041F6 /* XTLoginViewController.swift */,
+				94D8B9F529EE943B00F5E102 /* XTRegisterViewController.swift */,
 			);
 			path = login;
+			sourceTree = "<group>";
+		};
+		94D8B9F929EEB19F00F5E102 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		94E84AA129C2F4AB00A2F3FB /* chatGPT */ = {
@@ -552,6 +566,7 @@
 				94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */,
 				949F1F6E2988D495004B7C3C /* ATPhoneNumberTextField.swift in Sources */,
 				948209EA29ACA2F4009E42A9 /* SettingViewController.swift in Sources */,
+				94D8B9F629EE943C00F5E102 /* XTRegisterViewController.swift in Sources */,
 				948209E029A8585E009E42A9 /* FrontPageAvatarView.swift in Sources */,
 				949F1F702988D4D2004B7C3C /* ATRoundRectTextField.swift in Sources */,
 				949C197729AF2DCD00E57CAD /* UILable+Utils.swift in Sources */,
@@ -564,6 +579,7 @@
 				948209EE29AD9832009E42A9 /* UIViewController+Utils.swift in Sources */,
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
 				948209EC29ACB100009E42A9 /* SettingPresentationController.swift in Sources */,
+				94D8B9F829EEB19A00F5E102 /* ConfirmCodeView.swift in Sources */,
 				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
 				945E6CDB29E426BF00ABDEBE /* BoostDelegate.swift in Sources */,
 				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,

@@ -20,10 +20,7 @@ class XTLoginViewController : UIViewController {
     
     private lazy var logoImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
-        
-        
-        //imageView.image =
+        imageView.image = UIImage(named: "AppIcon")
         imageView.contentMode = .scaleAspectFit
         self.view.addSubview(imageView)
         return imageView
@@ -35,6 +32,8 @@ class XTLoginViewController : UIViewController {
                                                          NSAttributedString.Key.foregroundColor: UIColor.black as Any]
         textField.attributedPlaceholder = NSAttributedString.init(string: "输入手机号", attributes: attribute)
         textField.textContentType = .telephoneNumber
+        
+     //   NotificationCenter.default.addObserver(self, selector: #selector(onTextChanged(_:)), name: UITextField.textDidChangeNotification, object: textField)
         
         self.view.addSubview(textField)
         return textField
@@ -50,6 +49,8 @@ class XTLoginViewController : UIViewController {
         let attribute: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)as Any,
                                                          NSAttributedString.Key.foregroundColor: UIColor.black as Any]
         textField.attributedPlaceholder = NSAttributedString.init(string: "输入密码", attributes: attribute)
+        
+      //  NotificationCenter.default.addObserver(self, selector: #selector(onTextChanged(_:)), name: UITextField.textDidChangeNotification, object: textField)
         
         self.view.addSubview(textField)
         return textField
@@ -74,6 +75,7 @@ class XTLoginViewController : UIViewController {
         button.backgroundColor = .clear
         button.setTitleColor(.blue, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.addTarget(self, action: #selector(gotoRegister), for: .touchUpInside)
         self.view.addSubview(button)
         return button
     }()
@@ -145,12 +147,29 @@ class XTLoginViewController : UIViewController {
                 print("成功登录")
             case .failure(let error):
                 print("登录失败 \(error)")
-                self.view.makeToast("气死了，登录失败请检查网络！")
-                self.activityIndicatorView.stopAnimating()
+                DispatchQueue.main.async {
+                    self.view.makeToast("气死了，登录失败请检查账号和网络！")
+                    self.activityIndicatorView.stopAnimating()
+                }
             }
         }
     }
     
+    @objc func gotoRegister(){
+        let vc = XTRegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
+//    @objc func onTextChanged(_ notification: Notification) {
+//        let phoneNumber = self.phoneNumberField.text ?? ""
+//        let otherText = self.passwordField.text ?? ""
+//
+//        if phoneNumber.isEmpty || otherText.isEmpty {
+//            self.loginButton.isEnabled = false
+//        }
+//        else {
+//            self.loginButton.isEnabled = true
+//        }
+//    }
     
 }

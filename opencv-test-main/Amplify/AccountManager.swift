@@ -80,13 +80,15 @@ class AccountManager : NSObject {
     }
     
     //确认用户注册
-    func confirmSignUp(for username: String, with confirmationCode: String) {
+    func confirmSignUp(for username: String, with confirmationCode: String, completed: @escaping (Bool) -> Void) {
         Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
             switch result {
             case .success:
                 print("Confirm signUp succeeded")
+                completed(true)
             case .failure(let error):
                 print("An error occurred while confirming sign up \(error)")
+                completed(false)
             }
         }
     }
