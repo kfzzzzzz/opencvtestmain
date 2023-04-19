@@ -13,38 +13,41 @@ class XTRegisterViewController: UIViewController {
     
     private lazy var imageView : UIImageView = {
         let imageView = UIImageView()
-        //imageView.image = UIImage(systemName: "person.circle")
-        imageView.tintColor = .gray
+        imageView.image = UIImage(named: "MainTabIcon")
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.masksToBounds = true
-        imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
-        imageView.addGestureRecognizer(gesture)
         self.view.addSubview(imageView)
         return imageView
     }()
     
+//    private lazy var imageView : UIImageView = {
+//        let imageView = UIImageView()
+//        //imageView.image = UIImage(systemName: "person.circle")
+//        imageView.tintColor = .gray
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.layer.masksToBounds = true
+//        imageView.layer.borderWidth = 2
+//        imageView.layer.borderColor = UIColor.lightGray.cgColor
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
+//        imageView.addGestureRecognizer(gesture)
+//        self.view.addSubview(imageView)
+//        return imageView
+//    }()
+    
     private lazy var phoneNumberField: ATPhoneNumberTextField = {
         let textField = ATPhoneNumberTextField.init(frame: .zero)
-        let attribute: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16) as Any,
-                                                         NSAttributedString.Key.foregroundColor: UIColor.black as Any]
-        textField.attributedPlaceholder = NSAttributedString.init(string: "输入手机号", attributes: attribute)
+        textField.placeholder = "请输入手机号（每个手机号唯一） ..."
         textField.textContentType = .telephoneNumber
         
         self.view.addSubview(textField)
         return textField
     } ()
     
-    private lazy var nameField : UITextField = {
-        let field = UITextField()
+    private lazy var nameField : ATRoundRectTextField = {
+        let field = ATRoundRectTextField.init(frame: .zero)
         field.autocapitalizationType = .none  //自动大写样式
         field.autocorrectionType = .no //自动更正样式
         field.returnKeyType = .continue //返回键可视
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "LastName Address ..."
+        field.placeholder = "请输入用户名 ..."
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -52,15 +55,12 @@ class XTRegisterViewController: UIViewController {
         return field
     }()
     
-    private lazy var emailField : UITextField = {
-        let field = UITextField()
+    private lazy var emailField : ATRoundRectTextField = {
+        let field = ATRoundRectTextField.init(frame: .zero)
         field.autocapitalizationType = .none  //自动大写样式
         field.autocorrectionType = .no //自动更正样式
         field.returnKeyType = .continue //返回键可视
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Email Address ..."
+        field.placeholder = "请输入邮箱地址（用于接受验证码）..."
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -69,15 +69,12 @@ class XTRegisterViewController: UIViewController {
     }()
     
     
-    private lazy var passwordField : UITextField = {
-        let field = UITextField()
+    private lazy var passwordField : ATRoundRectTextField = {
+        let field = ATRoundRectTextField.init(frame: .zero)
         field.autocapitalizationType = .none  //自动大写样式
         field.autocorrectionType = .no //自动更正样式
         field.returnKeyType = .done //返回键可视
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
-        field.placeholder = "Password ..."
+        field.placeholder = "请输入密码 ..."
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
@@ -88,10 +85,10 @@ class XTRegisterViewController: UIViewController {
     
     private lazy var registerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Register", for: .normal)
-        button.backgroundColor = .systemGreen
+        button.setTitle("注册", for: .normal)
+        button.backgroundColor = UIColor.pink1()
         button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
+        button.layer.cornerRadius = 18.atScale()
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
@@ -103,7 +100,7 @@ class XTRegisterViewController: UIViewController {
         let button = UIButton()
         button.setTitle("已有账号？返回登录", for: .normal)
         button.backgroundColor = .clear
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(UIColor.pink2(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         button.addTarget(self, action: #selector(gotoLogin), for: .touchUpInside)
         self.view.addSubview(button)
@@ -128,8 +125,8 @@ class XTRegisterViewController: UIViewController {
         
         imageView.snp.makeConstraints{ make in
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(scalePadSize(50, withPhoneSize: 50))
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30.atScale())
+            make.width.height.equalTo(scalePadSize(100.atScale(), withPhoneSize: 100.atScale()))
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(50.atScale())
         }
         phoneNumberField.snp.makeConstraints{ make in
             make.top.equalTo(imageView.snp.bottom).offset(20.atScale())
@@ -167,16 +164,21 @@ class XTRegisterViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         confirmView.snp.makeConstraints{ make in
-            make.centerY.centerX.equalToSuperview()
-            make.height.equalTo(200.atScale())
-            make.left.equalToSuperview().offset(20.atScale())
-            make.right.equalToSuperview().offset(-20.atScale())
+            make.edges.equalToSuperview()
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+          tapGesture.cancelsTouchesInView = false
+          view.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc private func imageViewTapped(){
@@ -195,7 +197,7 @@ class XTRegisterViewController: UIViewController {
         passwordField.resignFirstResponder()
         
         guard var phoneNumber = phoneNumberField.text, let name = nameField.text, let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty,!phoneNumber.isEmpty,!name.isEmpty else{
-            print("nonononono")
+            self.view.makeToast("请将信息填写完毕！")
             return
         }
         
@@ -217,6 +219,13 @@ class XTRegisterViewController: UIViewController {
                 }
             case .failure(let error):
                 print("An error occurred while registering a user \(error)")
+                DispatchQueue.main.async {
+                    if String(describing: error).contains("usernameExists") {
+                        self.view.makeToast("账号已存在")
+                    } else {
+                        self.view.makeToast(String(describing: error))
+                    }
+                }
             }
         }
 

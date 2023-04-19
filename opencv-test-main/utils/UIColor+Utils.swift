@@ -21,5 +21,12 @@ extension UIColor {
     @objc public static func pink1() -> UIColor {
         return UIColor(hex: 0xF22E63)
     }
-
+    
+    @objc public static func pink2() -> UIColor {
+        return UIColor(hex: 0xFA5075)
+    }
+    
+    @objc public static func pink3() -> UIColor {
+        return UIColor(hex: 0xF0E0DF)
+    }
 }

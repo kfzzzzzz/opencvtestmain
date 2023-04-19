@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import AthenaUtils
+import SnapKit
 
 class ATPhoneNumberTextField: UITextField {
     
@@ -24,8 +24,8 @@ class ATPhoneNumberTextField: UITextField {
     private lazy var areaCodeButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.setTitle("+86", for: .normal)
-//        button.setTitleColor(UIColor.atCt1(), for: .normal)
-//        button.titleLabel?.font = UIFont.pingFangSemiboldFont(ofSize: kUIFontSize16)
+        button.setTitleColor(UIColor.pink1(), for: .normal)
+        button.titleLabel?.font = UIFont.PFSemibold(16)
         button.addTarget(self, action: #selector(selectCountry), for: .touchUpInside)
         button.setImage(UIImage(named: "login_country_code"), for: .normal)
         button.backgroundColor = UIColor.clear
@@ -37,9 +37,11 @@ class ATPhoneNumberTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.font = UIFont.systemFont(ofSize: 16)
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.pink2().cgColor
+        
         self.textColor = UIColor.black
-        self.backgroundColor = UIColor.gray
+        self.backgroundColor = UIColor.white
         self.textAlignment = .left
         self.keyboardType = .numberPad
         self.clearButtonMode = .whileEditing
@@ -59,9 +61,14 @@ class ATPhoneNumberTextField: UITextField {
         self.layer.cornerRadius = self.frame.size.height/2
         self.layer.masksToBounds = true
         
-        self.areaCodeButton.frame = CGRect.init(x: 0, y: 12, width: 72, height: 25)
-        self.areaCodeButton.imageEdgeInsets = UIEdgeInsets.init(top: 7, left: self.areaCodeButton.frame.size.width - 11, bottom: 7, right: 0)
-        self.areaCodeButton.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 11)
+        areaCodeButton.snp.makeConstraints{ make in
+            make.top.left.bottom.equalToSuperview()
+            make.width.equalTo(72.atScale())
+        }
+        
+        //self.areaCodeButton.frame = CGRect.init(x: 0, y: 12.atScale(), width: 72.atScale(), height: 25.atScale())
+       // self.areaCodeButton.imageEdgeInsets = UIEdgeInsets.init(top: 7.atScale(), left: self.areaCodeButton.frame.size.width - 11, bottom: 7.atScale(), right: 0)
+        //self.areaCodeButton.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 11)
     }
     
     @objc func selectCountry() {

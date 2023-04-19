@@ -20,7 +20,9 @@ class ATRoundRectTextField: UITextField {
         
         self.font = UIFont.systemFont(ofSize: 16)
         self.textColor = UIColor.black
-        self.backgroundColor = UIColor.gray
+        self.backgroundColor = UIColor.white
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.pink2().cgColor
         
         self.clearButtonMode = .whileEditing
         if let clearButton = self.value(forKeyPath: "_clearButton") as? UIButton {

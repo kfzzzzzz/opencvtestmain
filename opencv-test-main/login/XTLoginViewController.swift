@@ -13,14 +13,14 @@ import NVActivityIndicatorView
 class XTLoginViewController : UIViewController {
     
     private lazy var activityIndicatorView : NVActivityIndicatorView = {
-        let view = NVActivityIndicatorView(frame: CGRectMake(0, 0,         UIScreen.main.bounds.width*0.8,UIScreen.main.bounds.height*0.4), type: NVActivityIndicatorType.ballRotateChase, color: UIColor.pink1(),padding: 120.atScale())
+        let view = NVActivityIndicatorView(frame: CGRectMake(UIScreen.main.bounds.width*0.1, UIScreen.main.bounds.height*0.1,         UIScreen.main.bounds.width*0.8,UIScreen.main.bounds.height*0.4), type: NVActivityIndicatorType.ballRotateChase, color: UIColor.pink1(),padding: 120.atScale())
         self.view.addSubview(view)
         return view
     }()
     
     private lazy var logoImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "AppIcon")
+        imageView.image = UIImage(named: "MainTabIcon")
         imageView.contentMode = .scaleAspectFit
         self.view.addSubview(imageView)
         return imageView
@@ -28,12 +28,8 @@ class XTLoginViewController : UIViewController {
     
     private lazy var phoneNumberField: ATPhoneNumberTextField = {
         let textField = ATPhoneNumberTextField.init(frame: .zero)
-        let attribute: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16) as Any,
-                                                         NSAttributedString.Key.foregroundColor: UIColor.black as Any]
-        textField.attributedPlaceholder = NSAttributedString.init(string: "输入手机号", attributes: attribute)
+        textField.placeholder = "请输入手机号 ..."
         textField.textContentType = .telephoneNumber
-        
-     //   NotificationCenter.default.addObserver(self, selector: #selector(onTextChanged(_:)), name: UITextField.textDidChangeNotification, object: textField)
         
         self.view.addSubview(textField)
         return textField
@@ -46,11 +42,7 @@ class XTLoginViewController : UIViewController {
         textField.textContentType = .password
         textField.isSecureTextEntry = true
         textField.autocorrectionType = .no
-        let attribute: [NSAttributedString.Key : Any] = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)as Any,
-                                                         NSAttributedString.Key.foregroundColor: UIColor.black as Any]
-        textField.attributedPlaceholder = NSAttributedString.init(string: "输入密码", attributes: attribute)
-        
-      //  NotificationCenter.default.addObserver(self, selector: #selector(onTextChanged(_:)), name: UITextField.textDidChangeNotification, object: textField)
+        textField.placeholder = "请输入密码 ..."
         
         self.view.addSubview(textField)
         return textField
@@ -59,12 +51,12 @@ class XTLoginViewController : UIViewController {
     private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("登录", for: .normal)
-        button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
+        button.backgroundColor = UIColor.pink1()
+        button.layer.cornerRadius = 18.atScale()
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)   
         self.view.addSubview(button)
         return button
     }()
@@ -73,7 +65,7 @@ class XTLoginViewController : UIViewController {
         let button = UIButton()
         button.setTitle("暂无账号？前往注册", for: .normal)
         button.backgroundColor = .clear
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(UIColor.pink2(), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         button.addTarget(self, action: #selector(gotoRegister), for: .touchUpInside)
         self.view.addSubview(button)
@@ -87,8 +79,8 @@ class XTLoginViewController : UIViewController {
         
         logoImageView.snp.makeConstraints{ make in
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(scalePadSize(50, withPhoneSize: 50))
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30.atScale())
+            make.width.height.equalTo(scalePadSize(100.atScale(), withPhoneSize: 100.atScale()))
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(50.atScale())
         }
         phoneNumberField.snp.makeConstraints{ make in
             make.top.equalTo(logoImageView.snp.bottom).offset(20.atScale())
@@ -113,13 +105,13 @@ class XTLoginViewController : UIViewController {
             make.height.equalTo(20.atScale())
             make.centerX.equalToSuperview()
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+          tapGesture.cancelsTouchesInView = false
+          view.addGestureRecognizer(tapGesture)
     }
     
     @objc private func handleUserInfoRefresh(){
-        print("KFZTEST:isSignedIn:\(UserData.shared.isSignedIn)")
-        print("KFZTEST:userId:\(UserData.shared.userId)")
-        print("KFZTEST:userName:\(UserData.shared.userName)")
-        print("KFZTEST:userImageURL:\(UserData.shared.userImageURL)")
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
             if UserData.shared.isSignedIn {
@@ -158,6 +150,10 @@ class XTLoginViewController : UIViewController {
     @objc func gotoRegister(){
         let vc = XTRegisterViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 //    @objc func onTextChanged(_ notification: Notification) {

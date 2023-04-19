@@ -13,14 +13,21 @@ class ConfirmCodeView : UIView {
     
     var userPhoneNumber : String?
     
+    private lazy var bgView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 15.atScale()
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
     private lazy var noticeLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.SmileySans(12.atScale())
+        label.font = UIFont.PFRegular(12.atScale())
         label.textColor = UIColor.black
         label.text = "请输入邮箱收到的验证码，若没有收到邮件请将账号发送至310654959@qq.com，或者微信联系K_F_Z_UUU"
         label.numberOfLines = 0
         label.backgroundColor = .clear
-        self.addSubview(label)
         return label
     }()
     
@@ -37,31 +44,46 @@ class ConfirmCodeView : UIView {
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
-        self.addSubview(field)
         return field
     }()
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.setTitle("确认", for: .normal)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = UIColor.pink1()
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
-        self.addSubview(button)
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .gray
+        
+        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        backgroundColor = UIColor.pink2().withAlphaComponent(0.3)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurEffectView)
+        
+        self.addSubview(bgView)
+        bgView.addSubview(noticeLabel)
+        bgView.addSubview(numberField)
+        bgView.addSubview(confirmButton)
+        
+        bgView.snp.makeConstraints{ make in
+            make.centerY.centerX.equalToSuperview()
+            make.height.equalTo(220.atScale())
+            make.left.equalToSuperview().offset(20.atScale())
+            make.right.equalToSuperview().offset(-20.atScale())
+        }
         noticeLabel.snp.makeConstraints{ make in
             make.left.equalToSuperview().offset(20.atScale())
             make.right.equalToSuperview().offset(-20.atScale())
-            make.top.equalToSuperview().offset(10.atScale())
-            make.height.equalTo(80.atScale())
+            make.top.equalToSuperview().offset(20.atScale())
+            make.height.equalTo(40.atScale())
         }
         numberField.snp.makeConstraints{ make in
             make.top.equalTo(noticeLabel.snp.bottom).offset(20.atScale())

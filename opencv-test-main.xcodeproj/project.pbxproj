@@ -48,6 +48,8 @@
 		94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */; };
 		94D8B9F629EE943C00F5E102 /* XTRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9F529EE943B00F5E102 /* XTRegisterViewController.swift */; };
 		94D8B9F829EEB19A00F5E102 /* ConfirmCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */; };
+		94D8B9FB29EF919500F5E102 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9FA29EF919500F5E102 /* UIView+Utils.swift */; };
+		94D8B9FD29EF91A600F5E102 /* UIButton+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9FC29EF91A500F5E102 /* UIButton+Utils.swift */; };
 		94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */; };
 		94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */; };
 		94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */; };
@@ -111,6 +113,8 @@
 		94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		94D8B9F529EE943B00F5E102 /* XTRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTRegisterViewController.swift; sourceTree = "<group>"; };
 		94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeView.swift; sourceTree = "<group>"; };
+		94D8B9FA29EF919500F5E102 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		94D8B9FC29EF91A500F5E102 /* UIButton+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
 		94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileViewController.swift; sourceTree = "<group>"; };
 		94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileShowAnimation.swift; sourceTree = "<group>"; };
@@ -339,6 +343,8 @@
 				94A9C6F72996B4A8003B03CC /* UIColor+Utils.swift */,
 				948209ED29AD9832009E42A9 /* UIViewController+Utils.swift */,
 				949C197629AF2DCD00E57CAD /* UILable+Utils.swift */,
+				94D8B9FA29EF919500F5E102 /* UIView+Utils.swift */,
+				94D8B9FC29EF91A500F5E102 /* UIButton+Utils.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,
 				94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */,
 				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,
+				94D8B9FB29EF919500F5E102 /* UIView+Utils.swift in Sources */,
 				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
 				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
 				94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */,
@@ -597,6 +604,7 @@
 				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
 				94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */,
 				9410503329E6B54E00A041F6 /* XTLoginViewController.swift in Sources */,
+				94D8B9FD29EF91A600F5E102 /* UIButton+Utils.swift in Sources */,
 				70379954304F70B87DC61DCC /* UserTest.swift in Sources */,
 				C0C773BF8EEE8C7B215AC43A /* ChatRoom+Schema.swift in Sources */,
 				FFCCCAC9103FFDE0C12C7C3E /* ChatRoom.swift in Sources */,
