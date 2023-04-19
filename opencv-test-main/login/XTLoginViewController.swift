@@ -137,12 +137,23 @@ class XTLoginViewController : UIViewController {
             switch result {
             case .success:
                 print("成功登录")
+                self.checkConfirmed()
             case .failure(let error):
                 print("登录失败 \(error)")
                 DispatchQueue.main.async {
                     self.view.makeToast("气死了，登录失败请检查账号和网络！")
                     self.activityIndicatorView.stopAnimating()
                 }
+            }
+        }
+    }
+    
+    func checkConfirmed(){
+        let delayTime = DispatchTime.now() + 15.0
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            if self.activityIndicatorView.isAnimating == true{
+                self.activityIndicatorView.stopAnimating()
+                self.view.makeToast("登录失败，请检查账号是否激活或者联系KFZ")
             }
         }
     }
