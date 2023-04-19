@@ -7,16 +7,10 @@ type ChatRoom @model @auth(rules: [{allow: private}]) {
 type Message @model @auth(rules: [{allow: private}]) {
   id: ID!
   body: String
-  sender: UserTest @hasOne
   dateTime: AWSDateTime
   chatroomID: ID! @index(name: "byChatRoom")
-}
-
-type UserTest @model @auth(rules: [{allow: private}, {allow: owner}]) {
-  id: ID!
-  userName: String
-  userId: String
-  userImage: String
+  senderId: String
+  senderNam: String
 }
 
 type NewTestModel @model @auth(rules: [{allow: private}]) {

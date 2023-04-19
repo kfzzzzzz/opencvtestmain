@@ -7,12 +7,12 @@ extension Message {
    public enum CodingKeys: String, ModelKey {
     case id
     case body
-    case sender
     case dateTime
     case chatroomID
+    case senderId
+    case senderNam
     case createdAt
     case updatedAt
-    case messageSenderId
   }
   
   public static let keys = CodingKeys.self
@@ -35,12 +35,12 @@ extension Message {
     model.fields(
       .field(message.id, is: .required, ofType: .string),
       .field(message.body, is: .optional, ofType: .string),
-      .hasOne(message.sender, is: .optional, ofType: UserTest.self, associatedWith: UserTest.keys.id, targetNames: ["messageSenderId"]),
       .field(message.dateTime, is: .optional, ofType: .dateTime),
       .field(message.chatroomID, is: .required, ofType: .string),
+      .field(message.senderId, is: .optional, ofType: .string),
+      .field(message.senderNam, is: .optional, ofType: .string),
       .field(message.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
-      .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime),
-      .field(message.messageSenderId, is: .optional, ofType: .string)
+      .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
 }

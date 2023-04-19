@@ -18,7 +18,6 @@ class ChatViewModel {
     weak var delegate : ChatViewModelDelegate?
     var messages: [Message] = []
     var chatRoom: ChatRoom?
-    var nowUser = UserTest(id: "", userName: UserData.shared.userName, userId: UserData.shared.userId, userImage: UserData.shared.userImageURL)
     var getMessage: AnyCancellable?
     var usersAvatar : [String : UIImage] = [:]
     
@@ -37,13 +36,25 @@ class ChatViewModel {
                     print("加入聊天室\( date[0].id)")
                     self.chatRoom = date[0]
                     self.messages = date[0].Messages!.elements
+                    self.messages.sort(by: sortMessage)
+                    
+                    // 获取头像
                     for index in 0...self.messages.count - 1{
-                        let senderId = self.messages[index].messageSenderId
-                        self.getSender(id: senderId ?? "-1"){ user in
-                            self.messages[index].sender = user
+                        let senderImage = (self.messages[index].senderId ?? "-1") + ".jpg"
+                        if self.usersAvatar[senderImage] == nil && senderImage != "-1.jpg"{
+                            self.usersAvatar[senderImage] = UIImage()
+                            AccountManager.shared.retrieveImage(name: senderImage) { result in
+                                switch result{
+                                case .failure(let error):
+                                    print(error)
+                                case .success(let data):
+                                    self.usersAvatar[senderImage] = UIImage(data: data)
+                                    completed()
+                                }
+                            }
                         }
                     }
-                    self.messages.sort(by: sortMessage)
+
                     
                     func sortMessage(message1 : Message , message2 : Message)-> Bool {
                         return message1.dateTime! > message2.dateTime!
@@ -103,12 +114,6 @@ class ChatViewModel {
             }
         } receiveValue: { querySnapshot in
             self.messages = querySnapshot.items
-            for index in 0...self.messages.count - 1{
-                let senderId = self.messages[index].messageSenderId
-                self.getSender(id: senderId ?? "-1"){ user in
-                    self.messages[index].sender = user
-                }
-            }
             self.messages.sort(by: sortMessage)
             func sortMessage(message1 : Message , message2 : Message)-> Bool {
                 return message1.dateTime! > message2.dateTime!
@@ -125,7 +130,7 @@ class ChatViewModel {
     
     /// 发送消息
     func sendMessage(body: String, completed: @escaping () -> Void){
-        let message = Message(body: body, sender:nowUser, dateTime: .now(),chatroomID: chatRoom?.id ?? "-1",messageSenderId: nowUser.id)
+        let message = Message(body: body, dateTime: .now(), chatroomID: chatRoom?.id ?? "-1", senderId: UserData.shared.userId, senderNam: UserData.shared.userName)
         Amplify.DataStore.save(message){ result in
             switch result{
             case .success(let date):
@@ -158,17 +163,17 @@ class ChatViewModel {
 //        }
 //    }
     
-    func getSender(id: String, completed: @escaping (UserTest?) -> Void){
-        Amplify.DataStore.query(UserTest.self, byId: id){ result in
-            switch result{
-            case .success(let date):
-                completed(date)
-            case .failure(let error):
-                print("获得发送人失败 \(error)")
-                return
-            }
-        }
-    }
+//    func getSender(id: String, completed: @escaping (UserTest?) -> Void){
+//        Amplify.DataStore.query(UserTest.self, byId: id){ result in
+//            switch result{
+//            case .success(let date):
+//                completed(date)
+//            case .failure(let error):
+//                print("获得发送人失败 \(error)")
+//                return
+//            }
+//        }
+//    }
         
     
 }

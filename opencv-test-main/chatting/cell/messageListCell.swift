@@ -12,7 +12,6 @@ import SnapKit
 class messageListCell: UITableViewCell {
     
     private var message: Message?
-    private var sender: UserTest?
     
     private lazy var avaterImage: UIImageView = {
         let image = UIImageView()
@@ -33,14 +32,18 @@ class messageListCell: UITableViewCell {
         return label
     }()
     
-    private lazy var messageBubble: PaddingLabel = {
-        let label = PaddingLabel()
-        label.padding(10.atScale(), 10.atScale(), 10.atScale(), 10.atScale())
+    private lazy var messageBubbleView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.pink2()
+        view.layer.cornerRadius = 10.atScale()
+        view.layer.masksToBounds = true
+        self.addSubview(view)
+        return view
+    }()
+    
+    private lazy var messageBubbleLabel: UILabel = {
+        let label = UILabel()
         label.numberOfLines = 0
-        label.backgroundColor = UIColor.pink1()
-        label.layer.cornerRadius = 10.atScale()
-        label.layer.masksToBounds = true
-        self.addSubview(label)
         return label
     }()
     
@@ -63,11 +66,18 @@ class messageListCell: UITableViewCell {
             make.left.equalTo(avaterImage.snp.right).offset(10.atScale())
             make.height.equalTo(12.atScale())
         }
-        messageBubble.snp.makeConstraints{ make in
+        messageBubbleView.snp.makeConstraints{ make in
             make.top.equalTo(senderName.snp.bottom).offset(5.atScale())
             make.left.equalTo(avaterImage.snp.right).offset(10.atScale())
             make.right.equalToSuperview().offset(-10.atScale())
             make.bottom.equalToSuperview().offset(-25.atScale())
+        }
+        messageBubbleView.addSubview(messageBubbleLabel)
+        messageBubbleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(messageBubbleView.snp.leading).offset(8.atScale())
+            make.top.equalTo(messageBubbleView.snp.top).offset(8.atScale())
+            make.trailing.equalTo(messageBubbleView.snp.trailing).offset(-8.atScale())
+            make.bottom.equalTo(messageBubbleView.snp.bottom).offset(-8.atScale())
         }
     }
     
@@ -77,9 +87,8 @@ class messageListCell: UITableViewCell {
     
     func setData(message: Message, avatar: UIImage){
         self.message = message
-        self.sender = message.sender
-        messageBubble.text = message.body
-        senderName.text = sender?.userName
+        messageBubbleLabel.text = message.body
+        senderName.text = message.senderNam
         self.avaterImage.image = avatar
     }
     

@@ -50,6 +50,8 @@
 		94D8B9F829EEB19A00F5E102 /* ConfirmCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */; };
 		94D8B9FB29EF919500F5E102 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9FA29EF919500F5E102 /* UIView+Utils.swift */; };
 		94D8B9FD29EF91A600F5E102 /* UIButton+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9FC29EF91A500F5E102 /* UIButton+Utils.swift */; };
+		94D8B9FF29EFE27D00F5E102 /* messageListV2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8B9FE29EFE27D00F5E102 /* messageListV2Cell.swift */; };
+		94D8BA0129F013A000F5E102 /* inputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D8BA0029F013A000F5E102 /* inputTextView.swift */; };
 		94E360CD29A63DC1002C78A4 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */; };
 		94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */; };
 		94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */; };
@@ -115,6 +117,8 @@
 		94D8B9F729EEB19A00F5E102 /* ConfirmCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeView.swift; sourceTree = "<group>"; };
 		94D8B9FA29EF919500F5E102 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		94D8B9FC29EF91A500F5E102 /* UIButton+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Utils.swift"; sourceTree = "<group>"; };
+		94D8B9FE29EFE27D00F5E102 /* messageListV2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageListV2Cell.swift; sourceTree = "<group>"; };
+		94D8BA0029F013A000F5E102 /* inputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputTextView.swift; sourceTree = "<group>"; };
 		94E360CC29A63DC1002C78A4 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		94E360CE29A77BB6002C78A4 /* LeftProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileViewController.swift; sourceTree = "<group>"; };
 		94E360D229A78CF8002C78A4 /* LeftProfileShowAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftProfileShowAnimation.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				948209F129ADFE8F009E42A9 /* messageView.swift */,
+				94D8BA0029F013A000F5E102 /* inputTextView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				948209F429ADFF0D009E42A9 /* messageListCell.swift */,
+				94D8B9FE29EFE27D00F5E102 /* messageListV2Cell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -504,7 +510,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
 			name = "[CP-User] Embed Flutter Build xintai_flutter Script";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/Submoudle/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
@@ -514,7 +524,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
 			name = "[CP-User] Run Flutter Build xintai_flutter Script";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/Submoudle/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
@@ -549,9 +563,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -586,6 +604,7 @@
 				72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */,
 				948209EC29ACB100009E42A9 /* SettingPresentationController.swift in Sources */,
 				94D8B9F829EEB19A00F5E102 /* ConfirmCodeView.swift in Sources */,
+				94D8B9FF29EFE27D00F5E102 /* messageListV2Cell.swift in Sources */,
 				94E360D329A78CF8002C78A4 /* LeftProfileShowAnimation.swift in Sources */,
 				945E6CDB29E426BF00ABDEBE /* BoostDelegate.swift in Sources */,
 				948209E229A89223009E42A9 /* UIButton+enlarge.swift in Sources */,
@@ -614,6 +633,7 @@
 				949C197A29AF4E1D00E57CAD /* ChatViewModel.swift in Sources */,
 				948209F229ADFE8F009E42A9 /* messageView.swift in Sources */,
 				942D249B29D181AB00C8223D /* FrontPageViewModel.swift in Sources */,
+				94D8BA0129F013A000F5E102 /* inputTextView.swift in Sources */,
 				942D249D29D194E900C8223D /* EmptyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -826,7 +846,7 @@
 				9454DF37297427ED001ED74C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		9454DF38297427ED001ED74C /* Build configuration list for PBXNativeTarget "opencv-test-main" */ = {
 			isa = XCConfigurationList;
@@ -835,7 +855,7 @@
 				9454DF3A297427ED001ED74C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
