@@ -101,8 +101,19 @@ class XTRegisterViewController: UIViewController {
         button.setTitle("已有账号？返回登录", for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(UIColor.pink2(), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         button.addTarget(self, action: #selector(gotoLogin), for: .touchUpInside)
+        self.view.addSubview(button)
+        return button
+    }()
+    
+    private lazy var confirmButton : UIButton = {
+        let button = UIButton()
+        button.setTitle("前往激活账号", for: .normal)
+        button.backgroundColor = .clear
+        button.setTitleColor(UIColor.pink2(), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        button.addTarget(self, action: #selector(gotoConfrim), for: .touchUpInside)
         self.view.addSubview(button)
         return button
     }()
@@ -163,6 +174,11 @@ class XTRegisterViewController: UIViewController {
             make.height.equalTo(20.atScale())
             make.centerX.equalToSuperview()
         }
+        confirmButton.snp.makeConstraints{ make in
+            make.top.equalTo(loginButton.snp.bottom).offset(10.atScale())
+            make.height.equalTo(20.atScale())
+            make.centerX.equalToSuperview()
+        }
         confirmView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
@@ -188,6 +204,10 @@ class XTRegisterViewController: UIViewController {
     
     @objc private func gotoLogin(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func gotoConfrim(){
+        self.confirmView.isHidden = false
     }
     
     @objc private func registerButtonTapped(){

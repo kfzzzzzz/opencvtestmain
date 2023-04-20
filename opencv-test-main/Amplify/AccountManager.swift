@@ -79,7 +79,7 @@ class AccountManager : NSObject {
         }
     }
     
-    //确认用户注册
+    //验证用户注册
     func confirmSignUp(for username: String, with confirmationCode: String, completed: @escaping (Bool) -> Void) {
         Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
             switch result {
@@ -92,6 +92,19 @@ class AccountManager : NSObject {
             }
         }
     }
+    
+    // 重新发送验证码
+    func resendConfirmCode(username: String) {
+        Amplify.Auth.resendSignUpCode(for: username){ result in
+            switch result{
+            case .success(_):
+                print("重新发送验证码成功")
+            case .failure(_):
+                print("重新发送验证码失败")
+            }
+        }
+    }
+    
     
     //登录用户
     public func signIn(username: String, password: String) {
@@ -116,6 +129,7 @@ class AccountManager : NSObject {
             }
         }
     }
+    
     
     // signin with Cognito web user interface
     public func signIn() {
@@ -186,7 +200,6 @@ class AccountManager : NSObject {
 //            }
 //        }
     }
-    
 
     func updateUserData(withSignInStatus status: Bool, completed: ((Bool) -> Void)? = nil) {
         DispatchQueue.main.async() {

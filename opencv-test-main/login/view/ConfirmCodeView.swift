@@ -59,6 +59,24 @@ class ConfirmCodeView : UIView {
         return button
     }()
     
+    private lazy var resendButton : UIButton = {
+        let button = UIButton()
+        button.setTitle("重新发送验证码", for: .normal)
+        button.backgroundColor = .clear
+        button.setTitleColor(UIColor.pink2(), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        button.addTarget(self, action: #selector(resendButtonTapped), for: .touchUpInside)
+        button.isEnabled = true
+        return button
+    }()
+    
+    private lazy var closeButton : UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "ic_close"), for: .normal)
+        button.addTarget(self, action: #selector(dissmissSelf), for: .touchUpInside)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -69,13 +87,15 @@ class ConfirmCodeView : UIView {
         addSubview(blurEffectView)
         
         self.addSubview(bgView)
+        self.addSubview(closeButton)
         bgView.addSubview(noticeLabel)
         bgView.addSubview(numberField)
         bgView.addSubview(confirmButton)
+        bgView.addSubview(resendButton)
         
         bgView.snp.makeConstraints{ make in
             make.centerY.centerX.equalToSuperview()
-            make.height.equalTo(220.atScale())
+            make.height.equalTo(240.atScale())
             make.left.equalToSuperview().offset(20.atScale())
             make.right.equalToSuperview().offset(-20.atScale())
         }
@@ -97,18 +117,46 @@ class ConfirmCodeView : UIView {
             make.left.equalToSuperview().offset(20.atScale())
             make.right.equalToSuperview().offset(-20.atScale())
         }
+        resendButton.snp.makeConstraints{ make in
+            make.top.equalTo(confirmButton.snp.bottom).offset(10.atScale())
+            make.height.equalTo(20.atScale())
+            make.centerX.equalToSuperview()
+        }
+        closeButton.snp.makeConstraints{ make in
+            make.top.equalTo(bgView.snp.bottom).offset(5.atScale())
+            make.centerX.equalToSuperview()
+            make.height.width.equalTo(50.atScale())
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func dissmissSelf(){
+        self.isHidden = true
+    }
+    
+    @objc func resendButtonTapped(){
+        AccountManager.shared.resendConfirmCode(username: userPhoneNumber ?? "")
+        resendButton.isEnabled = false
+        resendButton.setTitle("请稍后再试", for: .normal)
+        resendButton.setTitleColor(.gray, for: .normal)
+        let delayTime = DispatchTime.now() + 60.0
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            self.resendButton.isEnabled = true
+            self.resendButton.setTitle("重新发送验证码", for: .normal)
+            self.resendButton.setTitleColor(UIColor.pink2(), for: .normal)
+        }
+    }
+    
+    
     @objc func confirmButtonTapped(){
         AccountManager.shared.confirmSignUp(for: userPhoneNumber ?? "", with: self.numberField.text ?? "") { result in
             DispatchQueue.main.async {
                 if result{
-                    self.makeToast("验证成功请前往登录")
-                    self.removeFromSuperview()
+                    self.isHidden = true
+                    ViewController.getCurrentViewController()?.view.makeToast("验证成功请前往登录")
                 }else{
                     self.makeToast("验证失败请检查验证码或联系工作人员")
                 }

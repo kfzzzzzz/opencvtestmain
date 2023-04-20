@@ -66,7 +66,7 @@ class XTLoginViewController : UIViewController {
         button.setTitle("暂无账号？前往注册", for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(UIColor.pink2(), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         button.addTarget(self, action: #selector(gotoRegister), for: .touchUpInside)
         self.view.addSubview(button)
         return button
