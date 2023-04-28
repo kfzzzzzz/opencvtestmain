@@ -112,6 +112,7 @@ class SettingViewController: UIViewController {
             return
         } else if nameTextView.text != UserData.shared.userName && avatarView.image == UserData.shared.userImage {
             AccountManager.shared.updateAttribute(attribute: [AuthUserAttribute(.name, value: self.nameTextView.text ?? "气人小子")])
+            AccountManager.shared.updateUserModel(userModel: UserModel(UserPhoneNumber: UserData.shared.userPhoneNumber, UserName: self.nameTextView.text ?? "气人小子", UserImage: UserData.shared.userImageURL))
             activityIndicatorView.stopAnimating()
             self.tapCancelButton()
             return
@@ -121,6 +122,7 @@ class SettingViewController: UIViewController {
                 DispatchQueue.main.async { [self] in
                     let attributes: [AuthUserAttribute] = [AuthUserAttribute(.name, value: self.nameTextView.text ?? "气人小子") , AuthUserAttribute(.picture, value: userImageURL)]
                     AccountManager.shared.updateAttribute(attribute: attributes)
+                    AccountManager.shared.updateUserModel(userModel: UserModel(UserPhoneNumber: UserData.shared.userPhoneNumber, UserName: self.nameTextView.text ?? "气人小子", UserImage: userImageURL))
                     self.activityIndicatorView.stopAnimating()
                     self.tapCancelButton()
                 }

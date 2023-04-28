@@ -83,7 +83,7 @@ class messageListV2Cell: UITableViewCell {
     
     func setData(message: Message, avatar: UIImage){
         messageLabel.text = message.body
-        usernameLabel.text = message.senderNam
+        usernameLabel.text = message.sender?.UserName ?? ""
         avatarImageView.image = avatar
     }
 }

@@ -1,3 +1,10 @@
+type UserModel @model @auth(rules: [{allow: public}, {allow: public, provider: iam}, {allow: owner}, {allow: private}, {allow: private, provider: iam}]) {
+  id: ID!
+  UserPhoneNumber: String!
+  UserName: String!
+  UserImage: String
+}
+
 type ChatRoom @model @auth(rules: [{allow: private}]) {
   id: ID!
   memberIds: [ID!]
@@ -9,12 +16,6 @@ type Message @model @auth(rules: [{allow: private}]) {
   body: String
   dateTime: AWSDateTime
   chatroomID: ID! @index(name: "byChatRoom")
-  senderId: String
-  senderNam: String
-}
-
-type NewTestModel @model @auth(rules: [{allow: private}]) {
-  id: ID!
-  kfz_name: String
+  sender: UserModel @hasOne
 }
  

@@ -81,11 +81,13 @@ class ChatViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.chatViewModel.getNowSender()
         self.chatViewModel.getChatRoom(){
             DispatchQueue.main.async() {
                 self.messageTable.reloadData()
             }
         }
+        //self.chatViewModel.deleteMessage()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
           tapGesture.cancelsTouchesInView = false
@@ -142,7 +144,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageListCell", for: indexPath) as! messageListCell
-        let senderImage = (chatViewModel.messages[indexPath.row].senderId ?? "-1") + ".jpg"
+        let senderImage = chatViewModel.messages[indexPath.row].sender?.UserImage ?? "-1.jpg"
         let avater = chatViewModel.usersAvatar[senderImage]
         if avater != nil{
             cell.setData(message: chatViewModel.messages[indexPath.row], avatar: avater!)

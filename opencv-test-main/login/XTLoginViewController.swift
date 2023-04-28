@@ -112,12 +112,14 @@ class XTLoginViewController : UIViewController {
     }
     
     @objc private func handleUserInfoRefresh(){
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-            if UserData.shared.isSignedIn {
-                self.navigationController?.popViewController(animated: true)
-                let MainTabBarController = MainTabBarController()
-                self.navigationController?.pushViewController(MainTabBarController, animated: true)
+        AccountManager.shared.signInUserModelCheck {
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                if UserData.shared.isSignedIn {
+                    self.navigationController?.popViewController(animated: true)
+                    let MainTabBarController = MainTabBarController()
+                    self.navigationController?.pushViewController(MainTabBarController, animated: true)
+                }
             }
         }
     }
@@ -136,7 +138,7 @@ class XTLoginViewController : UIViewController {
         Amplify.Auth.signIn(username: "+86" + phoneNumber, password: password) { result in
             switch result {
             case .success:
-                print("成功登录")
+                print("成功登录\(UserData.shared.userPhoneNumber)")
                 self.checkConfirmed()
             case .failure(let error):
                 print("登录失败 \(error)")
@@ -149,7 +151,7 @@ class XTLoginViewController : UIViewController {
     }
     
     func checkConfirmed(){
-        let delayTime = DispatchTime.now() + 15.0
+        let delayTime = DispatchTime.now() + 60.0
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
             if self.activityIndicatorView.isAnimating == true{
                 self.activityIndicatorView.stopAnimating()

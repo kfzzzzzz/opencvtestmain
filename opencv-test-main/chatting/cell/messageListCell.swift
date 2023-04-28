@@ -34,7 +34,6 @@ class messageListCell: UITableViewCell {
     
     private lazy var messageBubbleView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.pink2()
         view.layer.cornerRadius = 10.atScale()
         view.layer.masksToBounds = true
         self.addSubview(view)
@@ -69,8 +68,8 @@ class messageListCell: UITableViewCell {
         messageBubbleView.snp.makeConstraints{ make in
             make.top.equalTo(senderName.snp.bottom).offset(5.atScale())
             make.left.equalTo(avaterImage.snp.right).offset(10.atScale())
-            make.right.equalToSuperview().offset(-10.atScale())
-            make.bottom.equalToSuperview().offset(-25.atScale())
+            make.width.lessThanOrEqualToSuperview().offset(-70.atScale())
+            make.bottom.equalToSuperview().offset(-15.atScale())
         }
         messageBubbleView.addSubview(messageBubbleLabel)
         messageBubbleLabel.snp.makeConstraints { make in
@@ -88,8 +87,13 @@ class messageListCell: UITableViewCell {
     func setData(message: Message, avatar: UIImage){
         self.message = message
         messageBubbleLabel.text = message.body
-        senderName.text = message.senderNam
+        senderName.text = message.sender?.UserName ?? ""
         self.avaterImage.image = avatar
+        if message.sender?.UserPhoneNumber == UserData.shared.userPhoneNumber{
+            messageBubbleView.backgroundColor = UIColor.pink2()
+        }else{
+            messageBubbleView.backgroundColor = UIColor.pink3()
+        }
     }
     
 }

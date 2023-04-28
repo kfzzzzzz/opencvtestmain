@@ -142,7 +142,7 @@ class ConfirmCodeView : UIView {
         resendButton.isEnabled = false
         resendButton.setTitle("请稍后再试", for: .normal)
         resendButton.setTitleColor(.gray, for: .normal)
-        let delayTime = DispatchTime.now() + 60.0
+        let delayTime = DispatchTime.now() + 30.0
         DispatchQueue.main.asyncAfter(deadline: delayTime) {
             self.resendButton.isEnabled = true
             self.resendButton.setTitle("重新发送验证码", for: .normal)

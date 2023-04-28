@@ -13,6 +13,7 @@ class UserData {
     static let shared = UserData()
 
     public var isSignedIn : Bool = false
+    public var userPhoneNumber : String  = ""
     public var userId : String = "-1"
     public var userName : String = "气人小子"
     public var userImageURL : String = ""
@@ -20,6 +21,7 @@ class UserData {
     
     func clear(){
         self.isSignedIn = false
+        self.userPhoneNumber = ""
         self.userId = "-1"
         self.userName = "气人小子"
         self.userImageURL = ""
