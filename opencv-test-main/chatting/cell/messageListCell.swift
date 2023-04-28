@@ -32,6 +32,15 @@ class messageListCell: UITableViewCell {
         return label
     }()
     
+    private lazy var senderedTime : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.PFRegular(10.atScale())
+        label.textColor = UIColor.gray
+        label.backgroundColor = .clear
+        self.addSubview(label)
+        return label
+    }()
+    
     private lazy var messageBubbleView : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10.atScale()
@@ -45,6 +54,7 @@ class messageListCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,6 +74,11 @@ class messageListCell: UITableViewCell {
             make.top.equalToSuperview()
             make.left.equalTo(avaterImage.snp.right).offset(10.atScale())
             make.height.equalTo(12.atScale())
+        }
+        senderedTime.snp.makeConstraints{ make in
+            make.left.equalTo(senderName.snp.right).offset(5.atScale())
+            make.bottom.equalTo(senderName.snp.bottom)
+            make.height.equalTo(10.atScale())
         }
         messageBubbleView.snp.makeConstraints{ make in
             make.top.equalTo(senderName.snp.bottom).offset(5.atScale())
@@ -88,6 +103,7 @@ class messageListCell: UITableViewCell {
         self.message = message
         messageBubbleLabel.text = message.body
         senderName.text = message.sender?.UserName ?? ""
+        senderedTime.text = message.createdAt?.iso8601FormattedString(format: .medium,timeZone: .current)
         self.avaterImage.image = avatar
         if message.sender?.UserPhoneNumber == UserData.shared.userPhoneNumber{
             messageBubbleView.backgroundColor = UIColor.pink2()
