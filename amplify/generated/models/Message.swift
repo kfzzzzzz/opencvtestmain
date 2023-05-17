@@ -7,41 +7,41 @@ public struct Message: Model {
   public var body: String?
   public var dateTime: Temporal.DateTime?
   public var chatroomID: String
-  public var sender: UserModel?
+  public var senderName: String?
+  public var senderId: String?
   public var createdAt: Temporal.DateTime?
   public var updatedAt: Temporal.DateTime?
-  public var messageSenderId: String?
   
   public init(id: String = UUID().uuidString,
       body: String? = nil,
       dateTime: Temporal.DateTime? = nil,
       chatroomID: String,
-      sender: UserModel? = nil,
-      messageSenderId: String? = nil) {
+      senderName: String? = nil,
+      senderId: String? = nil) {
     self.init(id: id,
       body: body,
       dateTime: dateTime,
       chatroomID: chatroomID,
-      sender: sender,
+      senderName: senderName,
+      senderId: senderId,
       createdAt: nil,
-      updatedAt: nil,
-      messageSenderId: messageSenderId)
+      updatedAt: nil)
   }
   internal init(id: String = UUID().uuidString,
       body: String? = nil,
       dateTime: Temporal.DateTime? = nil,
       chatroomID: String,
-      sender: UserModel? = nil,
+      senderName: String? = nil,
+      senderId: String? = nil,
       createdAt: Temporal.DateTime? = nil,
-      updatedAt: Temporal.DateTime? = nil,
-      messageSenderId: String? = nil) {
+      updatedAt: Temporal.DateTime? = nil) {
       self.id = id
       self.body = body
       self.dateTime = dateTime
       self.chatroomID = chatroomID
-      self.sender = sender
+      self.senderName = senderName
+      self.senderId = senderId
       self.createdAt = createdAt
       self.updatedAt = updatedAt
-      self.messageSenderId = messageSenderId
   }
 }

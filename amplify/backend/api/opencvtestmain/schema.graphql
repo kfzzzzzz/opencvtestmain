@@ -16,6 +16,7 @@ type Message @model @auth(rules: [{allow: private}]) {
   body: String
   dateTime: AWSDateTime
   chatroomID: ID! @index(name: "byChatRoom")
-  sender: UserModel @hasOne
+  senderName: String
+  senderId: String
 }
  

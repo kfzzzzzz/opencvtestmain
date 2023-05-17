@@ -300,45 +300,45 @@ class AccountManager : NSObject {
         }
     }
     
-    func signInUserModelCheck(retryCount: Int = 0, completed: @escaping () -> Void){
-        Amplify.Auth.fetchUserAttributes() { result in
-            switch result {
-            case .success(let attributes):
-                let phoneNumber = attributes.first(where: { $0.key == .phoneNumber })?.value ?? ""
-                let name = attributes.first(where: { $0.key == .name })?.value ?? ""
-                let picture = attributes.first(where: { $0.key == .picture })?.value ?? ""
-                Amplify.DataStore.query(UserModel.self, where: UserModel.keys.UserPhoneNumber == phoneNumber) {
-                    switch $0 {
-                    case .success(let date):
-                        if retryCount < 3 && date.first == nil{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                print("查找用户\(retryCount)次")
-                                self.signInUserModelCheck(retryCount: retryCount + 1){
-                                    completed()
-                                }
-                            }
-                        }else if retryCount >= 3 && date.first == nil{
-                            print("创建新用户")
-                            self.regirestUserModel(userModel: UserModel(UserPhoneNumber: phoneNumber, UserName: name, UserImage: picture))
-                            completed()
-                        }else{
-                            print("用户存在\(phoneNumber)")
-                            completed()
-                        }
-                    case .failure(_):
-                        if retryCount < 3 {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                print("查找用户\(retryCount)次")
-                                self.signInUserModelCheck(retryCount: retryCount + 1){}
-                            }
-                        }
-                    }
-                }
-            case .failure(let error):
-                print("失败失败失败\(error)")
-            }
-        }
-    }
+//    func signInUserModelCheck(retryCount: Int = 0, completed: @escaping () -> Void){
+//        Amplify.Auth.fetchUserAttributes() { result in
+//            switch result {
+//            case .success(let attributes):
+//                let phoneNumber = attributes.first(where: { $0.key == .phoneNumber })?.value ?? ""
+//                let name = attributes.first(where: { $0.key == .name })?.value ?? ""
+//                let picture = attributes.first(where: { $0.key == .picture })?.value ?? ""
+//                Amplify.DataStore.query(UserModel.self, where: UserModel.keys.UserPhoneNumber == phoneNumber) {
+//                    switch $0 {
+//                    case .success(let date):
+//                        if retryCount < 3 && date.first == nil{
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                                print("查找用户\(retryCount)次")
+//                                self.signInUserModelCheck(retryCount: retryCount + 1){
+//                                    completed()
+//                                }
+//                            }
+//                        }else if retryCount >= 3 && date.first == nil{
+//                            print("创建新用户")
+//                            self.regirestUserModel(userModel: UserModel(UserPhoneNumber: phoneNumber, UserName: name, UserImage: picture))
+//                            completed()
+//                        }else{
+//                            print("用户存在\(phoneNumber)")
+//                            completed()
+//                        }
+//                    case .failure(_):
+//                        if retryCount < 3 {
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                                print("查找用户\(retryCount)次")
+//                                self.signInUserModelCheck(retryCount: retryCount + 1){}
+//                            }
+//                        }
+//                    }
+//                }
+//            case .failure(let error):
+//                print("失败失败失败\(error)")
+//            }
+//        }
+//    }
     
     func regirestUserModel(userModel : UserModel){
         Amplify.DataStore.save(userModel) {
@@ -351,34 +351,34 @@ class AccountManager : NSObject {
         }
     }
     
-    func updateUserModel(userModel : UserModel, retryCount: Int = 0){
-        Amplify.DataStore.query(UserModel.self, where: UserModel.keys.UserPhoneNumber == userModel.UserPhoneNumber) {
-            switch $0 {
-            case .success(let result):
-                var existingUserModel: UserModel = result.first!
-                existingUserModel.UserPhoneNumber = userModel.UserPhoneNumber
-                existingUserModel.UserName = userModel.UserName
-                existingUserModel.UserImage = userModel.UserImage
-
-                Amplify.DataStore.save(existingUserModel) {
-                    switch $0 {
-                    case .success:
-                        print("Updated the UserModel")
-                    case .failure(let error):
-                        print("Error updating UserModel - \(error.localizedDescription)")
-                    }
-                }
-            case .failure(let error):
-                if retryCount < 3 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        self.updateUserModel(userModel: userModel, retryCount: retryCount + 1)
-                    }
-                } else {
-                    print("查找失败超过5次\(error)")
-                }
-            }
-        }
-    }
+//    func updateUserModel(userModel : UserModel, retryCount: Int = 0){
+//        Amplify.DataStore.query(UserModel.self, where: UserModel.keys.UserPhoneNumber == userModel.UserPhoneNumber) {
+//            switch $0 {
+//            case .success(let result):
+//                var existingUserModel: UserModel = result.first!
+//                existingUserModel.UserPhoneNumber = userModel.UserPhoneNumber
+//                existingUserModel.UserName = userModel.UserName
+//                existingUserModel.UserImage = userModel.UserImage
+//
+//                Amplify.DataStore.save(existingUserModel) {
+//                    switch $0 {
+//                    case .success:
+//                        print("Updated the UserModel")
+//                    case .failure(let error):
+//                        print("Error updating UserModel - \(error.localizedDescription)")
+//                    }
+//                }
+//            case .failure(let error):
+//                if retryCount < 3 {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                        self.updateUserModel(userModel: userModel, retryCount: retryCount + 1)
+//                    }
+//                } else {
+//                    print("查找失败超过5次\(error)")
+//                }
+//            }
+//        }
+//    }
     
 }
     

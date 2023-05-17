@@ -112,7 +112,7 @@ class XTLoginViewController : UIViewController {
     }
     
     @objc private func handleUserInfoRefresh(){
-        AccountManager.shared.signInUserModelCheck {
+        //AccountManager.shared.signInUserModelCheck {
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 if UserData.shared.isSignedIn {
@@ -121,7 +121,7 @@ class XTLoginViewController : UIViewController {
                     self.navigationController?.pushViewController(MainTabBarController, animated: true)
                 }
             }
-        }
+        //}
     }
     
     @objc private func loginButtonTapped(){

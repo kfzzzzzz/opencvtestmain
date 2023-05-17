@@ -9,10 +9,10 @@ extension Message {
     case body
     case dateTime
     case chatroomID
-    case sender
+    case senderName
+    case senderId
     case createdAt
     case updatedAt
-    case messageSenderId
   }
   
   public static let keys = CodingKeys.self
@@ -37,10 +37,10 @@ extension Message {
       .field(message.body, is: .optional, ofType: .string),
       .field(message.dateTime, is: .optional, ofType: .dateTime),
       .field(message.chatroomID, is: .required, ofType: .string),
-      .hasOne(message.sender, is: .optional, ofType: UserModel.self, associatedWith: UserModel.keys.id, targetNames: ["messageSenderId"]),
+      .field(message.senderName, is: .optional, ofType: .string),
+      .field(message.senderId, is: .optional, ofType: .string),
       .field(message.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
-      .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime),
-      .field(message.messageSenderId, is: .optional, ofType: .string)
+      .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
 }

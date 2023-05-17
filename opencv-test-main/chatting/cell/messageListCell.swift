@@ -102,10 +102,10 @@ class messageListCell: UITableViewCell {
     func setData(message: Message, avatar: UIImage){
         self.message = message
         messageBubbleLabel.text = message.body
-        senderName.text = message.sender?.UserName ?? ""
+        senderName.text = message.senderName ?? ""
         senderedTime.text = message.createdAt?.iso8601FormattedString(format: .medium,timeZone: .current)
         self.avaterImage.image = avatar
-        if message.sender?.UserPhoneNumber == UserData.shared.userPhoneNumber{
+        if message.senderId == UserData.shared.userId {
             messageBubbleView.backgroundColor = UIColor.pink2()
         }else{
             messageBubbleView.backgroundColor = UIColor.pink3()

@@ -19,8 +19,8 @@ class ChatViewModel {
     var messages: [Message] = []
     var chatRoom: ChatRoom?
     var getMessage: AnyCancellable?
-    var usersAvatar : [String : UIImage] = [:]
-    var nowSender : UserModel?
+    var usersAvatar : [String : UIImage] = [UserData.shared.userImageURL : UserData.shared.userImage ?? UIImage()]
+    //var nowSender : UserModel?
     
     func getChatRoom(completed: @escaping () -> Void){
         Amplify.DataStore.query(ChatRoom.self){ result in
@@ -37,16 +37,16 @@ class ChatViewModel {
                     if self.messages.count == 0 {
                         return
                     }
-                    for index in 0...self.messages.count - 1{
-                        let senderId = self.messages[index].messageSenderId
-                        self.getSender(id: senderId ?? "-1" ){ user in
-                            self.messages[index].sender = user!
-                        }
-                    }
+//                    for index in 0...self.messages.count - 1{
+//                        let senderId = self.messages[index].messageSenderId
+//                        self.getSender(id: senderId ?? "-1" ){ user in
+//                            self.messages[index].sender = user!
+//                        }
+//                    }
                     
                     // 获取头像
                     for index in 0...self.messages.count - 1{
-                        let senderImage = self.messages[index].sender?.UserImage ?? "-1.jpg"
+                        let senderImage = (self.messages[index].senderId ?? "-1") + ".jpg"
                         if self.usersAvatar[senderImage] == nil && senderImage != "-1.jpg"{
                             self.usersAvatar[senderImage] = UIImage()
                             AccountManager.shared.retrieveImage(name: senderImage) { result in
@@ -55,10 +55,10 @@ class ChatViewModel {
                                     print(error)
                                 case .success(let data):
                                     self.usersAvatar[senderImage] = UIImage(data: data)
-                                    completed()
                                 }
                             }
                         }
+                        completed()
                     }
 
                     
@@ -73,6 +73,20 @@ class ChatViewModel {
             return
         }
         
+    }
+    
+    func getAvater(senderImage : String){
+        if self.usersAvatar[senderImage] == nil && senderImage != "-1.jpg"{
+            self.usersAvatar[senderImage] = UIImage()
+            AccountManager.shared.retrieveImage(name: senderImage) { result in
+                switch result{
+                case .failure(let error):
+                    print(error)
+                case .success(let data):
+                    self.usersAvatar[senderImage] = UIImage(data: data)
+                }
+            }
+        }
     }
     
     
@@ -124,12 +138,12 @@ class ChatViewModel {
             if self.messages.count == 0 {
                 return
             }
-            for index in 0...self.messages.count - 1{
-                let senderId = self.messages[index].messageSenderId
-                self.getSender(id: senderId ?? "-1" ){ user in
-                    self.messages[index].sender = user!
-                }
-            }
+//            for index in 0...self.messages.count - 1{
+//                let senderId = self.messages[index].messageSenderId
+//                self.getSender(id: senderId ?? "-1" ){ user in
+//                    self.messages[index].sender = user!
+//                }
+//            }
             func sortMessage(message1 : Message , message2 : Message)-> Bool {
                 return message1.dateTime! > message2.dateTime!
             }
@@ -145,10 +159,8 @@ class ChatViewModel {
     
     /// 发送消息
     func sendMessage(body: String, completed: @escaping () -> Void){
-        if self.nowSender == nil {
-            return
-        }
-        let message = Message(body: body, dateTime: .now(), chatroomID: chatRoom?.id ?? "-1", sender: self.nowSender!, messageSenderId: self.nowSender!.id)
+        //let message = Message(body: body, dateTime: .now(), chatroomID: chatRoom?.id ?? "-1", sender: self.nowSender!, messageSenderId: self.nowSender!.id)
+        let message = Message(body: body, dateTime: .now(), chatroomID: chatRoom?.id ?? "-1", senderName: UserData.shared.userName, senderId: UserData.shared.userId)
         Amplify.DataStore.save(message){ result in
             switch result{
             case .success(let date):
@@ -193,29 +205,29 @@ class ChatViewModel {
         }
     }
     
-    func getNowSender(retryCount : Int = 0){
-        Amplify.DataStore.query(UserModel.self, where: UserModel.keys.UserPhoneNumber == UserData.shared.userPhoneNumber){ result in
-            switch result{
-            case .success(let date):
-                if retryCount < 5 && date.first == nil{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        print("查找\(UserData.shared.userPhoneNumber)失败尝试\(retryCount)次")
-                        self.getNowSender(retryCount: retryCount+1)
-                    }
-                }
-                self.nowSender = date.first
-            case .failure(let error):
-                if retryCount < 5 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        self.getNowSender(retryCount: retryCount+1)
-                    }
-                } else {
-                    print("查找失败超过5次\(error)")
-                }
-                return
-            }
-        }
-    }
+//    func getNowSender(retryCount : Int = 0){
+//        Amplify.DataStore.query(UserModel.self, where: UserModel.keys.UserPhoneNumber == UserData.shared.userPhoneNumber){ result in
+//            switch result{
+//            case .success(let date):
+//                if retryCount < 5 && date.first == nil{
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                        print("查找\(UserData.shared.userPhoneNumber)失败尝试\(retryCount)次")
+//                        self.getNowSender(retryCount: retryCount+1)
+//                    }
+//                }
+//                self.nowSender = date.first
+//            case .failure(let error):
+//                if retryCount < 5 {
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//                        self.getNowSender(retryCount: retryCount+1)
+//                    }
+//                } else {
+//                    print("查找失败超过5次\(error)")
+//                }
+//                return
+//            }
+//        }
+//    }
     
     func deleteMessage(){
         Amplify.DataStore.query(Message.self) { result in
