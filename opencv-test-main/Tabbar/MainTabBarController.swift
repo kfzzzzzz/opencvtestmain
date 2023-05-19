@@ -10,6 +10,11 @@ import flutter_boost
 
 class MainTabBarController : UITabBarController {
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setTabBarItemAttributes(fontName: "SmileySans-Oblique", normalfontSize: 14, selectedfontSize: 18, normalColor: .white, selectedColor: .white, bgColor: UIColor.pink1())
+    }
+    
     override func viewDidLoad() {
             super.viewDidLoad()
             initTabBar()
@@ -22,28 +27,28 @@ class MainTabBarController : UITabBarController {
             self.tabBar.insertSubview(drawTabBarImageView(), at: 0)
             self.tabBar.isOpaque = true
             
-            let home = ChatViewController()
-            home.tabBarItem.title = "首页"
+//            let home = ChatViewController()
+//            home.tabBarItem.title = "首页"
 
             let chat = ChatViewController()
-            chat.tabBarItem.title = "聊天"
-
-            let mid = FrontPageViewController()
-            mid.tabBarItem.title = ""
-            mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
-            mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
+            chat.tabBarItem.title = "交流"
 
             let vc:FBFlutterViewContainer = FBFlutterViewContainer()
             let options = FlutterBoostRouteOptions()
-            options.pageName = "example"
+            options.pageName = "XTChatBotPage"
             vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
-            let challenge = vc
-            challenge.tabBarItem.title = "chatGPT"
+            let mid = vc
+            mid.tabBarItem.title = ""
+            mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
+            mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
+            
+            let setting = FrontPageViewController()
+            setting.tabBarItem.title = "设置"
 
-            let mine = LoginViewController()
-            mine.tabBarItem.title = "我的"
+//            let mine = LoginViewController()
+//            mine.tabBarItem.title = "我的"
 
-            viewControllers = [chat, mid, challenge]
+            viewControllers = [chat, mid, setting]
             
             self.tabBar.isTranslucent = false
             self.selectedIndex = 1
@@ -73,6 +78,24 @@ class MainTabBarController : UITabBarController {
         }
     }
     
+//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        if let selectedIndex = tabBar.items?.firstIndex(of: item) {
+//            switch selectedIndex {
+//            case 0:
+//                setTabBarItemAttributes(fontName: "SmileySans-Oblique", normalfontSize: 14, selectedfontSize: 18, normalColor: .white, selectedColor: .white, bgColor: UIColor.pink1())
+//                print("KFZTEST:交流")
+//            case 1:
+//                setTabBarItemAttributes(fontName: "SmileySans-Oblique", normalfontSize: 14, selectedfontSize: 18, normalColor: .white, selectedColor: .white, bgColor: UIColor.clear)
+//                print("KFZTEST:中间")
+//            case 2:
+//                setTabBarItemAttributes(fontName: "SmileySans-Oblique", normalfontSize: 14, selectedfontSize: 18, normalColor: .white, selectedColor: .white, bgColor: UIColor.pink1())
+//                print("KFZTEST:设置")
+//            default:
+//                break
+//            }
+//        }
+//    }
+//
     
     
     

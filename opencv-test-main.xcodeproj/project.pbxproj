@@ -483,7 +483,7 @@
 			);
 			mainGroup = 9454DF1B297427E9001ED74C;
 			packageReferences = (
-				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */,
 			);
 			productRefGroup = 9454DF25297427E9001ED74C /* Products */;
 			projectDirPath = "";
@@ -516,11 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
 			name = "[CP-User] Embed Flutter Build xintai_flutter Script";
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/Submoudle/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh embed_and_thin";
@@ -530,11 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
 			name = "[CP-User] Run Flutter Build xintai_flutter Script";
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/Submoudle/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
@@ -569,13 +561,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -868,7 +856,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
 			requirement = {
@@ -881,7 +869,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		94E84A9F29C2F30500A2F3FB /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */;
 			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import flutter_boost
 
 class FrontPageViewController: UIViewController {
     
@@ -80,6 +81,15 @@ class FrontPageViewController: UIViewController {
         return view
     }()
     
+    private var FlutterView : FBFlutterViewContainer = {
+        let vc : FBFlutterViewContainer = FBFlutterViewContainer()
+        let options = FlutterBoostRouteOptions()
+        options.pageName = "XTHomePage"
+        vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
+        vc.view.backgroundColor = .clear
+        return vc
+    }()
+    
     init(){
         super.init(nibName: nil, bundle: nil)
         self.frontPageTableView.delegate = self
@@ -98,7 +108,7 @@ class FrontPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        self.view.backgroundColor = .white
         emptyView.snp.makeConstraints{ make in
             make.top.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -133,6 +143,14 @@ class FrontPageViewController: UIViewController {
             make.right.equalToSuperview().offset(-30.atScale())
             make.bottom.equalToSuperview()
         }
+        
+        self.addChild(FlutterView)
+        self.view.addSubview(FlutterView.view)
+        FlutterView.didMove(toParent: self)
+        FlutterView.view.snp.makeConstraints{ make in
+            make.top.equalToSuperview().offset(100.atScale())
+            make.left.right.bottom.equalToSuperview()
+        }
     }
     
     @objc func updateUserInfo(){
@@ -163,7 +181,7 @@ class FrontPageViewController: UIViewController {
 extension FrontPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.item.count == 0{
-            self.emptyView.isHidden = false
+            self.emptyView.isHidden = true
         }else{
             self.emptyView.isHidden = true
         }
