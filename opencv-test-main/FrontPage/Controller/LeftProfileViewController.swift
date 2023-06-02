@@ -165,7 +165,7 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
         }else{
             if indexPath.row == 1 {
                 let options = FlutterBoostRouteOptions()
-                options.pageName = "GPTPage"
+                options.pageName = "example"
                 FlutterBoost.instance().open(options)
             }
             if indexPath.row == 2 {
