@@ -160,18 +160,14 @@ extension LeftProfileViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if UserData.shared.isSignedIn == false{
-            AccountManager.shared.signIn()
-        }else{
-            if indexPath.row == 1 {
-                let options = FlutterBoostRouteOptions()
-                options.pageName = "example"
-                FlutterBoost.instance().open(options)
-            }
-            if indexPath.row == 2 {
-                let vc = SettingViewController()
-                vc.show()
-            }
+        if indexPath.row == 1 {
+            let options = FlutterBoostRouteOptions()
+            options.pageName = "example"
+            FlutterBoost.instance().open(options)
+        }
+        if indexPath.row == 2 {
+            let vc = SettingViewController()
+            vc.show()
         }
     }
 }

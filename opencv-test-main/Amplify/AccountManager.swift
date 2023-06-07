@@ -131,7 +131,7 @@ class AccountManager : NSObject {
     }
     
     
-    // signin with Cognito web user interface
+    // signin with Cognito web user interface(弃用)
     public func signIn() {
         _ = Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first!) { result in
             switch result {
@@ -166,6 +166,20 @@ class AccountManager : NSObject {
                 print("Successfully signed out")
             case .failure(let error):
                 print("Sign out failed with error \(error)")
+                //登出失败也执行
+                UserData.shared.clear()
+                self.delegate?.isLogout()
+                
+                DispatchQueue.main.async {
+                    if let navigationController = UIApplication.shared.windows.first?.rootViewController as? UINavigationController {
+                        navigationController.popToRootViewController(animated: false)
+                    }
+                    let loginViewController = XTLoginViewController()
+                    let navigationController = UINavigationController(rootViewController: loginViewController)
+                    navigationController.isNavigationBarHidden = true
+                    UIApplication.shared.windows.first?.rootViewController = navigationController
+                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                }
             }
         }
     }
