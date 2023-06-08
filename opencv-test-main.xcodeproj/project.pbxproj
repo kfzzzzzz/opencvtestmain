@@ -483,7 +483,7 @@
 			);
 			mainGroup = 9454DF1B297427E9001ED74C;
 			packageReferences = (
-				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */,
+				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = 9454DF25297427E9001ED74C /* Products */;
 			projectDirPath = "";
@@ -777,7 +777,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2Y9CV7298B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "opencv-test-main/Info.plist";
@@ -792,7 +792,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "kfzzzzzz.opencv-test-kfz";
 				PRODUCT_NAME = "心态兄弟";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -808,7 +808,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2Y9CV7298B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "opencv-test-main/Info.plist";
@@ -823,7 +823,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "kfzzzzzz.opencv-test-kfz";
 				PRODUCT_NAME = "心态兄弟";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -856,7 +856,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */ = {
+		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
 			requirement = {
@@ -869,7 +869,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		94E84A9F29C2F30500A2F3FB /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */;
+			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
