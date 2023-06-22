@@ -22,7 +22,7 @@ target 'opencv-test-main' do
   pod 'FLEX', :configurations => ['Debug']
   
 
-  flutter_application_path = '../opencv-test-main/Submoudle'
+  flutter_application_path = '../opencvtestmain/Submoudle'
   load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
   
   install_all_flutter_pods(flutter_application_path)

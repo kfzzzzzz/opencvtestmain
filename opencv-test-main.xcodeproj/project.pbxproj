@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */; };
 		49BF007EE7E63E2C629B29F7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89C6B780312C335799849E /* UserModel.swift */; };
-		5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */; };
 		5743BC82794ED17F6120B57B /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */; };
 		596FD858A8D660104A9C0ED3 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A60A55614E1143F37DDA721 /* awsconfiguration.json */; };
-		70379954304F70B87DC61DCC /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675452D914CCD5DD26748EA7 /* UserTest.swift */; };
 		72A27C74B6F31AB984183105 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */; };
 		8004B2201A02B621B507BEDA /* UserModel+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C51C71F2280D4E0D73254 /* UserModel+Schema.swift */; };
 		82FF718100E2AC7C3BB91CC2 /* Message+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C05697F54C16B3BB3FAD1 /* Message+Schema.swift */; };
@@ -67,7 +64,6 @@
 		94EB89DD299F7E710003DAC4 /* FrontPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EB89DC299F7E710003DAC4 /* FrontPageViewController.swift */; };
 		C0C773BF8EEE8C7B215AC43A /* ChatRoom+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2683A8E6D909C7937EA6F002 /* ChatRoom+Schema.swift */; };
 		EFFC8651D080B16F8C9080A0 /* Pods_opencv_test_main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */; };
-		F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */; };
 		FFCCCAC9103FFDE0C12C7C3E /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFDC2317741FEC25F8E3DCC /* ChatRoom.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,11 +73,8 @@
 		295697E2C87A44F70FA2AED3 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		2A60A55614E1143F37DDA721 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NewTestModel.swift; path = amplify/generated/models/NewTestModel.swift; sourceTree = "<group>"; };
 		5319F6E849EACC8001F009C9 /* Message.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Message.swift; path = amplify/generated/models/Message.swift; sourceTree = "<group>"; };
-		675452D914CCD5DD26748EA7 /* UserTest.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserTest.swift; path = amplify/generated/models/UserTest.swift; sourceTree = "<group>"; };
 		7C1C05697F54C16B3BB3FAD1 /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
-		86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTest+Schema.swift"; path = "amplify/generated/models/UserTest+Schema.swift"; sourceTree = "<group>"; };
 		8C0EC5005C936EC007FB87BC /* Pods-opencv-test-main.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.release.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.release.xcconfig"; sourceTree = "<group>"; };
 		9410503229E6B54D00A041F6 /* XTLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTLoginViewController.swift; sourceTree = "<group>"; };
 		942D249729D1767000C8223D /* FrontPageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPageTableCell.swift; sourceTree = "<group>"; };
@@ -135,7 +128,6 @@
 		AE3C51C71F2280D4E0D73254 /* UserModel+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserModel+Schema.swift"; path = "amplify/generated/models/UserModel+Schema.swift"; sourceTree = "<group>"; };
 		BEFDC2317741FEC25F8E3DCC /* ChatRoom.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ChatRoom.swift; path = amplify/generated/models/ChatRoom.swift; sourceTree = "<group>"; };
 		C5D6E89686549EC957D10E96 /* Pods-opencv-test-main.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-opencv-test-main.debug.xcconfig"; path = "Target Support Files/Pods-opencv-test-main/Pods-opencv-test-main.debug.xcconfig"; sourceTree = "<group>"; };
-		C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NewTestModel+Schema.swift"; path = "amplify/generated/models/NewTestModel+Schema.swift"; sourceTree = "<group>"; };
 		FCD7DEDACDE68EB6A45BA70F /* Pods_opencv_test_main.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_opencv_test_main.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,10 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				2A6042DFCB425E67CBB0CE4E /* AmplifyModels.swift */,
-				C62E1C4A3BDFF8026E51F924 /* NewTestModel+Schema.swift */,
-				3172B5725CE5CB6B57A724C4 /* NewTestModel.swift */,
-				86785B6E6FC10D4871C23FB3 /* UserTest+Schema.swift */,
-				675452D914CCD5DD26748EA7 /* UserTest.swift */,
 				2683A8E6D909C7937EA6F002 /* ChatRoom+Schema.swift */,
 				BEFDC2317741FEC25F8E3DCC /* ChatRoom.swift */,
 				7C1C05697F54C16B3BB3FAD1 /* Message+Schema.swift */,
@@ -483,7 +471,7 @@
 			);
 			mainGroup = 9454DF1B297427E9001ED74C;
 			packageReferences = (
-				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */,
 			);
 			productRefGroup = 9454DF25297427E9001ED74C /* Products */;
 			projectDirPath = "";
@@ -607,18 +595,14 @@
 				948209F529ADFF0D009E42A9 /* messageListCell.swift in Sources */,
 				94A9C6F82996B4AD003B03CC /* UIColor+Utils.swift in Sources */,
 				94989D462996734200A084D3 /* UIFont+Utils.swift in Sources */,
-				5201D30E7416E73DAAE201D5 /* NewTestModel+Schema.swift in Sources */,
 				94D8B9FB29EF919500F5E102 /* UIView+Utils.swift in Sources */,
-				F3512B08206A5620836E0956 /* NewTestModel.swift in Sources */,
 				94989D3E299668BD00A084D3 /* MainTabBarController.swift in Sources */,
 				94E360CF29A77BB6002C78A4 /* LeftProfileViewController.swift in Sources */,
 				945E6CDD29E53C2C00ABDEBE /* FlutterMessageManager.swift in Sources */,
 				942D249829D1767000C8223D /* FrontPageTableCell.swift in Sources */,
-				333C572ACB92E48E0EED2505 /* UserTest+Schema.swift in Sources */,
 				94E360D529A7930C002C78A4 /* LeftProfileDismissAnimation.swift in Sources */,
 				9410503329E6B54E00A041F6 /* XTLoginViewController.swift in Sources */,
 				94D8B9FD29EF91A600F5E102 /* UIButton+Utils.swift in Sources */,
-				70379954304F70B87DC61DCC /* UserTest.swift in Sources */,
 				C0C773BF8EEE8C7B215AC43A /* ChatRoom+Schema.swift in Sources */,
 				FFCCCAC9103FFDE0C12C7C3E /* ChatRoom.swift in Sources */,
 				82FF718100E2AC7C3BB91CC2 /* Message+Schema.swift in Sources */,
@@ -856,7 +840,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+		94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift.git";
 			requirement = {
@@ -869,7 +853,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		94E84A9F29C2F30500A2F3FB /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			package = 94E84A9E29C2F30500A2F3FB /* XCRemoteSwiftPackageReference "OpenAISwift.git" */;
 			productName = OpenAISwift;
 		};
 /* End XCSwiftPackageProductDependency section */
