@@ -24,34 +24,39 @@ class MainTabBarController : UITabBarController {
         
         func initTabBar() {
             
-            self.tabBar.insertSubview(drawTabBarImageView(), at: 0)
+            //插入底部凸起 已屏蔽
+            //self.tabBar.insertSubview(drawTabBarImageView(), at: 0)
             self.tabBar.isOpaque = true
             
 //            let home = ChatViewController()
 //            home.tabBarItem.title = "首页"
 
-            let chat = ChatViewController()
-            chat.tabBarItem.title = "交流"
-
             let vc:FBFlutterViewContainer = FBFlutterViewContainer()
             let options = FlutterBoostRouteOptions()
-            options.pageName = "XTChatBotPage"
+            options.pageName = "AIPhotoPage"
             vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
-            let mid = vc
-            mid.tabBarItem.title = ""
-            mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
-            mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
+            let chat = vc
+            chat.tabBarItem.title = "首页"
+
+//            let vc:FBFlutterViewContainer = FBFlutterViewContainer()
+//            let options = FlutterBoostRouteOptions()
+//            options.pageName = "XTChatBotPage"
+//            vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
+//            let mid = vc
+//            mid.tabBarItem.title = ""
+//            mid.tabBarItem.imageInsets = UIEdgeInsets(top: -standOutHeight/3.8, left: 0, bottom: standOutHeight/3.8, right: 0)
+//            mid.tabBarItem.image = UIImage(named: "MainTabIcon.png")?.withRenderingMode(.alwaysOriginal)
             
             let setting = FrontPageViewController()
-            setting.tabBarItem.title = "设置"
+            setting.tabBarItem.title = "我的"
 
 //            let mine = LoginViewController()
 //            mine.tabBarItem.title = "我的"
 
-            viewControllers = [chat, mid, setting]
+            viewControllers = [chat, setting]
             
             self.tabBar.isTranslucent = false
-            self.selectedIndex = 1
+            self.selectedIndex = 0
             
         
             // 设置 tabBar & tabBarItem

@@ -226,7 +226,7 @@ class AccountManager : NSObject {
                         UserData.shared.userName = attributes.first(where: { $0.key == .name })?.value ?? "气人小子"
                         UserData.shared.userPhoneNumber = attributes.first(where: { $0.key == .phoneNumber })?.value ?? ""
                         UserData.shared.userImageURL = attributes.first(where: { $0.key == .picture })?.value ?? ""
-                        self.retrieveImage(name: UserData.shared.userImageURL) { result in
+                        self.retrieveData(name: UserData.shared.userImageURL) { result in
                             switch result {
                             case let .success(data):
                                 UserData.shared.userImage = UIImage(data: data)
@@ -270,23 +270,23 @@ class AccountManager : NSObject {
         })
     }
     
-    func retrieveImage(name: String, completed: @escaping (Result<Data, Error>) -> Void) {
+    func retrieveData(name: String, completed: @escaping (Result<Data, Error>) -> Void) {
         let _ = Amplify.Storage.downloadData(key: name,
                                              progressListener: { progress in
         }, resultListener: { (event) in
             switch event {
             case let .success(data):
-                print("图片 \(name) 加载成功")
+                print("数据 \(name) 加载成功")
                 completed(.success(data))
             case let .failure(storageError):
-                print("无法加载图片: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                print("无法加载数据: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
                 completed(.failure(storageError))
             }
         }
         )
     }
     
-    func deleteImage(name: String) {
+    func deleteData(name: String) {
         let _ = Amplify.Storage.remove(key: name,
                                        resultListener: { (event) in
             switch event {

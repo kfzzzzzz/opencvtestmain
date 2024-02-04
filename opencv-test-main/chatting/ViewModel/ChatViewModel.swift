@@ -49,7 +49,7 @@ class ChatViewModel {
                         let senderImage = (self.messages[index].senderId ?? "-1") + ".jpg"
                         if self.usersAvatar[senderImage] == nil && senderImage != "-1.jpg"{
                             self.usersAvatar[senderImage] = UIImage()
-                            AccountManager.shared.retrieveImage(name: senderImage) { result in
+                            AccountManager.shared.retrieveData(name: senderImage) { result in
                                 switch result{
                                 case .failure(let error):
                                     print(error)
@@ -78,7 +78,7 @@ class ChatViewModel {
     func getAvater(senderImage : String){
         if self.usersAvatar[senderImage] == nil && senderImage != "-1.jpg"{
             self.usersAvatar[senderImage] = UIImage()
-            AccountManager.shared.retrieveImage(name: senderImage) { result in
+            AccountManager.shared.retrieveData(name: senderImage) { result in
                 switch result{
                 case .failure(let error):
                     print(error)

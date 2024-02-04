@@ -35,6 +35,15 @@ class FlutterMessageManager : NSObject {
             }
             self?.getGPTKey(result: result)
           })
+        MessgaeChannel.setMethodCallHandler({
+            [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+            // This method is invoked on the UI thread.
+            guard call.method == "getCivitaiKey" else {
+              result(FlutterMethodNotImplemented)
+              return
+            }
+            self?.getCivitaiKey(result: result)
+          })
     }
     
     private func receiveBatteryLevel(result: FlutterResult) {
@@ -50,7 +59,7 @@ class FlutterMessageManager : NSObject {
     }
     
     private func getGPTKey(result:  @escaping FlutterResult){
-        AccountManager.shared.retrieveImage(name: "GPTKEY.txt") { output in
+        AccountManager.shared.retrieveData(name: "GPTKEY.txt") { output in
             switch output {
             case let .success(data):
                 if let key = String(data: data, encoding: .utf8) {
@@ -63,6 +72,24 @@ class FlutterMessageManager : NSObject {
             case .failure(_):
                 result(FlutterError(code: "UNAVAILABLE",
                                     message: "获取GPTKey失败.",
+                                    details: nil))
+            }
+        }
+    }
+    private func getCivitaiKey(result:  @escaping FlutterResult){
+        AccountManager.shared.retrieveData(name: "CivitaiKey.txt") { output in
+            switch output {
+            case let .success(data):
+                if let key = String(data: data, encoding: .utf8) {
+                    result(key)
+                } else {
+                    result(FlutterError(code: "UNAVAILABLE",
+                                        message: "获取CivitaiKey失败.",
+                                        details: nil))
+                }
+            case .failure(_):
+                result(FlutterError(code: "UNAVAILABLE",
+                                    message: "获取CivitaiKey失败.",
                                     details: nil))
             }
         }

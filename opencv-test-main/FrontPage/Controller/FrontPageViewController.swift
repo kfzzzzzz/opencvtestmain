@@ -90,6 +90,11 @@ class FrontPageViewController: UIViewController {
         return vc
     }()
     
+    private var ChatView : UIViewController = {
+        let vc  = ChatViewController()
+        return vc
+    }()
+    
     init(){
         super.init(nibName: nil, bundle: nil)
         self.frontPageTableView.delegate = self
@@ -144,10 +149,10 @@ class FrontPageViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
-        self.addChild(FlutterView)
-        self.view.addSubview(FlutterView.view)
-        FlutterView.didMove(toParent: self)
-        FlutterView.view.snp.makeConstraints{ make in
+        self.addChild(ChatView)
+        self.view.addSubview(ChatView.view)
+        ChatView.didMove(toParent: self)
+        ChatView.view.snp.makeConstraints{ make in
             make.top.equalToSuperview().offset(100.atScale())
             make.left.right.bottom.equalToSuperview()
         }
