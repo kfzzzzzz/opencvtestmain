@@ -31,11 +31,11 @@ class MainTabBarController : UITabBarController {
 //            let home = ChatViewController()
 //            home.tabBarItem.title = "首页"
 
-            let vc:FBFlutterViewContainer = FBFlutterViewContainer()
+            let chat:FBFlutterViewContainer = FBFlutterViewContainer()
             let options = FlutterBoostRouteOptions()
             options.pageName = "AIPhotoPage"
-            vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
-            let chat = vc
+            chat.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
+            
             chat.tabBarItem.title = "首页"
 
 //            let vc:FBFlutterViewContainer = FBFlutterViewContainer()

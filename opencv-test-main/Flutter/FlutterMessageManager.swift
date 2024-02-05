@@ -7,6 +7,7 @@
 
 import Foundation
 import Flutter
+import flutter_boost
 
 class FlutterMessageManager : NSObject {
     
@@ -35,15 +36,28 @@ class FlutterMessageManager : NSObject {
             }
             self?.getGPTKey(result: result)
           })
-        MessgaeChannel.setMethodCallHandler({
-            [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-            // This method is invoked on the UI thread.
-            guard call.method == "getCivitaiKey" else {
-              result(FlutterMethodNotImplemented)
-              return
+        MessgaeChannel.setMethodCallHandler { [weak self] (call, result) in
+            if call.method == "pushFlutterPage" {
+                if let parameter = call.arguments as? String {
+                    // 在这里处理参数
+                    print("Received parameter: \(parameter)")
+                    
+                    self?.pushFlutterPage(ImageUrl: parameter)
+                    result("Success") // 假设这里返回成功
+                } else {
+                    result(FlutterError(code: "invalid_parameter", message: "Invalid parameter type", details: nil))
+                }
             }
-            self?.getCivitaiKey(result: result)
-          })
+        }
+//        MessgaeChannel.setMethodCallHandler({
+//            [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+//            // This method is invoked on the UI thread.
+//            guard call.method == "pushFlutterPage" else {
+//              result(FlutterMethodNotImplemented)
+//              return
+//            }
+//            self?.pushFlutterPage(result: result)
+//          })
     }
     
     private func receiveBatteryLevel(result: FlutterResult) {
@@ -93,5 +107,12 @@ class FlutterMessageManager : NSObject {
                                     details: nil))
             }
         }
+    }
+    private func pushFlutterPage(ImageUrl : String){
+        print(ImageUrl)
+        let options = FlutterBoostRouteOptions()
+        options.pageName = "AIFullPhotoPage"
+        options.arguments = ["ImageUrl": ImageUrl]
+        FlutterBoost.instance().open(options)
     }
 }
